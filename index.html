@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reel Studio — Project Hub</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: #0a0e1a;
+    color: #e4e8f0;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 48px 24px;
+    align-items: center;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+    max-width: 720px;
+  }
+  header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+  header p {
+    color: #8b95a8;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1100px;
+  }
+  .card {
+    background: linear-gradient(180deg, rgba(20,25,40,0.95), rgba(12,16,28,0.95));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 24px;
+    transition: border-color .15s ease, transform .15s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--brand, #60a5fa);
+    opacity: 0.8;
+  }
+  .card:hover {
+    border-color: rgba(255,255,255,0.18);
+    transform: translateY(-2px);
+  }
+  .card h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #f4f6fb;
+  }
+  .card .tag {
+    font-size: 12px;
+    color: var(--brand, #60a5fa);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  .card p {
+    font-size: 13px;
+    color: #8b95a8;
+    line-height: 1.55;
+    margin-bottom: 18px;
+  }
+  .meta {
+    display: flex;
+    gap: 12px;
+    font-size: 11px;
+    color: #5a6478;
+    font-family: 'SF Mono', ui-monospace, monospace;
+    margin-bottom: 18px;
+  }
+  .meta span {
+    background: rgba(255,255,255,0.04);
+    padding: 4px 8px;
+    border-radius: 5px;
+  }
+  .card .open-btn {
+    display: inline-block;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #f4f6fb;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background .12s ease;
+  }
+  .card:hover .open-btn { background: rgba(255,255,255,0.1); }
+  .add-card {
+    background: transparent;
+    border: 2px dashed rgba(255,255,255,0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    text-align: center;
+    color: #5a6478;
+  }
+  .add-card::before { display: none; }
+  .add-card:hover { border-color: rgba(255,255,255,0.25); color: #8b95a8; }
+  .add-card .plus { font-size: 32px; font-weight: 300; margin-bottom: 8px; }
+  .add-card h2 { color: inherit; font-size: 16px; font-weight: 600; }
+  .add-card p { margin: 0; color: inherit; }
+  footer {
+    margin-top: 64px;
+    color: #5a6478;
+    font-size: 12px;
+    text-align: center;
+  }
+  footer code {
+    font-family: 'SF Mono', ui-monospace, monospace;
+    background: rgba(255,255,255,0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #93c5fd;
+  }
+
+  /* ── Custom-project card actions (delete) ────────────── */
+  .card .del-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #f87171;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .card.custom .del-btn { display: flex; }
+  .card .del-btn:hover { background: rgba(239,68,68,0.18); }
+
+  /* ── Modal ──────────────────────────────────────────── */
+  .modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(5,8,17,0.85);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 48px 24px;
+    overflow-y: auto;
+  }
+  .modal-backdrop.show { display: flex; }
+  .modal {
+    background: linear-gradient(180deg, rgba(20,25,40,0.98), rgba(12,16,28,0.98));
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 28px;
+    width: 100%;
+    max-width: 620px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  }
+  .modal h2 { font-size: 20px; font-weight: 700; margin-bottom: 6px; color: #f4f6fb; }
+  .modal .modal-sub { color: #8b95a8; font-size: 13px; margin-bottom: 24px; line-height: 1.55; }
+  .modal label.field { display: block; margin-bottom: 14px; font-size: 12px; color: #b8c2d4; font-weight: 600; }
+  .modal label.field > span { display: block; margin-bottom: 6px; }
+  .modal label.field > .hint { display: block; margin-top: 4px; font-size: 11px; color: #5a6478; font-weight: 400; }
+  .modal input[type=text], .modal input[type=number], .modal select, .modal textarea {
+    width: 100%;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: #fff;
+    font-size: 13px;
+    font-family: inherit;
+  }
+  .modal input[type=color] {
+    width: 50px; height: 36px;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+  }
+  .modal textarea { font-family: 'SF Mono', ui-monospace, monospace; font-size: 12px; min-height: 120px; resize: vertical; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .field-row.three { grid-template-columns: 2fr 1fr 1fr; }
+  .upload-zone {
+    border: 2px dashed rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+    cursor: pointer;
+    color: #8b95a8;
+    font-size: 13px;
+    transition: all .15s ease;
+  }
+  .upload-zone:hover, .upload-zone.drag { border-color: rgba(96,165,250,0.5); background: rgba(96,165,250,0.05); color: #93c5fd; }
+  .upload-zone input { display: none; }
+  .upload-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .upload-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(96,165,250,0.12);
+    border: 1px solid rgba(96,165,250,0.25);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11px;
+    color: #93c5fd;
+    font-family: 'SF Mono', monospace;
+  }
+  .upload-chip button {
+    background: transparent; border: none; color: #f87171;
+    cursor: pointer; font-size: 14px; padding: 0; line-height: 1;
+  }
+  .modal-actions {
+    display: flex; gap: 10px; justify-content: flex-end;
+    margin-top: 24px; padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #f4f6fb;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn:hover { background: rgba(255,255,255,0.1); }
+  .btn-primary { background: #3b82f6; border-color: #3b82f6; color: #fff; }
+  .btn-primary:hover { background: #2563eb; }
+  .btn-ghost { background: transparent; }
+  .toast {
+    position: fixed; bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: #10b981; color: #fff;
+    padding: 10px 18px; border-radius: 8px;
+    font-size: 13px; font-weight: 600;
+    opacity: 0; transition: all .2s; pointer-events: none; z-index: 9999;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+  .toast.error { background: #ef4444; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Reel Studio</h1>
+  <p>Pick a project to open its live editor. Each project has its own scenes, presets, and render pipeline.</p>
+</header>
+
+<div class="grid" id="grid"></div>
+
+<footer>
+  Built-in projects are defined in <code>projects.json</code>. Custom projects you create here are saved to your browser's localStorage and live alongside the built-ins.
+</footer>
+
+<!-- ─── New Project modal ─── -->
+<div class="modal-backdrop" id="new-project-modal">
+  <div class="modal">
+    <h2>🎬 New Project</h2>
+    <p class="modal-sub">Scaffold a new reel project. Built-in projects (SmartMed, SmartLab, etc.) come from <code>projects.json</code>; custom ones are saved in your browser. Upload scene images now or drop them into <code>public/generated/&lt;id&gt;/</code> later.</p>
+
+    <label class="field">
+      <span>Project name</span>
+      <input type="text" id="np-name" placeholder="e.g. SmartMed — Ramadan" />
+    </label>
+
+    <div class="field-row">
+      <label class="field">
+        <span>ID (slug)</span>
+        <input type="text" id="np-id" placeholder="smartmed-ramadan" />
+        <span class="hint">Lowercase, dashes only. Used in file/folder names.</span>
+      </label>
+      <label class="field">
+        <span>Brand color</span>
+        <input type="color" id="np-color" value="#3b82f6" />
+      </label>
+    </div>
+
+    <label class="field">
+      <span>Tagline</span>
+      <input type="text" id="np-tagline" placeholder="Ramadan campaign — 4 scenes, vertical reel" />
+    </label>
+
+    <input type="hidden" id="np-starter" value="smartlab-posts" />
+
+    <div class="field-row">
+      <label class="field">
+        <span>Aspect ratio</span>
+        <select id="np-aspect">
+          <option value="1080×1350 (4:5)" selected>1080×1350 (4:5 — feed)</option>
+          <option value="1080×1920 (9:16)">1080×1920 (9:16 — story)</option>
+          <option value="1080×1080 (1:1)">1080×1080 (1:1 — square)</option>
+          <option value="1920×1080 (16:9)">1920×1080 (16:9 — landscape)</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>Scenes</span>
+        <input type="number" id="np-scenes" min="1" max="20" value="3" />
+      </label>
+    </div>
+
+    <label class="field">
+      <span>📁 Scene images <span class="hint" style="display:inline; margin-left:8px;">(optional — saved as data URLs in browser; for render, drop them in <code>public/generated/&lt;id&gt;/scene1.png</code> etc.)</span></span>
+      <div class="upload-zone" id="np-upload-zone">
+        <div>📸 Drop scene images here or click to pick</div>
+        <input type="file" id="np-upload-input" accept="image/*" multiple />
+      </div>
+      <div class="upload-list" id="np-upload-list"></div>
+    </label>
+
+    <label class="field">
+      <span>HTML draft (optional)</span>
+      <textarea id="np-html" placeholder="Paste the HTML/CSS draft of your scenes here. We'll save it as <id>-draft.html so you can iterate."></textarea>
+      <span class="hint">Useful when you have a static HTML mockup ready. Leave blank to start from the chosen starter.</span>
+    </label>
+
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="np-cancel">Cancel</button>
+      <button class="btn btn-primary" id="np-create">Create project</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // Inlined project registry. Mirrors projects.json (which the bake scripts
+  // read via Node). Browsers block fetch() over file:// so we keep this list
+  // here too. When a new project is scaffolded, both files get updated.
+  const PROJECTS = [
+    {
+      id: 'smartmed',
+      name: 'SmartMed',
+      tagline: 'Home medical services — 3 scenes, vertical reel',
+      studioUrl: 'smartmed-preview.html',
+      videoOut: 'out/smartmed-v1.mp4',
+      scenes: 3,
+      aspect: '1080×1920 (9:16)',
+      color: '#194ea4',
+    },
+    {
+      id: 'smartlab',
+      name: 'SmartLab',
+      tagline: 'Home lab testing — 4 scenes, square-ish',
+      studioUrl: 'smartlab-preview.html',
+      videoOut: 'out/smartlab-v1.mp4',
+      scenes: 4,
+      aspect: '1080×1350 (4:5)',
+      color: '#1A9DD7',
+    },
+    {
+      id: 'smartmed-hajj',
+      name: 'SmartMed — Hajj',
+      tagline: 'Hajj home-medical campaign — 5 scenes, vertical reel',
+      studioUrl: 'smartmed-hajj-preview.html',
+      videoOut: 'out/smartmed-hajj-v1.mp4',
+      scenes: 5,
+      aspect: '1080×1920 (9:16)',
+      color: '#0B2A4A',
+    },
+  ];
+
+  // ── Hub server detection ─────────────────────────────────────
+  // When running via `npm run hub` (http://localhost:<port>), we can hit
+  // /api/projects which reads projects.json directly + writes new
+  // projects to disk. When the page is opened via file:// we fall back to
+  // localStorage so the editor still works offline.
+  const HAS_SERVER = location.protocol === 'http:' || location.protocol === 'https:';
+  let SERVER_PROJECTS = null;          // loaded via /api/projects
+  const CUSTOM_KEY = 'reel-studio-custom-projects-v1';
+  function loadCustom() {
+    if (SERVER_PROJECTS) return SERVER_PROJECTS.filter(p => p.custom);
+    try { return JSON.parse(localStorage.getItem(CUSTOM_KEY) || '[]') || []; }
+    catch (_) { return []; }
+  }
+  function saveCustom(list) {
+    try { localStorage.setItem(CUSTOM_KEY, JSON.stringify(list)); } catch (_) {}
+  }
+
+  async function fetchServerProjects() {
+    if (!HAS_SERVER) return null;
+    try {
+      const r = await fetch('/api/projects');
+      if (!r.ok) return null;
+      const data = await r.json();
+      return data.projects || [];
+    } catch (_) { return null; }
+  }
+
+  const grid = document.getElementById('grid');
+
+  function renderCards() {
+    grid.innerHTML = '';
+    // When server is available, it returns the authoritative project list
+    // (built-ins + customs). Otherwise mix inlined PROJECTS + localStorage.
+    const all = SERVER_PROJECTS
+      ? SERVER_PROJECTS
+      : [...PROJECTS, ...loadCustom().map(p => ({ ...p, custom: true }))];
+    all.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'card' + (p.custom ? ' custom' : '');
+      card.style.setProperty('--brand', p.color || '#60a5fa');
+      card.innerHTML = `
+        ${p.custom ? '<button class="del-btn" title="Delete">×</button>' : ''}
+        <div class="tag">${p.scenes} scenes · ${p.aspect}${p.custom ? ' · custom' : ''}</div>
+        <h2>${p.name}</h2>
+        <p>${p.tagline}</p>
+        <div class="meta">
+          <span>${p.id}</span>
+          ${p.videoOut ? `<span>→ ${p.videoOut.split('/').pop()}</span>` : ''}
+        </div>
+        <a class="open-btn" href="${p.studioUrl || '#'}">Open Studio →</a>
+      `;
+      card.addEventListener('click', async (e) => {
+        if (e.target.classList.contains('del-btn')) {
+          e.stopPropagation();
+          if (!confirm(`Delete custom project "${p.name}"? Files in public/generated/${p.id}/ and the project's preview/props/presets will be removed.`)) return;
+          if (HAS_SERVER) {
+            try {
+              const r = await fetch(`/api/projects/${encodeURIComponent(p.id)}`, { method: 'DELETE' });
+              if (!r.ok) throw new Error((await r.json()).error || 'delete failed');
+              SERVER_PROJECTS = await fetchServerProjects();
+            } catch (err) { showToast(err.message, 'error'); return; }
+          } else {
+            const next = loadCustom().filter(x => x.id !== p.id);
+            saveCustom(next);
+            try { localStorage.removeItem(`reel-project-${p.id}-images`); } catch(_) {}
+            try { localStorage.removeItem(`reel-project-${p.id}-html`); } catch(_) {}
+          }
+          renderCards();
+          showToast(`🗑 Deleted "${p.name}"`);
+          return;
+        }
+        if (e.target.tagName !== 'A' && p.studioUrl) window.location.href = p.studioUrl;
+      });
+      grid.appendChild(card);
+    });
+
+    const addCard = document.createElement('div');
+    addCard.className = 'card add-card';
+    addCard.innerHTML = `
+      <div class="plus">+</div>
+      <h2>Add a new project</h2>
+      <p style="margin-top:6px;">Scaffold scenes, upload images, paste HTML.</p>
+    `;
+    addCard.addEventListener('click', openModal);
+    grid.appendChild(addCard);
+  }
+  (async () => {
+    SERVER_PROJECTS = await fetchServerProjects();
+    renderCards();
+    if (HAS_SERVER && SERVER_PROJECTS) {
+      // Show a tiny badge in the header confirming live server mode
+      const banner = document.createElement('div');
+      banner.style.cssText = 'position:fixed;top:14px;right:14px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.4);color:#6ee7b7;padding:5px 10px;border-radius:6px;font-size:11px;font-weight:700;z-index:50;';
+      banner.textContent = `🛰 Hub: ${location.host}`;
+      document.body.appendChild(banner);
+    }
+  })();
+
+  // ── Modal logic ──────────────────────────────────────
+  const modal = document.getElementById('new-project-modal');
+  const uploadInput = document.getElementById('np-upload-input');
+  const uploadZone  = document.getElementById('np-upload-zone');
+  const uploadList  = document.getElementById('np-upload-list');
+  let pendingImages = []; // [{ name, dataUrl }]
+
+  function showToast(msg, kind) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.remove('error');
+    if (kind === 'error') t.classList.add('error');
+    t.classList.add('show');
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(() => t.classList.remove('show'), 2200);
+  }
+
+  function openModal() {
+    modal.classList.add('show');
+    document.getElementById('np-name').focus();
+  }
+  function closeModal() {
+    modal.classList.remove('show');
+    // Reset
+    ['np-name','np-id','np-tagline','np-html'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('np-scenes').value = '3';
+    document.getElementById('np-aspect').value = '1080×1350 (4:5)';
+    document.getElementById('np-color').value = '#3b82f6';
+    document.getElementById('np-starter').value = 'smartlab-posts';
+    pendingImages = [];
+    renderUploadList();
+  }
+  document.getElementById('np-cancel').addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Auto-fill id slug from name
+  document.getElementById('np-name').addEventListener('input', (e) => {
+    const idEl = document.getElementById('np-id');
+    if (idEl.dataset.touched) return;
+    idEl.value = e.target.value.toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  });
+  document.getElementById('np-id').addEventListener('input', (e) => { e.target.dataset.touched = '1'; });
+
+  // Upload zone
+  uploadZone.addEventListener('click', () => uploadInput.click());
+  uploadZone.addEventListener('dragover', (e) => { e.preventDefault(); uploadZone.classList.add('drag'); });
+  uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag'));
+  uploadZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadZone.classList.remove('drag');
+    handleFiles(e.dataTransfer.files);
+  });
+  uploadInput.addEventListener('change', (e) => handleFiles(e.target.files));
+
+  function handleFiles(fileList) {
+    const files = Array.from(fileList).filter(f => f.type.startsWith('image/'));
+    let remaining = files.length;
+    if (!remaining) return;
+    files.forEach(f => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        pendingImages.push({ name: f.name, dataUrl: reader.result });
+        if (--remaining === 0) renderUploadList();
+      };
+      reader.readAsDataURL(f);
+    });
+  }
+
+  function renderUploadList() {
+    uploadList.innerHTML = '';
+    pendingImages.forEach((img, i) => {
+      const chip = document.createElement('span');
+      chip.className = 'upload-chip';
+      chip.innerHTML = `${img.name} <button data-i="${i}">×</button>`;
+      uploadList.appendChild(chip);
+    });
+    uploadList.querySelectorAll('button').forEach(b => b.addEventListener('click', (e) => {
+      const i = parseInt(e.target.dataset.i, 10);
+      pendingImages.splice(i, 1);
+      renderUploadList();
+    }));
+  }
+
+  document.getElementById('np-create').addEventListener('click', async () => {
+    const name    = document.getElementById('np-name').value.trim();
+    const id      = document.getElementById('np-id').value.trim().toLowerCase().replace(/[^a-z0-9-]/g, '');
+    const tagline = document.getElementById('np-tagline').value.trim();
+    const color   = document.getElementById('np-color').value;
+    const aspect  = document.getElementById('np-aspect').value;
+    const scenes  = parseInt(document.getElementById('np-scenes').value, 10) || 3;
+    const starter = document.getElementById('np-starter').value;
+    const html    = document.getElementById('np-html').value.trim();
+
+    if (!name || !id) { showToast('Project name and ID are required', 'error'); return; }
+    const all = SERVER_PROJECTS || [...PROJECTS, ...loadCustom()];
+    if (all.some(p => p.id === id)) { showToast(`ID "${id}" already exists`, 'error'); return; }
+
+    // ── Server path (writes files for real) ─────────────────
+    if (HAS_SERVER) {
+      const btn = document.getElementById('np-create');
+      btn.disabled = true;
+      btn.textContent = 'Creating…';
+      try {
+        const r = await fetch('/api/projects', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, name, tagline, color, aspect, scenes, starter, html, images: pendingImages }),
+        });
+        const data = await r.json();
+        if (!r.ok) throw new Error(data.error || 'server error');
+        SERVER_PROJECTS = await fetchServerProjects();
+        showToast(`✓ Created "${name}"`);
+        closeModal();
+        renderCards();
+        // Open the studio if one was scaffolded
+        if (data.project.studioUrl) {
+          setTimeout(() => { window.location.href = data.project.studioUrl; }, 600);
+        }
+      } catch (err) {
+        showToast(err.message, 'error');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Create project';
+      }
+      return;
+    }
+
+    // ── Offline path (file:// — localStorage only) ──────────
+    const STARTER_URL = {
+      'blank': '', 'smartmed': 'smartmed-preview.html',
+      'smartmed-hajj': 'smartmed-hajj-preview.html', 'smartlab': 'smartlab-preview.html',
+      'smartlab-posts': 'smartlab-posts-preview.html',
+    };
+    const project = {
+      id, name, tagline, color, aspect, scenes,
+      studioUrl: STARTER_URL[starter] || '',
+      videoOut: `out/${id}-v1.mp4`,
+      starter, hasHtmlDraft: !!html, hasImages: pendingImages.length > 0,
+      createdAt: new Date().toISOString(),
+    };
+    const custom = loadCustom();
+    custom.push(project);
+    saveCustom(custom);
+    try {
+      if (pendingImages.length) localStorage.setItem(`reel-project-${id}-images`, JSON.stringify(pendingImages));
+      if (html) localStorage.setItem(`reel-project-${id}-html`, html);
+    } catch (e) {
+      showToast('Project saved but images too large for localStorage. Run `npm run hub` to persist to disk.', 'error');
+    }
+    showToast(`✓ Created "${name}" (browser-only — run npm run hub to scaffold real files)`);
+    closeModal();
+    renderCards();
+  });
+
+  // ESC closes the modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
+  });
+</script>
+
+</body>
+</html>

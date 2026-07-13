@@ -1,0 +1,22 @@
+{
+  "location": "TOKYO · JAPAN",
+  "hours": "48",
+  "hookLine": "WHAT I DID IN",
+  "manifesto": ["we got lost.", "we got found.", "we never slept."],
+  "spots": [
+    { "num": "01", "name": "SHIBUYA CROSSING", "vibe": "where the neon never dies", "image": "generated/tokyo/spot1.jpg" },
+    { "num": "02", "name": "GOLDEN GAI", "vibe": "six-seat bars, infinite stories", "image": "generated/tokyo/spot2.jpg" },
+    { "num": "03", "name": "AKIHABARA", "vibe": "a city built from arcade light", "image": "generated/tokyo/spot3.jpg" },
+    { "num": "04", "name": "TSUKIJI MARKET", "vibe": "breakfast at 5am, no regrets", "image": "generated/tokyo/spot4.jpg" },
+    { "num": "05", "name": "SHIBUYA SKY", "vibe": "the moment the city exhales", "image": "generated/tokyo/spot5.jpg" }
+  ],
+  "quote": "\"there is no city like it after dark.\"",
+  "quoteAttribution": "— traveler's note",
+  "cta": "FOLLOW FOR MORE",
+  "handle": "@yourhandle",
+  "images": {
+    "hero": "generated/tokyo/hero.jpg",
+    "quote": "generated/tokyo/quote.jpg",
+    "end": "generated/tokyo/end.jpg"
+  }
+}

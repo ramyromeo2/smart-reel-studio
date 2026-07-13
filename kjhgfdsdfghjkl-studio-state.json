@@ -1,0 +1,1775 @@
+{
+  "canonical": {
+    "kjhgfdsdfghjkl-overlay-scene": "1",
+    "kjhgfdsdfghjkl-overlay-bg": "public/generated/kjhgfdsdfghjkl/image-scene-2-1783507036523.png",
+    "kjhgfdsdfghjkl-overlay-bg-file": "",
+    "kjhgfdsdfghjkl-overlay-json": "{\n  \"id\": \"smartmed-homecare-scene-02\",\n  \"type\": \"posterOverlay\",\n  \"brand\": \"smartmed-posts\",\n  \"version\": \"1.0\",\n  \"canvas\": {\n    \"width\": 1080,\n    \"height\": 1350\n  },\n  \"background\": {\n    \"type\": \"image\",\n    \"fit\": \"cover\"\n  },\n  \"brandStyle\": {\n    \"primaryColor\": \"#0F48C6\",\n    \"fontFamily\": \"Tajawal\",\n    \"fontWeight\": 500,\n    \"direction\": \"rtl\"\n  },\n  \"elements\": [\n    {\n      \"id\": \"leftSideBar\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 68,\n        \"y\": 185,\n        \"width\": 10,\n        \"height\": 585\n      },\n      \"style\": {\n        \"backgroundColor\": \"#0F48C6\",\n        \"borderRadius\": 5\n      },\n      \"animation\": {\n        \"preset\": \"fadeDown\",\n        \"startFrame\": 0,\n        \"durationFrames\": 16\n      }\n    },\n    {\n      \"id\": \"leftSideDot1\",\n      \"type\": \"shape\",\n      \"shape\": \"circle\",\n      \"frame\": {\n        \"x\": 54,\n        \"y\": 195,\n        \"width\": 38,\n        \"height\": 38\n      },\n      \"style\": {\n        \"backgroundColor\": \"#0F48C6\"\n      },\n      \"animation\": {\n        \"preset\": \"popIn\",\n        \"startFrame\": 8,\n        \"durationFrames\": 10\n      }\n    },\n    {\n      \"id\": \"leftSideDot2\",\n      \"type\": \"shape\",\n      \"shape\": \"circle\",\n      \"frame\": {\n        \"x\": 59,\n        \"y\": 338,\n        \"width\": 28,\n        \"height\": 28\n      },\n      \"style\": {\n        \"backgroundColor\": \"rgba(15,72,198,0.25)\"\n      },\n      \"animation\": {\n        \"preset\": \"popIn\",\n        \"startFrame\": 14,\n        \"durationFrames\": 10\n      }\n    },\n    {\n      \"id\": \"leftSideDot3\",\n      \"type\": \"shape\",\n      \"shape\": \"circle\",\n      \"frame\": {\n        \"x\": 59,\n        \"y\": 456,\n        \"width\": 28,\n        \"height\": 28\n      },\n      \"style\": {\n        \"backgroundColor\": \"rgba(15,72,198,0.18)\"\n      },\n      \"animation\": {\n        \"preset\": \"popIn\",\n        \"startFrame\": 18,\n        \"durationFrames\": 10\n      }\n    },\n    {\n      \"id\": \"tagBg\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 742,\n        \"y\": 138,\n        \"width\": 248,\n        \"height\": 46\n      },\n      \"style\": {\n        \"backgroundColor\": \"rgba(255,255,255,0.9)\",\n        \"borderRadius\": 23\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 4,\n        \"durationFrames\": 12\n      }\n    },\n    {\n      \"id\": \"tagText\",\n      \"type\": \"text\",\n      \"text\": \"خدمة تمريض منزلي\",\n      \"frame\": {\n        \"x\": 762,\n        \"y\": 149,\n        \"width\": 208,\n        \"height\": 24\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 21,\n        \"lineHeight\": 1.1,\n        \"color\": \"#0F48C6\",\n        \"textAlign\": \"center\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 8,\n        \"durationFrames\": 10\n      }\n    },\n    {\n      \"id\": \"headline\",\n      \"type\": \"text\",\n      \"text\": \"رعاية منزلية\\nبكل راحة\",\n      \"frame\": {\n        \"x\": 560,\n        \"y\": 205,\n        \"width\": 430,\n        \"height\": 142\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 66,\n        \"lineHeight\": 1.05,\n        \"color\": \"#0F48C6\",\n        \"textAlign\": \"right\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeDown\",\n        \"startFrame\": 12,\n        \"durationFrames\": 18\n      }\n    },\n    {\n      \"id\": \"subheadline\",\n      \"type\": \"text\",\n      \"text\": \"خدمات صحية أساسية تصلك إلى باب المنزل\",\n      \"frame\": {\n        \"x\": 495,\n        \"y\": 360,\n        \"width\": 495,\n        \"height\": 38\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 27,\n        \"lineHeight\": 1.2,\n        \"color\": \"#202020\",\n        \"textAlign\": \"right\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeUp\",\n        \"startFrame\": 22,\n        \"durationFrames\": 14\n      }\n    },\n    {\n      \"id\": \"featureBar1Bg\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 690,\n        \"y\": 455,\n        \"width\": 300,\n        \"height\": 52\n      },\n      \"style\": {\n        \"backgroundColor\": \"rgba(255,255,255,0.88)\",\n        \"borderRadius\": 26\n      },\n      \"animation\": {\n        \"preset\": \"fadeUp\",\n        \"startFrame\": 28,\n        \"durationFrames\": 14\n      }\n    },\n    {\n      \"id\": \"featureBar1Accent\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 935,\n        \"y\": 455,\n        \"width\": 55,\n        \"height\": 52\n      },\n      \"style\": {\n        \"backgroundColor\": \"#0F48C6\",\n        \"borderRadius\": 26\n      },\n      \"animation\": {\n        \"preset\": \"wipeRight\",\n        \"startFrame\": 32,\n        \"durationFrames\": 12\n      }\n    },\n    {\n      \"id\": \"featureBar1Text\",\n      \"type\": \"text\",\n      \"text\": \"أدوات طبية أساسية\",\n      \"frame\": {\n        \"x\": 718,\n        \"y\": 469,\n        \"width\": 190,\n        \"height\": 24\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 21,\n        \"lineHeight\": 1.1,\n        \"color\": \"#0F48C6\",\n        \"textAlign\": \"right\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 36,\n        \"durationFrames\": 10\n      }\n    },\n    {\n      \"id\": \"featureBar2Bg\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 92,\n        \"y\": 535,\n        \"width\": 290,\n        \"height\": 52\n      },\n      \"style\": {\n        \"backgroundColor\": \"rgba(255,255,255,0.88)\",\n        \"borderRadius\": 26\n      },\n      \"animation\": {\n        \"preset\": \"fadeUp\",\n        \"startFrame\": 32,\n        \"durationFrames\": 14\n      }\n    },\n    {\n      \"id\": \"featureBar2Accent\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 92,\n        \"y\": 535,\n        \"width\": 55,\n        \"height\": 52\n      },\n      \"style\": {\n        \"backgroundColor\": \"#0F48C6\",\n        \"borderRadius\": 26\n      },\n      \"animation\": {\n        \"preset\": \"wipeRight\",\n        \"startFrame\": 36,\n        \"durationFrames\": 12\n      }\n    },\n    {\n      \"id\": \"featureBar2Text\",\n      \"type\": \"text\",\n      \"text\": \"متابعة منزلية\",\n      \"frame\": {\n        \"x\": 165,\n        \"y\": 549,\n        \"width\": 180,\n        \"height\": 24\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 21,\n        \"lineHeight\": 1.1,\n        \"color\": \"#0F48C6\",\n        \"textAlign\": \"center\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 40,\n        \"durationFrames\": 10\n      }\n    },\n    {\n      \"id\": \"featureBar3Bg\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 660,\n        \"y\": 620,\n        \"width\": 330,\n        \"height\": 52\n      },\n      \"style\": {\n        \"backgroundColor\": \"rgba(255,255,255,0.88)\",\n        \"borderRadius\": 26\n      },\n      \"animation\": {\n        \"preset\": \"fadeUp\",\n        \"startFrame\": 36,\n        \"durationFrames\": 14\n      }\n    },\n    {\n      \"id\": \"featureBar3Accent\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 935,\n        \"y\": 620,\n        \"width\": 55,\n        \"height\": 52\n      },\n      \"style\": {\n        \"backgroundColor\": \"#0F48C6\",\n        \"borderRadius\": 26\n      },\n      \"animation\": {\n        \"preset\": \"wipeRight\",\n        \"startFrame\": 40,\n        \"durationFrames\": 12\n      }\n    },\n    {\n      \"id\": \"featureBar3Text\",\n      \"type\": \"text\",\n      \"text\": \"راحة وخصوصية\",\n      \"frame\": {\n        \"x\": 695,\n        \"y\": 634,\n        \"width\": 200,\n        \"height\": 24\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 21,\n        \"lineHeight\": 1.1,\n        \"color\": \"#0F48C6\",\n        \"textAlign\": \"right\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 44,\n        \"durationFrames\": 10\n      }\n    },\n    {\n      \"id\": \"centerLine\",\n      \"type\": \"shape\",\n      \"shape\": \"line\",\n      \"frame\": {\n        \"x\": 465,\n        \"y\": 740,\n        \"width\": 180,\n        \"height\": 2\n      },\n      \"style\": {\n        \"backgroundColor\": \"#0F48C6\"\n      },\n      \"animation\": {\n        \"preset\": \"wipeRight\",\n        \"startFrame\": 46,\n        \"durationFrames\": 12\n      }\n    },\n    {\n      \"id\": \"ctaBg\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 345,\n        \"y\": 950,\n        \"width\": 390,\n        \"height\": 64\n      },\n      \"style\": {\n        \"backgroundColor\": \"#0F48C6\",\n        \"borderRadius\": 32\n      },\n      \"animation\": {\n        \"preset\": \"popIn\",\n        \"startFrame\": 52,\n        \"durationFrames\": 14\n      }\n    },\n    {\n      \"id\": \"ctaText\",\n      \"type\": \"text\",\n      \"text\": \"احجز خدمتك الآن\",\n      \"frame\": {\n        \"x\": 345,\n        \"y\": 968,\n        \"width\": 390,\n        \"height\": 28\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 29,\n        \"lineHeight\": 1.1,\n        \"color\": \"#FFFFFF\",\n        \"textAlign\": \"center\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 58,\n        \"durationFrames\": 10\n      }\n    }\n  ],\n  \"backgroundImage\": \"public/generated/kjhgfdsdfghjkl/image-scene-2-1783507036523.png\",\n  \"aspectRatio\": \"4:5\",\n  \"backgroundAnimation\": {\n    \"preset\": \"none\"\n  }\n}",
+    "s1-overlay-doc": "{\"id\":\"smartmed-homecare-service-frame-01\",\"brand\":\"smartmed-posts\",\"aspectRatio\":\"4:5\",\"backgroundImage\":\"public/generated/kjhgfdsdfghjkl/image-scene-1-1783523418830.png\",\"canvas\":{\"width\":1080,\"height\":1350},\"brandStyle\":{\"primaryColor\":\"#0F48C6\",\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"direction\":\"rtl\"},\"backgroundAnimation\":{\"preset\":\"none\"},\"elements\":[{\"id\":\"tagBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":810,\"y\":56,\"width\":230,\"height\":44},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.86)\",\"borderRadius\":22},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":0,\"durationFrames\":12}},{\"id\":\"tag\",\"type\":\"text\",\"text\":\"رعاية منزلية\",\"frame\":{\"x\":830,\"y\":67,\"width\":190,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":21,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":4,\"durationFrames\":12}},{\"id\":\"accentLine\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":1060,\"y\":120,\"width\":8,\"height\":145},\"style\":{\"backgroundColor\":\"#0F48C6\",\"borderRadius\":4},\"animation\":{\"preset\":\"fadeDown\",\"startFrame\":8,\"durationFrames\":14}},{\"id\":\"headline\",\"type\":\"text\",\"text\":\"الرعاية الطبية\\nتصلك إلى منزلك\",\"frame\":{\"x\":495,\"y\":120,\"width\":540,\"height\":145},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":58,\"lineHeight\":1.08,\"color\":\"#0F48C6\",\"textAlign\":\"right\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeDown\",\"startFrame\":12,\"durationFrames\":18}},{\"id\":\"subheading\",\"type\":\"text\",\"text\":\"خدمات صحية موثوقة براحة وخصوصية\",\"frame\":{\"x\":520,\"y\":280,\"width\":500,\"height\":42},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":28,\"lineHeight\":1.2,\"color\":\"#202020\",\"textAlign\":\"right\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":22,\"durationFrames\":16}},{\"id\":\"chip1Bg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":652,\"y\":350,\"width\":122,\"height\":44},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.86)\",\"borderRadius\":22},\"animation\":{\"preset\":\"popIn\",\"startFrame\":30,\"durationFrames\":12}},{\"id\":\"chip1\",\"type\":\"text\",\"text\":\"تمريض\",\"frame\":{\"x\":652,\"y\":362,\"width\":122,\"height\":22},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":19,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":34,\"durationFrames\":10}},{\"id\":\"chip2Bg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":788,\"y\":350,\"width\":122,\"height\":44},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.86)\",\"borderRadius\":22},\"animation\":{\"preset\":\"popIn\",\"startFrame\":32,\"durationFrames\":12}},{\"id\":\"chip2\",\"type\":\"text\",\"text\":\"تحاليل\",\"frame\":{\"x\":788,\"y\":362,\"width\":122,\"height\":22},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":19,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":36,\"durationFrames\":10}},{\"id\":\"chip3Bg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":924,\"y\":350,\"width\":122,\"height\":44},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.86)\",\"borderRadius\":22},\"animation\":{\"preset\":\"popIn\",\"startFrame\":34,\"durationFrames\":12}},{\"id\":\"chip3\",\"type\":\"text\",\"text\":\"رعاية\",\"frame\":{\"x\":924,\"y\":362,\"width\":122,\"height\":22},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":19,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":38,\"durationFrames\":10}}],\"type\":\"posterOverlay\",\"version\":\"1.0\",\"background\":{\"type\":\"image\",\"fit\":\"cover\"}}",
+    "s2-overlay-doc": "{\"id\":\"smartmed-homecare-scene-02\",\"type\":\"posterOverlay\",\"brand\":\"smartmed-posts\",\"version\":\"1.0\",\"canvas\":{\"width\":1080,\"height\":1350},\"background\":{\"type\":\"image\",\"fit\":\"cover\"},\"brandStyle\":{\"primaryColor\":\"#0F48C6\",\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"direction\":\"rtl\"},\"elements\":[{\"id\":\"leftSideBar\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":68,\"y\":185,\"width\":10,\"height\":585},\"style\":{\"backgroundColor\":\"#0F48C6\",\"borderRadius\":5},\"animation\":{\"preset\":\"fadeDown\",\"startFrame\":0,\"durationFrames\":16}},{\"id\":\"leftSideDot1\",\"type\":\"shape\",\"shape\":\"circle\",\"frame\":{\"x\":54,\"y\":195,\"width\":38,\"height\":38},\"style\":{\"backgroundColor\":\"#0F48C6\"},\"animation\":{\"preset\":\"popIn\",\"startFrame\":8,\"durationFrames\":10}},{\"id\":\"leftSideDot2\",\"type\":\"shape\",\"shape\":\"circle\",\"frame\":{\"x\":59,\"y\":338,\"width\":28,\"height\":28},\"style\":{\"backgroundColor\":\"rgba(15,72,198,0.25)\"},\"animation\":{\"preset\":\"popIn\",\"startFrame\":14,\"durationFrames\":10}},{\"id\":\"leftSideDot3\",\"type\":\"shape\",\"shape\":\"circle\",\"frame\":{\"x\":59,\"y\":456,\"width\":28,\"height\":28},\"style\":{\"backgroundColor\":\"rgba(15,72,198,0.18)\"},\"animation\":{\"preset\":\"popIn\",\"startFrame\":18,\"durationFrames\":10}},{\"id\":\"tagBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":742,\"y\":138,\"width\":248,\"height\":46},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.9)\",\"borderRadius\":23},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":4,\"durationFrames\":12}},{\"id\":\"tagText\",\"type\":\"text\",\"text\":\"خدمة تمريض منزلي\",\"frame\":{\"x\":762,\"y\":149,\"width\":208,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":21,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":8,\"durationFrames\":10}},{\"id\":\"headline\",\"type\":\"text\",\"text\":\"رعاية منزلية\\nبكل راحة\",\"frame\":{\"x\":560,\"y\":205,\"width\":430,\"height\":142},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":66,\"lineHeight\":1.05,\"color\":\"#0F48C6\",\"textAlign\":\"right\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeDown\",\"startFrame\":12,\"durationFrames\":18}},{\"id\":\"subheadline\",\"type\":\"text\",\"text\":\"خدمات صحية أساسية تصلك إلى باب المنزل\",\"frame\":{\"x\":495,\"y\":360,\"width\":495,\"height\":38},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":27,\"lineHeight\":1.2,\"color\":\"#202020\",\"textAlign\":\"right\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":22,\"durationFrames\":14}},{\"id\":\"featureBar1Bg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":690,\"y\":455,\"width\":300,\"height\":52},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.88)\",\"borderRadius\":26},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":28,\"durationFrames\":14}},{\"id\":\"featureBar1Accent\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":935,\"y\":455,\"width\":55,\"height\":52},\"style\":{\"backgroundColor\":\"#0F48C6\",\"borderRadius\":26},\"animation\":{\"preset\":\"wipeRight\",\"startFrame\":32,\"durationFrames\":12}},{\"id\":\"featureBar1Text\",\"type\":\"text\",\"text\":\"أدوات طبية أساسية\",\"frame\":{\"x\":718,\"y\":469,\"width\":190,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":21,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"right\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":36,\"durationFrames\":10}},{\"id\":\"featureBar2Bg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":92,\"y\":535,\"width\":290,\"height\":52},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.88)\",\"borderRadius\":26},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":32,\"durationFrames\":14}},{\"id\":\"featureBar2Accent\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":92,\"y\":535,\"width\":55,\"height\":52},\"style\":{\"backgroundColor\":\"#0F48C6\",\"borderRadius\":26},\"animation\":{\"preset\":\"wipeRight\",\"startFrame\":36,\"durationFrames\":12}},{\"id\":\"featureBar2Text\",\"type\":\"text\",\"text\":\"متابعة منزلية\",\"frame\":{\"x\":165,\"y\":549,\"width\":180,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":21,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":40,\"durationFrames\":10}},{\"id\":\"featureBar3Bg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":660,\"y\":620,\"width\":330,\"height\":52},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.88)\",\"borderRadius\":26},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":36,\"durationFrames\":14}},{\"id\":\"featureBar3Accent\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":935,\"y\":620,\"width\":55,\"height\":52},\"style\":{\"backgroundColor\":\"#0F48C6\",\"borderRadius\":26},\"animation\":{\"preset\":\"wipeRight\",\"startFrame\":40,\"durationFrames\":12}},{\"id\":\"featureBar3Text\",\"type\":\"text\",\"text\":\"راحة وخصوصية\",\"frame\":{\"x\":695,\"y\":634,\"width\":200,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":21,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"right\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":44,\"durationFrames\":10}},{\"id\":\"centerLine\",\"type\":\"shape\",\"shape\":\"line\",\"frame\":{\"x\":465,\"y\":740,\"width\":180,\"height\":2},\"style\":{\"backgroundColor\":\"#0F48C6\"},\"animation\":{\"preset\":\"wipeRight\",\"startFrame\":46,\"durationFrames\":12}},{\"id\":\"ctaBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":345,\"y\":950,\"width\":390,\"height\":64},\"style\":{\"backgroundColor\":\"#0F48C6\",\"borderRadius\":32},\"animation\":{\"preset\":\"popIn\",\"startFrame\":52,\"durationFrames\":14}},{\"id\":\"ctaText\",\"type\":\"text\",\"text\":\"احجز خدمتك الآن\",\"frame\":{\"x\":345,\"y\":968,\"width\":390,\"height\":28},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":29,\"lineHeight\":1.1,\"color\":\"#FFFFFF\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":58,\"durationFrames\":10}}],\"backgroundImage\":\"public/generated/kjhgfdsdfghjkl/image-scene-2-1783507036523.png\",\"aspectRatio\":\"4:5\",\"backgroundAnimation\":{\"preset\":\"none\"}}",
+    "s3-overlay-doc": "{\"id\":\"smartmed-homecare-scene-03\",\"type\":\"posterOverlay\",\"brand\":\"smartmed-posts\",\"version\":\"1.0\",\"canvas\":{\"width\":1080,\"height\":1350},\"background\":{\"type\":\"image\",\"fit\":\"cover\"},\"brandStyle\":{\"primaryColor\":\"#0F48C6\",\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"direction\":\"rtl\"},\"elements\":[{\"id\":\"rightSideBar\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":1000,\"y\":170,\"width\":12,\"height\":560},\"style\":{\"backgroundColor\":\"#0F48C6\",\"borderRadius\":6},\"animation\":{\"preset\":\"fadeDown\",\"startFrame\":0,\"durationFrames\":16}},{\"id\":\"rightMarker1\",\"type\":\"shape\",\"shape\":\"circle\",\"frame\":{\"x\":987,\"y\":208,\"width\":38,\"height\":38},\"style\":{\"backgroundColor\":\"#0F48C6\"},\"animation\":{\"preset\":\"popIn\",\"startFrame\":8,\"durationFrames\":10}},{\"id\":\"rightMarker2\",\"type\":\"shape\",\"shape\":\"circle\",\"frame\":{\"x\":992,\"y\":340,\"width\":28,\"height\":28},\"style\":{\"backgroundColor\":\"rgba(15,72,198,0.28)\"},\"animation\":{\"preset\":\"popIn\",\"startFrame\":14,\"durationFrames\":10}},{\"id\":\"tagBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":708,\"y\":138,\"width\":282,\"height\":46},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.9)\",\"borderRadius\":23},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":4,\"durationFrames\":12}},{\"id\":\"tagText\",\"type\":\"text\",\"text\":\"تحاليل منزلية\",\"frame\":{\"x\":736,\"y\":149,\"width\":226,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":21,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":8,\"durationFrames\":10}},{\"id\":\"headline\",\"type\":\"text\",\"text\":\"عيناتك\\nمن منزلك\",\"frame\":{\"x\":570,\"y\":205,\"width\":420,\"height\":142},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":66,\"lineHeight\":1.05,\"color\":\"#0F48C6\",\"textAlign\":\"right\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeDown\",\"startFrame\":12,\"durationFrames\":18}},{\"id\":\"subheadline\",\"type\":\"text\",\"text\":\"سحب عينات آمن وسهل بخطوات واضحة\",\"frame\":{\"x\":500,\"y\":360,\"width\":490,\"height\":38},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":27,\"lineHeight\":1.2,\"color\":\"#202020\",\"textAlign\":\"right\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":22,\"durationFrames\":14}},{\"id\":\"step1Box\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":90,\"y\":430,\"width\":315,\"height\":56},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.88)\",\"borderRadius\":28},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":28,\"durationFrames\":12}},{\"id\":\"step1No\",\"type\":\"shape\",\"shape\":\"circle\",\"frame\":{\"x\":103,\"y\":441,\"width\":34,\"height\":34},\"style\":{\"backgroundColor\":\"#0F48C6\"},\"animation\":{\"preset\":\"popIn\",\"startFrame\":32,\"durationFrames\":10}},{\"id\":\"step1Text\",\"type\":\"text\",\"text\":\"زيارة منزلية\",\"frame\":{\"x\":165,\"y\":445,\"width\":200,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":22,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":36,\"durationFrames\":10}},{\"id\":\"step2Box\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":720,\"y\":515,\"width\":270,\"height\":56},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.88)\",\"borderRadius\":28},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":34,\"durationFrames\":12}},{\"id\":\"step2No\",\"type\":\"shape\",\"shape\":\"circle\",\"frame\":{\"x\":733,\"y\":526,\"width\":34,\"height\":34},\"style\":{\"backgroundColor\":\"#0F48C6\"},\"animation\":{\"preset\":\"popIn\",\"startFrame\":38,\"durationFrames\":10}},{\"id\":\"step2Text\",\"type\":\"text\",\"text\":\"سحب العينات\",\"frame\":{\"x\":785,\"y\":530,\"width\":165,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":22,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":42,\"durationFrames\":10}},{\"id\":\"step3Box\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":120,\"y\":610,\"width\":330,\"height\":56},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.88)\",\"borderRadius\":28},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":40,\"durationFrames\":12}},{\"id\":\"step3No\",\"type\":\"shape\",\"shape\":\"circle\",\"frame\":{\"x\":133,\"y\":621,\"width\":34,\"height\":34},\"style\":{\"backgroundColor\":\"#0F48C6\"},\"animation\":{\"preset\":\"popIn\",\"startFrame\":44,\"durationFrames\":10}},{\"id\":\"step3Text\",\"type\":\"text\",\"text\":\"نتائج ومتابعة\",\"frame\":{\"x\":195,\"y\":625,\"width\":205,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":22,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":48,\"durationFrames\":10}},{\"id\":\"middleAccentLine\",\"type\":\"shape\",\"shape\":\"line\",\"frame\":{\"x\":510,\"y\":760,\"width\":210,\"height\":2},\"style\":{\"backgroundColor\":\"#0F48C6\"},\"animation\":{\"preset\":\"wipeRight\",\"startFrame\":50,\"durationFrames\":10}},{\"id\":\"ctaBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":330,\"y\":950,\"width\":420,\"height\":64},\"style\":{\"backgroundColor\":\"#0F48C6\",\"borderRadius\":32},\"animation\":{\"preset\":\"popIn\",\"startFrame\":54,\"durationFrames\":14}},{\"id\":\"ctaText\",\"type\":\"text\",\"text\":\"اطلب الخدمة الآن\",\"frame\":{\"x\":330,\"y\":968,\"width\":420,\"height\":28},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":29,\"lineHeight\":1.1,\"color\":\"#FFFFFF\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":60,\"durationFrames\":10}}],\"backgroundImage\":\"public/generated/kjhgfdsdfghjkl/image-scene-3-1783507043881.png\",\"aspectRatio\":\"4:5\",\"backgroundAnimation\":{\"preset\":\"none\"}}",
+    "s4-overlay-doc": "{\"id\":\"smartmed-homecare-scene-04\",\"type\":\"posterOverlay\",\"brand\":\"smartmed-posts\",\"version\":\"1.0\",\"canvas\":{\"width\":1080,\"height\":1350},\"background\":{\"type\":\"image\",\"fit\":\"cover\"},\"brandStyle\":{\"primaryColor\":\"#0F48C6\",\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"direction\":\"rtl\"},\"elements\":[{\"id\":\"rightRail\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":1014,\"y\":150,\"width\":10,\"height\":560},\"style\":{\"backgroundColor\":\"#0F48C6\",\"borderRadius\":5},\"animation\":{\"preset\":\"fadeDown\",\"startFrame\":0,\"durationFrames\":16}},{\"id\":\"railDot1\",\"type\":\"shape\",\"shape\":\"circle\",\"frame\":{\"x\":1000,\"y\":190,\"width\":38,\"height\":38},\"style\":{\"backgroundColor\":\"#0F48C6\"},\"animation\":{\"preset\":\"popIn\",\"startFrame\":8,\"durationFrames\":12}},{\"id\":\"railDot2\",\"type\":\"shape\",\"shape\":\"circle\",\"frame\":{\"x\":1004,\"y\":320,\"width\":30,\"height\":30},\"style\":{\"backgroundColor\":\"rgba(15,72,198,0.35)\"},\"animation\":{\"preset\":\"popIn\",\"startFrame\":14,\"durationFrames\":12}},{\"id\":\"railDot3\",\"type\":\"shape\",\"shape\":\"circle\",\"frame\":{\"x\":1004,\"y\":450,\"width\":30,\"height\":30},\"style\":{\"backgroundColor\":\"rgba(15,72,198,0.22)\"},\"animation\":{\"preset\":\"popIn\",\"startFrame\":20,\"durationFrames\":12}},{\"id\":\"topTagBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":710,\"y\":128,\"width\":280,\"height\":46},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.88)\",\"borderRadius\":23},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":4,\"durationFrames\":12}},{\"id\":\"topTag\",\"type\":\"text\",\"text\":\"علاج طبيعي منزلي\",\"frame\":{\"x\":730,\"y\":140,\"width\":240,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":21,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":8,\"durationFrames\":10}},{\"id\":\"headline\",\"type\":\"text\",\"text\":\"حركتك\\nتهمنا\",\"frame\":{\"x\":570,\"y\":205,\"width\":420,\"height\":145},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":72,\"lineHeight\":1.02,\"color\":\"#0F48C6\",\"textAlign\":\"right\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeDown\",\"startFrame\":12,\"durationFrames\":18}},{\"id\":\"subheadline\",\"type\":\"text\",\"text\":\"جلسات علاج طبيعي تصلك براحة وخصوصية\",\"frame\":{\"x\":465,\"y\":365,\"width\":525,\"height\":38},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":27,\"lineHeight\":1.2,\"color\":\"#202020\",\"textAlign\":\"right\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":24,\"durationFrames\":16}},{\"id\":\"bar1Bg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":670,\"y\":440,\"width\":320,\"height\":48},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.88)\",\"borderRadius\":24},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":30,\"durationFrames\":14}},{\"id\":\"bar1Fill\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":914,\"y\":440,\"width\":76,\"height\":48},\"style\":{\"backgroundColor\":\"#0F48C6\",\"borderRadius\":24},\"animation\":{\"preset\":\"wipeRight\",\"startFrame\":34,\"durationFrames\":14}},{\"id\":\"bar1Text\",\"type\":\"text\",\"text\":\"تمارين علاجية\",\"frame\":{\"x\":700,\"y\":453,\"width\":200,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":22,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"right\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":38,\"durationFrames\":10}},{\"id\":\"bar2Bg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":84,\"y\":505,\"width\":330,\"height\":50},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.88)\",\"borderRadius\":25},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":34,\"durationFrames\":14}},{\"id\":\"bar2Fill\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":84,\"y\":505,\"width\":80,\"height\":50},\"style\":{\"backgroundColor\":\"#0F48C6\",\"borderRadius\":25},\"animation\":{\"preset\":\"wipeRight\",\"startFrame\":38,\"durationFrames\":14}},{\"id\":\"bar2Text\",\"type\":\"text\",\"text\":\"متابعة مستمرة\",\"frame\":{\"x\":180,\"y\":519,\"width\":200,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":22,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":42,\"durationFrames\":10}},{\"id\":\"bar3Bg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":700,\"y\":590,\"width\":290,\"height\":50},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.88)\",\"borderRadius\":25},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":38,\"durationFrames\":14}},{\"id\":\"bar3Fill\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":910,\"y\":590,\"width\":80,\"height\":50},\"style\":{\"backgroundColor\":\"#0F48C6\",\"borderRadius\":25},\"animation\":{\"preset\":\"wipeRight\",\"startFrame\":42,\"durationFrames\":14}},{\"id\":\"bar3Text\",\"type\":\"text\",\"text\":\"راحة في المنزل\",\"frame\":{\"x\":725,\"y\":604,\"width\":170,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":22,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"right\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":46,\"durationFrames\":10}},{\"id\":\"bottomCtaBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":330,\"y\":970,\"width\":420,\"height\":64},\"style\":{\"backgroundColor\":\"#0F48C6\",\"borderRadius\":32},\"animation\":{\"preset\":\"popIn\",\"startFrame\":50,\"durationFrames\":14}},{\"id\":\"bottomCta\",\"type\":\"text\",\"text\":\"احجز خدمتك الآن\",\"frame\":{\"x\":330,\"y\":988,\"width\":420,\"height\":28},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":30,\"lineHeight\":1.1,\"color\":\"#FFFFFF\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":56,\"durationFrames\":10}}],\"backgroundImage\":\"public/generated/kjhgfdsdfghjkl/image-scene-4-1783507057293.png\",\"aspectRatio\":\"4:5\",\"backgroundAnimation\":{\"preset\":\"none\"}}",
+    "bg-color": "#ffffff",
+    "primary-color": "#071b3a",
+    "accent-color": "#1a9dd7",
+    "s1-dur": "5",
+    "s2-dur": "5",
+    "s3-dur": "5",
+    "s4-dur": "5",
+    "crossfade-frames": "18",
+    "audio-upload": "",
+    "s1-audio-start": "0",
+    "s1-audio-end": "0",
+    "s2-audio-start": "0",
+    "s2-audio-end": "0",
+    "s3-audio-start": "0",
+    "s3-audio-end": "0",
+    "s4-audio-start": "0",
+    "s4-audio-end": "0",
+    "s1-h-anim": "word-stagger",
+    "s1-h-anim-dur": "20",
+    "s1-h-anim-delay": "8",
+    "s1-s-anim": "fade-up",
+    "s1-s-anim-dur": "22",
+    "s1-s-anim-delay": "38",
+    "s2-h-anim": "word-stagger",
+    "s2-h-anim-dur": "20",
+    "s2-h-anim-delay": "8",
+    "s2-s-anim": "fade-up",
+    "s2-s-anim-dur": "22",
+    "s2-s-anim-delay": "32",
+    "s2-benefits-anim": "slide-from-right",
+    "s2-benefits-anim-dur": "22",
+    "s2-benefits-anim-delay": "56",
+    "s2-benefits-stagger": "16",
+    "s3-h-anim": "word-stagger",
+    "s3-h-anim-dur": "20",
+    "s3-h-anim-delay": "8",
+    "s3-s-anim": "fade-up",
+    "s3-s-anim-dur": "22",
+    "s3-s-anim-delay": "32",
+    "s3-cards-anim": "scale-pop",
+    "s3-cards-anim-dur": "24",
+    "s3-cards-anim-delay": "56",
+    "s3-cards-stagger": "10",
+    "s4-marker-1-enabled": "",
+    "s4-marker-1-x": "540",
+    "s4-marker-1-y": "600",
+    "s4-marker-1-label": "",
+    "s4-marker-1-activateFrame": "20",
+    "s4-marker-1-durationFrames": "90",
+    "s4-marker-1-color": "#1a9dd7",
+    "s4-marker-1-ringSize": "80",
+    "s4-marker-1-dotSize": "14",
+    "s4-marker-1-labelOffsetX": "60",
+    "s4-marker-1-labelOffsetY": "-10",
+    "s4-marker-1-labelSize": "32",
+    "s4-marker-1-labelBg": "#ffffff",
+    "s4-marker-1-labelColor": "#071b3a",
+    "s4-marker-2-enabled": "",
+    "s4-marker-2-x": "540",
+    "s4-marker-2-y": "600",
+    "s4-marker-2-label": "",
+    "s4-marker-2-activateFrame": "20",
+    "s4-marker-2-durationFrames": "90",
+    "s4-marker-2-color": "#1a9dd7",
+    "s4-marker-2-ringSize": "80",
+    "s4-marker-2-dotSize": "14",
+    "s4-marker-2-labelOffsetX": "60",
+    "s4-marker-2-labelOffsetY": "-10",
+    "s4-marker-2-labelSize": "32",
+    "s4-marker-2-labelBg": "#ffffff",
+    "s4-marker-2-labelColor": "#071b3a",
+    "s4-marker-3-enabled": "",
+    "s4-marker-3-x": "540",
+    "s4-marker-3-y": "600",
+    "s4-marker-3-label": "",
+    "s4-marker-3-activateFrame": "20",
+    "s4-marker-3-durationFrames": "90",
+    "s4-marker-3-color": "#1a9dd7",
+    "s4-marker-3-ringSize": "80",
+    "s4-marker-3-dotSize": "14",
+    "s4-marker-3-labelOffsetX": "60",
+    "s4-marker-3-labelOffsetY": "-10",
+    "s4-marker-3-labelSize": "32",
+    "s4-marker-3-labelBg": "#ffffff",
+    "s4-marker-3-labelColor": "#071b3a",
+    "s4-marker-4-enabled": "",
+    "s4-marker-4-x": "540",
+    "s4-marker-4-y": "600",
+    "s4-marker-4-label": "",
+    "s4-marker-4-activateFrame": "20",
+    "s4-marker-4-durationFrames": "90",
+    "s4-marker-4-color": "#1a9dd7",
+    "s4-marker-4-ringSize": "80",
+    "s4-marker-4-dotSize": "14",
+    "s4-marker-4-labelOffsetX": "60",
+    "s4-marker-4-labelOffsetY": "-10",
+    "s4-marker-4-labelSize": "32",
+    "s4-marker-4-labelBg": "#ffffff",
+    "s4-marker-4-labelColor": "#071b3a",
+    "sl-import-file": "",
+    "__timeline": {
+      "order": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "durations": {
+        "1": 5,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      },
+      "visible": {
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": true
+      },
+      "template": {}
+    }
+  },
+  "presets": {},
+  "activePreset": "",
+  "timeline": {
+    "order": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "durations": {
+      "1": 5,
+      "2": 5,
+      "3": 5,
+      "4": 5
+    },
+    "visible": {
+      "1": true,
+      "2": true,
+      "3": true,
+      "4": true
+    },
+    "template": {}
+  },
+  "sceneImages": {
+    "s1": "public/generated/kjhgfdsdfghjkl/image-scene-1-1783523418830.png",
+    "s2": "public/generated/kjhgfdsdfghjkl/image-scene-2-1783507036523.png",
+    "s3": "public/generated/kjhgfdsdfghjkl/image-scene-3-1783507043881.png",
+    "s4": "public/generated/kjhgfdsdfghjkl/image-scene-4-1783507057293.png"
+  },
+  "overlayState": {
+    "1": {
+      "id": "smartmed-homecare-service-frame-01",
+      "brand": "smartmed-posts",
+      "aspectRatio": "4:5",
+      "backgroundImage": "public/generated/kjhgfdsdfghjkl/image-scene-1-1783523418830.png",
+      "canvas": {
+        "width": 1080,
+        "height": 1350
+      },
+      "brandStyle": {
+        "primaryColor": "#0F48C6",
+        "fontFamily": "Tajawal",
+        "fontWeight": 500,
+        "direction": "rtl"
+      },
+      "backgroundAnimation": {
+        "preset": "none"
+      },
+      "elements": [
+        {
+          "id": "tagBg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 810,
+            "y": 56,
+            "width": 230,
+            "height": 44
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.86)",
+            "borderRadius": 22
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 0,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "tag",
+          "type": "text",
+          "text": "رعاية منزلية",
+          "frame": {
+            "x": 830,
+            "y": 67,
+            "width": 190,
+            "height": 24
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 21,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 4,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "accentLine",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 1060,
+            "y": 120,
+            "width": 8,
+            "height": 145
+          },
+          "style": {
+            "backgroundColor": "#0F48C6",
+            "borderRadius": 4
+          },
+          "animation": {
+            "preset": "fadeDown",
+            "startFrame": 8,
+            "durationFrames": 14
+          }
+        },
+        {
+          "id": "headline",
+          "type": "text",
+          "text": "الرعاية الطبية\nتصلك إلى منزلك",
+          "frame": {
+            "x": 495,
+            "y": 120,
+            "width": 540,
+            "height": 145
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 58,
+            "lineHeight": 1.08,
+            "color": "#0F48C6",
+            "textAlign": "right",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeDown",
+            "startFrame": 12,
+            "durationFrames": 18
+          }
+        },
+        {
+          "id": "subheading",
+          "type": "text",
+          "text": "خدمات صحية موثوقة براحة وخصوصية",
+          "frame": {
+            "x": 520,
+            "y": 280,
+            "width": 500,
+            "height": 42
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 28,
+            "lineHeight": 1.2,
+            "color": "#202020",
+            "textAlign": "right",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeUp",
+            "startFrame": 22,
+            "durationFrames": 16
+          }
+        },
+        {
+          "id": "chip1Bg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 652,
+            "y": 350,
+            "width": 122,
+            "height": 44
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.86)",
+            "borderRadius": 22
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 30,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "chip1",
+          "type": "text",
+          "text": "تمريض",
+          "frame": {
+            "x": 652,
+            "y": 362,
+            "width": 122,
+            "height": 22
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 19,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 34,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "chip2Bg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 788,
+            "y": 350,
+            "width": 122,
+            "height": 44
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.86)",
+            "borderRadius": 22
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 32,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "chip2",
+          "type": "text",
+          "text": "تحاليل",
+          "frame": {
+            "x": 788,
+            "y": 362,
+            "width": 122,
+            "height": 22
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 19,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 36,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "chip3Bg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 924,
+            "y": 350,
+            "width": 122,
+            "height": 44
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.86)",
+            "borderRadius": 22
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 34,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "chip3",
+          "type": "text",
+          "text": "رعاية",
+          "frame": {
+            "x": 924,
+            "y": 362,
+            "width": 122,
+            "height": 22
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 19,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 38,
+            "durationFrames": 10
+          }
+        }
+      ],
+      "type": "posterOverlay",
+      "version": "1.0",
+      "background": {
+        "type": "image",
+        "fit": "cover"
+      }
+    },
+    "2": {
+      "id": "smartmed-homecare-scene-02",
+      "type": "posterOverlay",
+      "brand": "smartmed-posts",
+      "version": "1.0",
+      "canvas": {
+        "width": 1080,
+        "height": 1350
+      },
+      "background": {
+        "type": "image",
+        "fit": "cover"
+      },
+      "brandStyle": {
+        "primaryColor": "#0F48C6",
+        "fontFamily": "Tajawal",
+        "fontWeight": 500,
+        "direction": "rtl"
+      },
+      "elements": [
+        {
+          "id": "leftSideBar",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 68,
+            "y": 185,
+            "width": 10,
+            "height": 585
+          },
+          "style": {
+            "backgroundColor": "#0F48C6",
+            "borderRadius": 5
+          },
+          "animation": {
+            "preset": "fadeDown",
+            "startFrame": 0,
+            "durationFrames": 16
+          }
+        },
+        {
+          "id": "leftSideDot1",
+          "type": "shape",
+          "shape": "circle",
+          "frame": {
+            "x": 54,
+            "y": 195,
+            "width": 38,
+            "height": 38
+          },
+          "style": {
+            "backgroundColor": "#0F48C6"
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 8,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "leftSideDot2",
+          "type": "shape",
+          "shape": "circle",
+          "frame": {
+            "x": 59,
+            "y": 338,
+            "width": 28,
+            "height": 28
+          },
+          "style": {
+            "backgroundColor": "rgba(15,72,198,0.25)"
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 14,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "leftSideDot3",
+          "type": "shape",
+          "shape": "circle",
+          "frame": {
+            "x": 59,
+            "y": 456,
+            "width": 28,
+            "height": 28
+          },
+          "style": {
+            "backgroundColor": "rgba(15,72,198,0.18)"
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 18,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "tagBg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 742,
+            "y": 138,
+            "width": 248,
+            "height": 46
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.9)",
+            "borderRadius": 23
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 4,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "tagText",
+          "type": "text",
+          "text": "خدمة تمريض منزلي",
+          "frame": {
+            "x": 762,
+            "y": 149,
+            "width": 208,
+            "height": 24
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 21,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 8,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "headline",
+          "type": "text",
+          "text": "رعاية منزلية\nبكل راحة",
+          "frame": {
+            "x": 560,
+            "y": 205,
+            "width": 430,
+            "height": 142
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 66,
+            "lineHeight": 1.05,
+            "color": "#0F48C6",
+            "textAlign": "right",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeDown",
+            "startFrame": 12,
+            "durationFrames": 18
+          }
+        },
+        {
+          "id": "subheadline",
+          "type": "text",
+          "text": "خدمات صحية أساسية تصلك إلى باب المنزل",
+          "frame": {
+            "x": 495,
+            "y": 360,
+            "width": 495,
+            "height": 38
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 27,
+            "lineHeight": 1.2,
+            "color": "#202020",
+            "textAlign": "right",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeUp",
+            "startFrame": 22,
+            "durationFrames": 14
+          }
+        },
+        {
+          "id": "featureBar1Bg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 690,
+            "y": 455,
+            "width": 300,
+            "height": 52
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.88)",
+            "borderRadius": 26
+          },
+          "animation": {
+            "preset": "fadeUp",
+            "startFrame": 28,
+            "durationFrames": 14
+          }
+        },
+        {
+          "id": "featureBar1Accent",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 935,
+            "y": 455,
+            "width": 55,
+            "height": 52
+          },
+          "style": {
+            "backgroundColor": "#0F48C6",
+            "borderRadius": 26
+          },
+          "animation": {
+            "preset": "wipeRight",
+            "startFrame": 32,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "featureBar1Text",
+          "type": "text",
+          "text": "أدوات طبية أساسية",
+          "frame": {
+            "x": 718,
+            "y": 469,
+            "width": 190,
+            "height": 24
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 21,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "right",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 36,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "featureBar2Bg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 92,
+            "y": 535,
+            "width": 290,
+            "height": 52
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.88)",
+            "borderRadius": 26
+          },
+          "animation": {
+            "preset": "fadeUp",
+            "startFrame": 32,
+            "durationFrames": 14
+          }
+        },
+        {
+          "id": "featureBar2Accent",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 92,
+            "y": 535,
+            "width": 55,
+            "height": 52
+          },
+          "style": {
+            "backgroundColor": "#0F48C6",
+            "borderRadius": 26
+          },
+          "animation": {
+            "preset": "wipeRight",
+            "startFrame": 36,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "featureBar2Text",
+          "type": "text",
+          "text": "متابعة منزلية",
+          "frame": {
+            "x": 165,
+            "y": 549,
+            "width": 180,
+            "height": 24
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 21,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 40,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "featureBar3Bg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 660,
+            "y": 620,
+            "width": 330,
+            "height": 52
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.88)",
+            "borderRadius": 26
+          },
+          "animation": {
+            "preset": "fadeUp",
+            "startFrame": 36,
+            "durationFrames": 14
+          }
+        },
+        {
+          "id": "featureBar3Accent",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 935,
+            "y": 620,
+            "width": 55,
+            "height": 52
+          },
+          "style": {
+            "backgroundColor": "#0F48C6",
+            "borderRadius": 26
+          },
+          "animation": {
+            "preset": "wipeRight",
+            "startFrame": 40,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "featureBar3Text",
+          "type": "text",
+          "text": "راحة وخصوصية",
+          "frame": {
+            "x": 695,
+            "y": 634,
+            "width": 200,
+            "height": 24
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 21,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "right",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 44,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "centerLine",
+          "type": "shape",
+          "shape": "line",
+          "frame": {
+            "x": 465,
+            "y": 740,
+            "width": 180,
+            "height": 2
+          },
+          "style": {
+            "backgroundColor": "#0F48C6"
+          },
+          "animation": {
+            "preset": "wipeRight",
+            "startFrame": 46,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "ctaBg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 345,
+            "y": 950,
+            "width": 390,
+            "height": 64
+          },
+          "style": {
+            "backgroundColor": "#0F48C6",
+            "borderRadius": 32
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 52,
+            "durationFrames": 14
+          }
+        },
+        {
+          "id": "ctaText",
+          "type": "text",
+          "text": "احجز خدمتك الآن",
+          "frame": {
+            "x": 345,
+            "y": 968,
+            "width": 390,
+            "height": 28
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 29,
+            "lineHeight": 1.1,
+            "color": "#FFFFFF",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 58,
+            "durationFrames": 10
+          }
+        }
+      ],
+      "backgroundImage": "public/generated/kjhgfdsdfghjkl/image-scene-2-1783507036523.png",
+      "aspectRatio": "4:5",
+      "backgroundAnimation": {
+        "preset": "none"
+      }
+    },
+    "3": {
+      "id": "smartmed-homecare-scene-03",
+      "type": "posterOverlay",
+      "brand": "smartmed-posts",
+      "version": "1.0",
+      "canvas": {
+        "width": 1080,
+        "height": 1350
+      },
+      "background": {
+        "type": "image",
+        "fit": "cover"
+      },
+      "brandStyle": {
+        "primaryColor": "#0F48C6",
+        "fontFamily": "Tajawal",
+        "fontWeight": 500,
+        "direction": "rtl"
+      },
+      "elements": [
+        {
+          "id": "rightSideBar",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 1000,
+            "y": 170,
+            "width": 12,
+            "height": 560
+          },
+          "style": {
+            "backgroundColor": "#0F48C6",
+            "borderRadius": 6
+          },
+          "animation": {
+            "preset": "fadeDown",
+            "startFrame": 0,
+            "durationFrames": 16
+          }
+        },
+        {
+          "id": "rightMarker1",
+          "type": "shape",
+          "shape": "circle",
+          "frame": {
+            "x": 987,
+            "y": 208,
+            "width": 38,
+            "height": 38
+          },
+          "style": {
+            "backgroundColor": "#0F48C6"
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 8,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "rightMarker2",
+          "type": "shape",
+          "shape": "circle",
+          "frame": {
+            "x": 992,
+            "y": 340,
+            "width": 28,
+            "height": 28
+          },
+          "style": {
+            "backgroundColor": "rgba(15,72,198,0.28)"
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 14,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "tagBg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 708,
+            "y": 138,
+            "width": 282,
+            "height": 46
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.9)",
+            "borderRadius": 23
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 4,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "tagText",
+          "type": "text",
+          "text": "تحاليل منزلية",
+          "frame": {
+            "x": 736,
+            "y": 149,
+            "width": 226,
+            "height": 24
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 21,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 8,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "headline",
+          "type": "text",
+          "text": "عيناتك\nمن منزلك",
+          "frame": {
+            "x": 570,
+            "y": 205,
+            "width": 420,
+            "height": 142
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 66,
+            "lineHeight": 1.05,
+            "color": "#0F48C6",
+            "textAlign": "right",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeDown",
+            "startFrame": 12,
+            "durationFrames": 18
+          }
+        },
+        {
+          "id": "subheadline",
+          "type": "text",
+          "text": "سحب عينات آمن وسهل بخطوات واضحة",
+          "frame": {
+            "x": 500,
+            "y": 360,
+            "width": 490,
+            "height": 38
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 27,
+            "lineHeight": 1.2,
+            "color": "#202020",
+            "textAlign": "right",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeUp",
+            "startFrame": 22,
+            "durationFrames": 14
+          }
+        },
+        {
+          "id": "step1Box",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 90,
+            "y": 430,
+            "width": 315,
+            "height": 56
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.88)",
+            "borderRadius": 28
+          },
+          "animation": {
+            "preset": "fadeUp",
+            "startFrame": 28,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "step1No",
+          "type": "shape",
+          "shape": "circle",
+          "frame": {
+            "x": 103,
+            "y": 441,
+            "width": 34,
+            "height": 34
+          },
+          "style": {
+            "backgroundColor": "#0F48C6"
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 32,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "step1Text",
+          "type": "text",
+          "text": "زيارة منزلية",
+          "frame": {
+            "x": 165,
+            "y": 445,
+            "width": 200,
+            "height": 24
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 22,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 36,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "step2Box",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 720,
+            "y": 515,
+            "width": 270,
+            "height": 56
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.88)",
+            "borderRadius": 28
+          },
+          "animation": {
+            "preset": "fadeUp",
+            "startFrame": 34,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "step2No",
+          "type": "shape",
+          "shape": "circle",
+          "frame": {
+            "x": 733,
+            "y": 526,
+            "width": 34,
+            "height": 34
+          },
+          "style": {
+            "backgroundColor": "#0F48C6"
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 38,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "step2Text",
+          "type": "text",
+          "text": "سحب العينات",
+          "frame": {
+            "x": 785,
+            "y": 530,
+            "width": 165,
+            "height": 24
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 22,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 42,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "step3Box",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 120,
+            "y": 610,
+            "width": 330,
+            "height": 56
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.88)",
+            "borderRadius": 28
+          },
+          "animation": {
+            "preset": "fadeUp",
+            "startFrame": 40,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "step3No",
+          "type": "shape",
+          "shape": "circle",
+          "frame": {
+            "x": 133,
+            "y": 621,
+            "width": 34,
+            "height": 34
+          },
+          "style": {
+            "backgroundColor": "#0F48C6"
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 44,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "step3Text",
+          "type": "text",
+          "text": "نتائج ومتابعة",
+          "frame": {
+            "x": 195,
+            "y": 625,
+            "width": 205,
+            "height": 24
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 22,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 48,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "middleAccentLine",
+          "type": "shape",
+          "shape": "line",
+          "frame": {
+            "x": 510,
+            "y": 760,
+            "width": 210,
+            "height": 2
+          },
+          "style": {
+            "backgroundColor": "#0F48C6"
+          },
+          "animation": {
+            "preset": "wipeRight",
+            "startFrame": 50,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "ctaBg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 330,
+            "y": 950,
+            "width": 420,
+            "height": 64
+          },
+          "style": {
+            "backgroundColor": "#0F48C6",
+            "borderRadius": 32
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 54,
+            "durationFrames": 14
+          }
+        },
+        {
+          "id": "ctaText",
+          "type": "text",
+          "text": "اطلب الخدمة الآن",
+          "frame": {
+            "x": 330,
+            "y": 968,
+            "width": 420,
+            "height": 28
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 29,
+            "lineHeight": 1.1,
+            "color": "#FFFFFF",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 60,
+            "durationFrames": 10
+          }
+        }
+      ],
+      "backgroundImage": "public/generated/kjhgfdsdfghjkl/image-scene-3-1783507043881.png",
+      "aspectRatio": "4:5",
+      "backgroundAnimation": {
+        "preset": "none"
+      }
+    },
+    "4": {
+      "id": "smartmed-homecare-scene-04",
+      "type": "posterOverlay",
+      "brand": "smartmed-posts",
+      "version": "1.0",
+      "canvas": {
+        "width": 1080,
+        "height": 1350
+      },
+      "background": {
+        "type": "image",
+        "fit": "cover"
+      },
+      "brandStyle": {
+        "primaryColor": "#0F48C6",
+        "fontFamily": "Tajawal",
+        "fontWeight": 500,
+        "direction": "rtl"
+      },
+      "elements": [
+        {
+          "id": "rightRail",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 1014,
+            "y": 150,
+            "width": 10,
+            "height": 560
+          },
+          "style": {
+            "backgroundColor": "#0F48C6",
+            "borderRadius": 5
+          },
+          "animation": {
+            "preset": "fadeDown",
+            "startFrame": 0,
+            "durationFrames": 16
+          }
+        },
+        {
+          "id": "railDot1",
+          "type": "shape",
+          "shape": "circle",
+          "frame": {
+            "x": 1000,
+            "y": 190,
+            "width": 38,
+            "height": 38
+          },
+          "style": {
+            "backgroundColor": "#0F48C6"
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 8,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "railDot2",
+          "type": "shape",
+          "shape": "circle",
+          "frame": {
+            "x": 1004,
+            "y": 320,
+            "width": 30,
+            "height": 30
+          },
+          "style": {
+            "backgroundColor": "rgba(15,72,198,0.35)"
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 14,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "railDot3",
+          "type": "shape",
+          "shape": "circle",
+          "frame": {
+            "x": 1004,
+            "y": 450,
+            "width": 30,
+            "height": 30
+          },
+          "style": {
+            "backgroundColor": "rgba(15,72,198,0.22)"
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 20,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "topTagBg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 710,
+            "y": 128,
+            "width": 280,
+            "height": 46
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.88)",
+            "borderRadius": 23
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 4,
+            "durationFrames": 12
+          }
+        },
+        {
+          "id": "topTag",
+          "type": "text",
+          "text": "علاج طبيعي منزلي",
+          "frame": {
+            "x": 730,
+            "y": 140,
+            "width": 240,
+            "height": 24
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 21,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 8,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "headline",
+          "type": "text",
+          "text": "حركتك\nتهمنا",
+          "frame": {
+            "x": 570,
+            "y": 205,
+            "width": 420,
+            "height": 145
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 72,
+            "lineHeight": 1.02,
+            "color": "#0F48C6",
+            "textAlign": "right",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeDown",
+            "startFrame": 12,
+            "durationFrames": 18
+          }
+        },
+        {
+          "id": "subheadline",
+          "type": "text",
+          "text": "جلسات علاج طبيعي تصلك براحة وخصوصية",
+          "frame": {
+            "x": 465,
+            "y": 365,
+            "width": 525,
+            "height": 38
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 27,
+            "lineHeight": 1.2,
+            "color": "#202020",
+            "textAlign": "right",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeUp",
+            "startFrame": 24,
+            "durationFrames": 16
+          }
+        },
+        {
+          "id": "bar1Bg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 670,
+            "y": 440,
+            "width": 320,
+            "height": 48
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.88)",
+            "borderRadius": 24
+          },
+          "animation": {
+            "preset": "fadeUp",
+            "startFrame": 30,
+            "durationFrames": 14
+          }
+        },
+        {
+          "id": "bar1Fill",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 914,
+            "y": 440,
+            "width": 76,
+            "height": 48
+          },
+          "style": {
+            "backgroundColor": "#0F48C6",
+            "borderRadius": 24
+          },
+          "animation": {
+            "preset": "wipeRight",
+            "startFrame": 34,
+            "durationFrames": 14
+          }
+        },
+        {
+          "id": "bar1Text",
+          "type": "text",
+          "text": "تمارين علاجية",
+          "frame": {
+            "x": 700,
+            "y": 453,
+            "width": 200,
+            "height": 24
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 22,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "right",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 38,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "bar2Bg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 84,
+            "y": 505,
+            "width": 330,
+            "height": 50
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.88)",
+            "borderRadius": 25
+          },
+          "animation": {
+            "preset": "fadeUp",
+            "startFrame": 34,
+            "durationFrames": 14
+          }
+        },
+        {
+          "id": "bar2Fill",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 84,
+            "y": 505,
+            "width": 80,
+            "height": 50
+          },
+          "style": {
+            "backgroundColor": "#0F48C6",
+            "borderRadius": 25
+          },
+          "animation": {
+            "preset": "wipeRight",
+            "startFrame": 38,
+            "durationFrames": 14
+          }
+        },
+        {
+          "id": "bar2Text",
+          "type": "text",
+          "text": "متابعة مستمرة",
+          "frame": {
+            "x": 180,
+            "y": 519,
+            "width": 200,
+            "height": 24
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 22,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 42,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "bar3Bg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 700,
+            "y": 590,
+            "width": 290,
+            "height": 50
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.88)",
+            "borderRadius": 25
+          },
+          "animation": {
+            "preset": "fadeUp",
+            "startFrame": 38,
+            "durationFrames": 14
+          }
+        },
+        {
+          "id": "bar3Fill",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 910,
+            "y": 590,
+            "width": 80,
+            "height": 50
+          },
+          "style": {
+            "backgroundColor": "#0F48C6",
+            "borderRadius": 25
+          },
+          "animation": {
+            "preset": "wipeRight",
+            "startFrame": 42,
+            "durationFrames": 14
+          }
+        },
+        {
+          "id": "bar3Text",
+          "type": "text",
+          "text": "راحة في المنزل",
+          "frame": {
+            "x": 725,
+            "y": 604,
+            "width": 170,
+            "height": 24
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 22,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "right",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 46,
+            "durationFrames": 10
+          }
+        },
+        {
+          "id": "bottomCtaBg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 330,
+            "y": 970,
+            "width": 420,
+            "height": 64
+          },
+          "style": {
+            "backgroundColor": "#0F48C6",
+            "borderRadius": 32
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 50,
+            "durationFrames": 14
+          }
+        },
+        {
+          "id": "bottomCta",
+          "type": "text",
+          "text": "احجز خدمتك الآن",
+          "frame": {
+            "x": 330,
+            "y": 988,
+            "width": 420,
+            "height": 28
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 30,
+            "lineHeight": 1.1,
+            "color": "#FFFFFF",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 56,
+            "durationFrames": 10
+          }
+        }
+      ],
+      "backgroundImage": "public/generated/kjhgfdsdfghjkl/image-scene-4-1783507057293.png",
+      "aspectRatio": "4:5",
+      "backgroundAnimation": {
+        "preset": "none"
+      }
+    }
+  },
+  "savedAt": "2026-07-09T08:20:52.091Z"
+}

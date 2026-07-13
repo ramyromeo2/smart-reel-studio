@@ -1,0 +1,40 @@
+{
+  "name": "smart-reel-bulk-generator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "hub": "node scripts/hub-server.mjs",
+    "studio": "remotion studio src/index.ts",
+    "render:one": "remotion render src/index.ts SmartReel out/sample.mp4 --props=sample-props.json --overwrite",
+    "render:bulk": "node scripts/render-bulk.mjs content.csv",
+    "render:tokyo": "node scripts/render-tokyo.mjs",
+    "render:rightcare": "remotion render src/index.ts RightCareReel out/rightcare-v1.mp4 --props=rightcare-props.json --concurrency=50% --overwrite",
+    "render:smartmed": "remotion render src/index.ts SmartMedReel out/smartmed-v1.mp4 --props=smartmed-props.json --concurrency=50% --overwrite",
+    "bake:smartmed": "node scripts/bake-smartmed-preset.mjs",
+    "bake-render:smartmed": "node scripts/bake-smartmed-preset.mjs $npm_config_preset && npm run render:smartmed",
+    "render:smartlab": "remotion render src/index.ts SmartLabReel out/smartlab-v1.mp4 --props=smartlab-props.json --concurrency=50% --overwrite",
+    "render:smartlab-posts": "remotion render src/index.ts SmartLabReel out/smartlab-posts-v1.mp4 --props=smartlab-posts-props.json --concurrency=50% --overwrite",
+    "bake:smartlab": "node scripts/bake-smartlab-preset.mjs",
+    "bake-render:smartlab": "node scripts/bake-smartlab-preset.mjs $npm_config_preset && npm run render:smartlab",
+    "render:smartmed-hajj": "remotion render src/index.ts SmartMedHajjReel out/smartmed-hajj-v1.mp4 --props=smartmed-hajj-props.json --concurrency=50% --overwrite",
+    "bake:smartmed-hajj": "node scripts/bake-smartmed-hajj-preset.mjs",
+    "bake-render:smartmed-hajj": "node scripts/bake-smartmed-hajj-preset.mjs $npm_config_preset && npm run render:smartmed-hajj",
+    "render:err4rte": "REMOTION_PROJECT_ID=err4rte remotion render src/index.ts SmartLabReel out/err4rte-v1.mp4 --props=err4rte-props.json --concurrency=50% --overwrite",
+    "render:kjhgfdsdfghjkl": "REMOTION_PROJECT_ID=kjhgfdsdfghjkl remotion render src/index.ts SmartLabReel out/kjhgfdsdfghjkl-v1.mp4 --props=kjhgfdsdfghjkl-props.json --concurrency=50% --overwrite"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.443",
+    "@remotion/cli": "4.0.443",
+    "@remotion/renderer": "4.0.443",
+    "csv-parse": "5.5.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "remotion": "4.0.443"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.79",
+    "@types/react-dom": "18.2.25",
+    "typescript": "5.4.5"
+  }
+}

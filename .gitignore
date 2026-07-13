@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Rendered and temporary output
+out/
+tmp/
+*.log
+
+# Local renderer caches and downloaded browser binaries
+.hub-logs/
+.hub-remotion-bin/
+.hub-remotion-bundle/
+node_modules/.remotion/
+
+# Local debugging and editor files
+.dbg/
+.DS_Store
+Thumbs.db
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+
+# Tool caches
+.cache/
+coverage/
+dist/

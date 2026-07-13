@@ -1,0 +1,86 @@
+{
+  "scene1Image": "generated/blank-white.svg",
+  "scene2Image": "generated/blank-white.svg",
+  "scene3Image": "generated/blank-white.svg",
+  "scene4Image": "generated/blank-white.svg",
+  "scene1Headline": "",
+  "scene1Subtitle": "",
+  "s1HeadlineAnim": {
+    "entry": "none",
+    "durFrames": 1,
+    "delayFrames": 0
+  },
+  "s1SubtitleAnim": {
+    "entry": "none",
+    "durFrames": 1,
+    "delayFrames": 0
+  },
+  "scene2Headline": "",
+  "scene2Subtitle": "",
+  "scene2Benefits": [],
+  "s2HeadlineAnim": {
+    "entry": "none",
+    "durFrames": 1,
+    "delayFrames": 0
+  },
+  "s2SubtitleAnim": {
+    "entry": "none",
+    "durFrames": 1,
+    "delayFrames": 0
+  },
+  "s2BenefitsAnim": {
+    "entry": "none",
+    "durFrames": 1,
+    "delayFrames": 0
+  },
+  "s2BenefitsStaggerFrames": 0,
+  "scene3Headline": "",
+  "scene3Subtitle": "",
+  "scene3Cards": [],
+  "s3HeadlineAnim": {
+    "entry": "none",
+    "durFrames": 1,
+    "delayFrames": 0
+  },
+  "s3SubtitleAnim": {
+    "entry": "none",
+    "durFrames": 1,
+    "delayFrames": 0
+  },
+  "s3CardsAnim": {
+    "entry": "none",
+    "durFrames": 1,
+    "delayFrames": 0
+  },
+  "s3CardsStaggerFrames": 0,
+  "scene4Logo": "",
+  "scene4Headline": "",
+  "scene4Subtitle": "",
+  "scene4Contacts": [],
+  "s4LogoAnim": {
+    "entry": "none",
+    "durFrames": 1,
+    "delayFrames": 0
+  },
+  "s4HeadlineAnim": {
+    "entry": "none",
+    "durFrames": 1,
+    "delayFrames": 0
+  },
+  "s4SubtitleAnim": {
+    "entry": "none",
+    "durFrames": 1,
+    "delayFrames": 0
+  },
+  "s4ContactsAnim": {
+    "entry": "none",
+    "durFrames": 1,
+    "delayFrames": 0
+  },
+  "s4ContactsStaggerFrames": 0,
+  "scene1DurationSec": 5,
+  "scene2DurationSec": 5,
+  "scene3DurationSec": 5,
+  "scene4DurationSec": 5,
+  "crossfadeFrames": 18
+}

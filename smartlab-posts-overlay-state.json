@@ -1,0 +1,4341 @@
+{
+  "1": {
+    "id": "smartmed-chest-pain-post-001",
+    "type": "posterOverlay",
+    "brand": "smartmed",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 400,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "ألم الصدر المفاجئ إشارة لا تُهمل",
+        "frame": {
+          "x": 283,
+          "y": 124,
+          "width": 780,
+          "height": 82
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 54,
+          "lineHeight": 1.12,
+          "color": "#0F48C6",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 6,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "سمارت ميد معك للاهتمام بك في منزلك",
+        "frame": {
+          "x": 415,
+          "y": 188,
+          "width": 635,
+          "height": 71
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 32,
+          "lineHeight": 1.22,
+          "color": "#222222",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 16,
+          "durationFrames": 18
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-1-1781083485254.png",
+    "aspectRatio": "4:5",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "2": {
+    "id": "smartlab-study-focus-post-001",
+    "brand": "smartlab",
+    "aspectRatio": "4:5",
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-2-1781170890855.png",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "brandStyle": {
+      "primaryColor": "#2A9DD8",
+      "fontFamily": "Tajawal",
+      "fontWeight": 400,
+      "direction": "rtl"
+    },
+    "backgroundAnimation": {
+      "preset": "none"
+    },
+    "elements": [
+      {
+        "id": "headline",
+        "type": "text",
+        "text": " تذاكر كثير… وتنسى بسرعة؟",
+        "frame": {
+          "x": 150,
+          "y": 165,
+          "width": 780,
+          "height": 90
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 68,
+          "lineHeight": 1.15,
+          "color": "#2A9DD8",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 10,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "ضعف التركيز والنسيان المتكرر قد يكون سبب يحتاج تحليل",
+        "frame": {
+          "x": 145,
+          "y": 275,
+          "width": 790,
+          "height": 110
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 36,
+          "lineHeight": 1.4,
+          "color": "#2F2F2F",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 20,
+          "durationFrames": 18
+        }
+      }
+    ],
+    "type": "posterOverlay",
+    "version": "1.0",
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    }
+  },
+  "3": {
+    "id": "smartlab-pool-post-v2",
+    "brand": "smartlab",
+    "aspectRatio": "4:5",
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-3-1781168834934.png",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "brandStyle": {
+      "primaryColor": "#2A9DD8",
+      "fontFamily": "Tajawal",
+      "fontWeight": 400,
+      "direction": "rtl"
+    },
+    "backgroundAnimation": {
+      "preset": "none"
+    },
+    "elements": [
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "بعد المسبح…",
+        "frame": {
+          "x": 160,
+          "y": 167,
+          "width": 760,
+          "height": 85
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 60,
+          "lineHeight": 1.12,
+          "color": "#2A9DD8",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 6,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "هل تلاحظ تهيجاً في البشرة أو إرهاقاً غير معتاد؟ قد تكشف التحاليل ما وراء هذه الأعراض وتمنحك راحة البال.",
+        "frame": {
+          "x": 177,
+          "y": 265,
+          "width": 740,
+          "height": 82
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 27,
+          "lineHeight": 1.32,
+          "color": "#222222",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 16,
+          "durationFrames": 18
+        }
+      }
+    ],
+    "type": "posterOverlay",
+    "version": "1.0",
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    }
+  },
+  "4": {
+    "id": "smartlab-pool-story-v1",
+    "type": "posterOverlay",
+    "brand": "smartlab",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1920
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "brandStyle": {
+      "primaryColor": "#2A9DD8",
+      "fontFamily": "Tajawal",
+      "fontWeight": 400,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "بعد السباحة لا تتجاهل الإشارة",
+        "frame": {
+          "x": 125,
+          "y": 173,
+          "width": 840,
+          "height": 120
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 60,
+          "lineHeight": 1.15,
+          "color": "#2A9DD8",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 6,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "سمارت لاب يساعدك تطمئن إذا استمرت أعراض غير معتادة",
+        "frame": {
+          "x": 140,
+          "y": 305,
+          "width": 800,
+          "height": 110
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 34,
+          "lineHeight": 1.35,
+          "color": "#222222",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 16,
+          "durationFrames": 18
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-4-1781095813613.png",
+    "aspectRatio": "9:16",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "5": {
+    "id": "smartmed-albinism-post-001",
+    "type": "posterOverlay",
+    "brand": "smartmed",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 400,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "occasion-tag",
+        "type": "text",
+        "text": "#اليوم_العالمي_للمهق",
+        "frame": {
+          "x": 758,
+          "y": 51,
+          "width": 285,
+          "height": 42
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 28,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 4,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "بعض البشرات تحتاج حماية أكبر",
+        "frame": {
+          "x": 126,
+          "y": 177,
+          "width": 840,
+          "height": 95
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 54,
+          "lineHeight": 1.2,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 12,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "سمارت ميد تذكرك بأن الحماية من الشمس جزء مهم من العناية اليومية بالبشرة",
+        "frame": {
+          "x": 120,
+          "y": 268,
+          "width": 840,
+          "height": 110
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 32,
+          "lineHeight": 1.35,
+          "color": "#1F1F1F",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "visible": true,
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 22,
+          "durationFrames": 18
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-5-1781180851188.png",
+    "aspectRatio": "4:5",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "6": {
+    "id": "smartmed-bloodpressure-story-v3",
+    "type": "posterOverlay",
+    "brand": "smartmed",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1920
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 400,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "ضغطك قد يرتفع دون أن تشعر",
+        "frame": {
+          "x": 74,
+          "y": 216,
+          "width": 940,
+          "height": 105
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 64,
+          "lineHeight": 1.12,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 6,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "مع سمارت ميد، قياس بسيط يساعدك على الاطمئنان مبكرًا",
+        "frame": {
+          "x": 110,
+          "y": 320,
+          "width": 860,
+          "height": 85
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 34,
+          "lineHeight": 1.24,
+          "color": "#222222",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 16,
+          "durationFrames": 18
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-6-1781017315518.png",
+    "aspectRatio": "9:16",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "7": {
+    "id": "smartlab-posts-scene-7",
+    "type": "posterOverlay",
+    "brand": "smartmed",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1920
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 400,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "ضغطك قد يرتفع دون أن تشعر",
+        "frame": {
+          "x": 70,
+          "y": 185,
+          "width": 940,
+          "height": 105
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 64,
+          "lineHeight": 1.12,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 6,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "مع سمارت ميد، قياس بسيط يساعدك على الاطمئنان مبكرًا",
+        "frame": {
+          "x": 110,
+          "y": 300,
+          "width": 860,
+          "height": 85
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 34,
+          "lineHeight": 1.24,
+          "color": "#222222",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 16,
+          "durationFrames": 18
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-6-1781017315518.png",
+    "aspectRatio": "9:16",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "8": {
+    "id": "smartlab-study-focus-story-final",
+    "type": "posterOverlay",
+    "brand": "smartlab",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1920
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "brandStyle": {
+      "primaryColor": "#2A9DD8",
+      "fontFamily": "Tajawal",
+      "fontWeight": 400,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "تذاكر كثير... وتنسى بسرعة؟",
+        "frame": {
+          "x": 103,
+          "y": 193,
+          "width": 880,
+          "height": 120
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 68,
+          "lineHeight": 1.15,
+          "color": "#2A9DD8",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 6,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "ضعف التركيز والنسيان المتكرر قد يكون وراءه سبب يحتاج إلى تحليل",
+        "frame": {
+          "x": 130,
+          "y": 315,
+          "width": 820,
+          "height": 130
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 36,
+          "lineHeight": 1.4,
+          "color": "#222222",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 16,
+          "durationFrames": 18
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-8-1781177455538.png",
+    "aspectRatio": "9:16",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "9": {
+    "id": "smartlab-pool-story-001",
+    "brand": "smartlab",
+    "aspectRatio": "9:16",
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-9-1781177849164.png",
+    "canvas": {
+      "width": 1080,
+      "height": 1920
+    },
+    "brandStyle": {
+      "primaryColor": "#2A9DD8",
+      "fontFamily": "Tajawal",
+      "fontWeight": 400,
+      "direction": "rtl"
+    },
+    "backgroundAnimation": {
+      "preset": "none"
+    },
+    "elements": [
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "بعد المسبح...",
+        "frame": {
+          "x": 130,
+          "y": 200,
+          "width": 800,
+          "height": 110
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 74,
+          "lineHeight": 1.1,
+          "color": "#2A9DD8",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 6,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "هل تلاحظ تهيجًا في البشرة أو إرهاقًا غير معتاد؟ قد تكشف التحاليل ما وراء هذه الأعراض وتمنحك راحة البال.",
+        "frame": {
+          "x": 78,
+          "y": 327,
+          "width": 900,
+          "height": 180
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 36,
+          "lineHeight": 1.45,
+          "color": "#222222",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 16,
+          "durationFrames": 18
+        }
+      }
+    ],
+    "type": "posterOverlay",
+    "version": "1.0",
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    }
+  },
+  "10": {
+    "id": "smartmed-elder-awareness-post-001",
+    "type": "posterOverlay",
+    "brand": "smartmed",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 400,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "eventHashtag",
+        "type": "text",
+        "text": "#اليوم_العالمي_للتوعية_بإساءة_معاملة_كبار_السن",
+        "frame": {
+          "x": 380,
+          "y": 45,
+          "width": 650,
+          "height": 36
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 21,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 4,
+          "durationFrames": 16
+        }
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "كرامتهم تستحق عناية",
+        "frame": {
+          "x": 106,
+          "y": 195,
+          "width": 840,
+          "height": 85
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 58,
+          "lineHeight": 1.12,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 8,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "  الرعاية تبدأ بالاهتمام والاستماع",
+        "frame": {
+          "x": 132,
+          "y": 282,
+          "width": 790,
+          "height": 80
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 31,
+          "lineHeight": 1.3,
+          "color": "#222222",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 18,
+          "durationFrames": 18
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-10-1781348827355.png",
+    "aspectRatio": "4:5",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "11": {
+    "id": "smartmed-blood-donor-post-001",
+    "brand": "smartmed",
+    "aspectRatio": "4:5",
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-11-1781359922029.png",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 400,
+      "direction": "rtl"
+    },
+    "backgroundAnimation": {
+      "preset": "none"
+    },
+    "elements": [
+      {
+        "id": "eventHashtag",
+        "type": "text",
+        "text": "#اليوم_العالمي_للتبرع_بالدم",
+        "frame": {
+          "x": 620,
+          "y": 45,
+          "width": 410,
+          "height": 36
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 23,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 4,
+          "durationFrames": 16
+        }
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "قطرة دم قد تنقذ حياة",
+        "frame": {
+          "x": 134,
+          "y": 194,
+          "width": 820,
+          "height": 85
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 58,
+          "lineHeight": 1.12,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 8,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "سمارت ميد تذكّرك أن تبرعك قد يمنح الأمل لمن يحتاجه",
+        "frame": {
+          "x": 138,
+          "y": 274,
+          "width": 790,
+          "height": 82
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 31,
+          "lineHeight": 1.32,
+          "color": "#222222",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 18,
+          "durationFrames": 18
+        }
+      }
+    ],
+    "type": "posterOverlay",
+    "version": "1.0",
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    }
+  },
+  "12": {
+    "id": "smartmed-mature-wellness-35-post-card-v3",
+    "type": "posterOverlay",
+    "brand": "smartmed",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 400,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "mainCard",
+        "type": "shape",
+        "frame": {
+          "x": 1488,
+          "y": 681,
+          "width": 475,
+          "height": 760
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.88)",
+          "borderRadius": 34
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 4,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "topAccent",
+        "type": "shape",
+        "frame": {
+          "x": 220,
+          "y": 205,
+          "width": 145,
+          "height": 4
+        },
+        "style": {
+          "backgroundColor": "#0F48C6",
+          "borderRadius": 4
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 6,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "packageName",
+        "type": "text",
+        "text": "Mature Wellness Check 35+",
+        "frame": {
+          "x": 69,
+          "y": 224,
+          "width": 420,
+          "height": 34
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 23,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "ltr"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 8,
+          "durationFrames": 16
+        }
+      },
+      {
+        "id": "headlineBox",
+        "type": "shape",
+        "frame": {
+          "x": 1536,
+          "y": 512,
+          "width": 425,
+          "height": 160
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.72)",
+          "borderRadius": 28
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 10,
+          "durationFrames": 16
+        }
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "بعد 35... الاطمئنان أهم",
+        "frame": {
+          "x": 95,
+          "y": 288,
+          "width": 390,
+          "height": 55
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 37,
+          "lineHeight": 1.15,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 14,
+          "durationFrames": 16
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "فحص صحي متكامل يساعدك على متابعة القلب والصحة العامة براحة وخصوصية",
+        "frame": {
+          "x": 99,
+          "y": 326,
+          "width": 370,
+          "height": 100
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 24,
+          "lineHeight": 1.35,
+          "color": "#222222",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 20,
+          "durationFrames": 16
+        }
+      },
+      {
+        "id": "includesBox",
+        "type": "shape",
+        "frame": {
+          "x": 1431,
+          "y": 259,
+          "width": 425,
+          "height": 92
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.58)",
+          "borderRadius": 20
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 24,
+          "durationFrames": 16
+        }
+      },
+      {
+        "id": "includesTitle",
+        "type": "text",
+        "text": "يشمل",
+        "frame": {
+          "x": 110,
+          "y": 461,
+          "width": 390,
+          "height": 32
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 24,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 28,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "includesText",
+        "type": "text",
+        "text": "زيارة منزلية مع متابعة صحية وقياسات أساسية",
+        "frame": {
+          "x": 95,
+          "y": 505,
+          "width": 390,
+          "height": 34
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 20,
+          "lineHeight": 1.2,
+          "color": "#4A4F58",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 32,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "featureRow1",
+        "type": "shape",
+        "frame": {
+          "x": 1829,
+          "y": 401,
+          "width": 410,
+          "height": 58
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.72)",
+          "borderRadius": 29
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 36,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "featureText1",
+        "type": "text",
+        "text": "زيارة طبيب + تمريض",
+        "frame": {
+          "x": 110,
+          "y": 599,
+          "width": 360,
+          "height": 34
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 24,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 38,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "featureRow2",
+        "type": "shape",
+        "frame": {
+          "x": 1778,
+          "y": 794,
+          "width": 410,
+          "height": 58
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.72)",
+          "borderRadius": 29
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 42,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "featureText2",
+        "type": "text",
+        "text": "تخطيط قلب",
+        "frame": {
+          "x": 110,
+          "y": 684,
+          "width": 360,
+          "height": 34
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 24,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 44,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "featureRow3",
+        "type": "shape",
+        "frame": {
+          "x": 1732,
+          "y": 1032,
+          "width": 410,
+          "height": 58
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.72)",
+          "borderRadius": 29
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 48,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "featureText3",
+        "type": "text",
+        "text": "تحاليل أساسية + تحليل تكوين الجسم",
+        "frame": {
+          "x": 121,
+          "y": 770,
+          "width": 380,
+          "height": 34
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 22,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 50,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "priceBadge",
+        "type": "button",
+        "text": "2,150 ريال",
+        "frame": {
+          "x": 104,
+          "y": 864,
+          "width": 350,
+          "height": 68
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 35,
+          "lineHeight": 1,
+          "color": "#FFFFFF",
+          "backgroundColor": "#0F48C6",
+          "borderRadius": 34,
+          "textAlign": "center",
+          "direction": "ltr"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 56,
+          "durationFrames": 16
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-12-1781366880112.png",
+    "aspectRatio": "4:5",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "13": {
+    "id": "smartlab-vitamin-d-post-v3",
+    "type": "posterOverlay",
+    "brand": "smartlab",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "brandStyle": {
+      "primaryColor": "#2A9DD8",
+      "fontFamily": "Tajawal",
+      "fontWeight": 500,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "topicLabel",
+        "type": "text",
+        "text": "فيتامين د",
+        "frame": {
+          "x": 770,
+          "y": 190,
+          "width": 180,
+          "height": 34
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 24,
+          "lineHeight": 1.1,
+          "color": "#2A9DD8",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 6,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "نقص فيتامين د\nقد يرتبط بالاكتئاب والخمول",
+        "frame": {
+          "x": 479,
+          "y": 243,
+          "width": 555,
+          "height": 130
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 44,
+          "lineHeight": 1.2,
+          "color": "#2A9DD8",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 14,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "وجود الشمس لا يكفي دائمًا",
+        "frame": {
+          "x": 520,
+          "y": 395,
+          "width": 430,
+          "height": 44
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 30,
+          "lineHeight": 1.3,
+          "color": "#252A31",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 24,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "accentLine",
+        "type": "shape",
+        "frame": {
+          "x": 770,
+          "y": 465,
+          "width": 180,
+          "height": 4
+        },
+        "style": {
+          "backgroundColor": "#2A9DD8",
+          "borderRadius": 4
+        },
+        "animation": {
+          "preset": "wipeRight",
+          "startFrame": 30,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "bodyText",
+        "type": "text",
+        "text": "اطمئن على مستوى فيتامين د بتحليل بسيط\n",
+        "frame": {
+          "x": 540,
+          "y": 495,
+          "width": 410,
+          "height": 42
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 23,
+          "lineHeight": 1.3,
+          "color": "#444B55",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 36,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "miniCardOne",
+        "type": "shape",
+        "frame": {
+          "x": 785,
+          "y": 575,
+          "width": 150,
+          "height": 44
+        },
+        "style": {
+          "backgroundColor": "rgba(42,157,216,0.10)",
+          "borderRadius": 22
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 44,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "miniTextOne",
+        "type": "text",
+        "text": "تعب",
+        "frame": {
+          "x": 818,
+          "y": 582,
+          "width": 87,
+          "height": 31
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 21,
+          "lineHeight": 1.1,
+          "color": "#2A9DD8",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 46,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "miniCardTwo",
+        "type": "shape",
+        "frame": {
+          "x": 614,
+          "y": 574,
+          "width": 150,
+          "height": 44
+        },
+        "style": {
+          "backgroundColor": "rgba(42,157,216,0.10)",
+          "borderRadius": 22
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 48,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "miniTextTwo",
+        "type": "text",
+        "text": "خمول",
+        "frame": {
+          "x": 648,
+          "y": 582,
+          "width": 85,
+          "height": 29
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 21,
+          "lineHeight": 1.1,
+          "color": "#2A9DD8",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 50,
+          "durationFrames": 14
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-13-1781967739402.png",
+    "aspectRatio": "4:5",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "14": {
+    "id": "smartmed-home-rehab-post-v2-clean-premium",
+    "type": "posterOverlay",
+    "brand": "smartmed",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 500,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "smallLabel",
+        "type": "text",
+        "text": "تأهيل منزلي",
+        "frame": {
+          "x": 765,
+          "y": 100,
+          "width": 245,
+          "height": 34
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 25,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 6,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "خطوتك الأولى\nنحو حركة أفضل",
+        "frame": {
+          "x": 580,
+          "y": 145,
+          "width": 430,
+          "height": 150
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 50,
+          "lineHeight": 1.18,
+          "color": "#0F48C6",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 14,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "جلسات علاج طبيعي داخل المنزل بإشراف مختصين",
+        "frame": {
+          "x": 565,
+          "y": 305,
+          "width": 445,
+          "height": 72
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 28,
+          "lineHeight": 1.35,
+          "color": "#252A31",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 24,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "featureOneBox",
+        "type": "shape",
+        "frame": {
+          "x": 875,
+          "y": 405,
+          "width": 135,
+          "height": 44
+        },
+        "style": {
+          "backgroundColor": "rgba(15,72,198,0.10)",
+          "borderRadius": 22
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 34,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "featureOneText",
+        "type": "text",
+        "text": "حركة",
+        "frame": {
+          "x": 895,
+          "y": 415,
+          "width": 95,
+          "height": 25
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 21,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 37,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "featureTwoBox",
+        "type": "shape",
+        "frame": {
+          "x": 725,
+          "y": 405,
+          "width": 135,
+          "height": 44
+        },
+        "style": {
+          "backgroundColor": "rgba(15,72,198,0.10)",
+          "borderRadius": 22
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 39,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "featureTwoText",
+        "type": "text",
+        "text": "توازن",
+        "frame": {
+          "x": 745,
+          "y": 415,
+          "width": 95,
+          "height": 25
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 21,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 42,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "featureThreeBox",
+        "type": "shape",
+        "frame": {
+          "x": 575,
+          "y": 405,
+          "width": 135,
+          "height": 44
+        },
+        "style": {
+          "backgroundColor": "rgba(15,72,198,0.10)",
+          "borderRadius": 22
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 44,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "featureThreeText",
+        "type": "text",
+        "text": "متابعة",
+        "frame": {
+          "x": 595,
+          "y": 415,
+          "width": 95,
+          "height": 25
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 21,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 47,
+          "durationFrames": 14
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-14-1781967762323.png",
+    "aspectRatio": "4:5",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "15": {
+    "id": "smartlab-fathers-day-celebration-v7",
+    "type": "posterOverlay",
+    "brand": "smartlab",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "brandStyle": {
+      "primaryColor": "#2A9DD8",
+      "fontFamily": "Tajawal",
+      "fontWeight": 500,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "hashtag",
+        "type": "text",
+        "text": "#يوم_الأب",
+        "frame": {
+          "x": 816,
+          "y": 70,
+          "width": 190,
+          "height": 34
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 23,
+          "lineHeight": 1.1,
+          "color": "#2A9DD8",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 4,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "يا أبي...  أنت فرحتنا",
+        "frame": {
+          "x": 183,
+          "y": 201,
+          "width": 683,
+          "height": 90
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 64,
+          "lineHeight": 1.15,
+          "color": "#2A9DD8",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 12,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "كل عام وأنت قلب البيت وسنده",
+        "frame": {
+          "x": 203,
+          "y": 306,
+          "width": 660,
+          "height": 48
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 32,
+          "lineHeight": 1.25,
+          "color": "#252A31",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 22,
+          "durationFrames": 18
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-15-1782036841878.png",
+    "aspectRatio": "4:5",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "16": {
+    "id": "smartmed-fathers-day-celebration-v1",
+    "type": "posterOverlay",
+    "brand": "smartmed",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 500,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "hashtag",
+        "type": "text",
+        "text": "#يوم_الأب",
+        "frame": {
+          "x": 770,
+          "y": 145,
+          "width": 210,
+          "height": 34
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 24,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 4,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "لأبي...\nكل الامتنان",
+        "frame": {
+          "x": 220,
+          "y": 205,
+          "width": 640,
+          "height": 145
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 66,
+          "lineHeight": 1.12,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 12,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "كل عام وأنت سند البيت وطمأنينته",
+        "frame": {
+          "x": 235,
+          "y": 365,
+          "width": 610,
+          "height": 50
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 33,
+          "lineHeight": 1.25,
+          "color": "#252A31",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 22,
+          "durationFrames": 18
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-16-1782043614802.png",
+    "aspectRatio": "4:5",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "18": {
+    "id": "smartmed-lung-lifestyle-scan-package-v3-panel-text-only",
+    "brand": "smartmed",
+    "aspectRatio": "4:5",
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-18-1782140795251.png",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 500,
+      "direction": "rtl"
+    },
+    "backgroundAnimation": {
+      "preset": "none"
+    },
+    "elements": [
+      {
+        "id": "priceText",
+        "type": "text",
+        "text": "⃁ 3,780",
+        "frame": {
+          "x": 676,
+          "y": 192,
+          "width": 254,
+          "height": 52
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 45,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "ltr"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 8,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "packageName",
+        "type": "text",
+        "text": "Lung & Lifestyle Scan",
+        "frame": {
+          "x": 510,
+          "y": 301,
+          "width": 439,
+          "height": 45
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 28,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "right",
+          "direction": "ltr"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 12,
+          "durationFrames": 16
+        }
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "فحص شامل\nللتنفس والقلب",
+        "frame": {
+          "x": 544,
+          "y": 407,
+          "width": 435,
+          "height": 125
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 40,
+          "lineHeight": 1.16,
+          "color": "#0F48C6",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 18,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "description",
+        "type": "text",
+        "text": "اطمئن على مؤشرات نمط حياتك بفحوصات دقيقة",
+        "frame": {
+          "x": 538,
+          "y": 506,
+          "width": 439,
+          "height": 76
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 26,
+          "lineHeight": 1.35,
+          "color": "#252A31",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 26,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "includesTitle",
+        "type": "text",
+        "text": "يشمل الفحص",
+        "frame": {
+          "x": 614,
+          "y": 681,
+          "width": 360,
+          "height": 55
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 45,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 34,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "includeOne",
+        "type": "text",
+        "text": "أشعة صدر",
+        "frame": {
+          "x": 726,
+          "y": 970,
+          "width": 225,
+          "height": 30
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 23,
+          "lineHeight": 1.1,
+          "color": "#313842",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 38,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "includeTwo",
+        "type": "text",
+        "text": "تخطيط قلب ECG",
+        "frame": {
+          "x": 729,
+          "y": 909,
+          "width": 225,
+          "height": 30
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 23,
+          "lineHeight": 1.1,
+          "color": "#313842",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 42,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "includeThree",
+        "type": "text",
+        "text": "فحص وظائف الرئة",
+        "frame": {
+          "x": 731,
+          "y": 840,
+          "width": 225,
+          "height": 30
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 23,
+          "lineHeight": 1.1,
+          "color": "#313842",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 46,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "includeFour",
+        "type": "text",
+        "text": "تحاليل دم ودهون شاملة",
+        "frame": {
+          "x": 626,
+          "y": 1035,
+          "width": 330,
+          "height": 30
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 23,
+          "lineHeight": 1.1,
+          "color": "#313842",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 50,
+          "durationFrames": 14
+        }
+      }
+    ],
+    "type": "posterOverlay",
+    "version": "1.0",
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    }
+  },
+  "19": {
+    "id": "smartlab-posts-scene-19",
+    "brand": "smartlab-posts",
+    "aspectRatio": "4:5",
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-19-1782223001276.png",
+    "canvas": {
+      "width": 1122,
+      "height": 1402
+    },
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 400
+    },
+    "backgroundAnimation": {
+      "preset": "none"
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "elements": [
+      {
+        "id": "package_tag",
+        "type": "text",
+        "text": "Diabetes Care Program",
+        "frame": {
+          "x": 710,
+          "y": 179,
+          "width": 334,
+          "height": 61
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": "600",
+          "fontSize": 25,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "ltr"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 3,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "برنامج العناية بالسكري",
+        "frame": {
+          "x": 681,
+          "y": 234,
+          "width": 380,
+          "height": 52
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": "700",
+          "fontSize": 34,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 7,
+          "durationFrames": 16
+        }
+      },
+      {
+        "id": "duration",
+        "type": "text",
+        "text": "لمدة 3 أشهر",
+        "frame": {
+          "x": 687,
+          "y": 289,
+          "width": 380,
+          "height": 40
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": "700",
+          "fontSize": 26,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 12,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "body_text",
+        "type": "text",
+        "text": "متابعة صحية متكاملة تساعدك على\nإدارة السكري من راحة منزلك",
+        "frame": {
+          "x": 706,
+          "y": 389,
+          "width": 340,
+          "height": 68
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": "500",
+          "fontSize": 20,
+          "lineHeight": 1.35,
+          "color": "#1F2933",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 17,
+          "durationFrames": 16
+        }
+      },
+      {
+        "id": "includes_title",
+        "type": "text",
+        "text": "يشمل",
+        "frame": {
+          "x": 805,
+          "y": 458,
+          "width": 140,
+          "height": 32
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": "700",
+          "fontSize": 25,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 23,
+          "durationFrames": 13
+        }
+      },
+      {
+        "id": "service_1",
+        "type": "text",
+        "text": "زيارة استشارية",
+        "frame": {
+          "x": 689,
+          "y": 615,
+          "width": 175,
+          "height": 28
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": "700",
+          "fontSize": 17,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 29,
+          "durationFrames": 12
+        }
+      },
+      {
+        "id": "service_2",
+        "type": "text",
+        "text": "استشارتان هاتفيتان",
+        "frame": {
+          "x": 884,
+          "y": 616,
+          "width": 175,
+          "height": 28
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": "700",
+          "fontSize": 16,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 32,
+          "durationFrames": 12
+        }
+      },
+      {
+        "id": "service_3",
+        "type": "text",
+        "text": "قياس كتلة الجسم",
+        "frame": {
+          "x": 684,
+          "y": 737,
+          "width": 175,
+          "height": 28
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": "700",
+          "fontSize": 16,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 35,
+          "durationFrames": 12
+        }
+      },
+      {
+        "id": "service_4",
+        "type": "text",
+        "text": "2 تحليل دم",
+        "frame": {
+          "x": 883,
+          "y": 736,
+          "width": 175,
+          "height": 28
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": "700",
+          "fontSize": 16,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 38,
+          "durationFrames": 12
+        }
+      },
+      {
+        "id": "service_5",
+        "type": "text",
+        "text": "خطة تغذية",
+        "frame": {
+          "x": 757,
+          "y": 852,
+          "width": 250,
+          "height": 28
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": "700",
+          "fontSize": 18,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 42,
+          "durationFrames": 13
+        }
+      },
+      {
+        "id": "price_label",
+        "type": "text",
+        "text": "السعر",
+        "frame": {
+          "x": 813,
+          "y": 910,
+          "width": 140,
+          "height": 32
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": "700",
+          "fontSize": 25,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 48,
+          "durationFrames": 12
+        }
+      },
+      {
+        "id": "priceText",
+        "type": "text",
+        "text": "⃁ 4,200",
+        "frame": {
+          "x": 722,
+          "y": 981,
+          "width": 320,
+          "height": 95
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": "700",
+          "fontSize": 82,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "ltr"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 53,
+          "durationFrames": 16
+        }
+      },
+      {
+        "id": "cta_text",
+        "type": "text",
+        "text": "احجز الآن",
+        "frame": {
+          "x": 778,
+          "y": 1125,
+          "width": 185,
+          "height": 44
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": "700",
+          "fontSize": 27,
+          "color": "#FFFFFF",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 62,
+          "durationFrames": 16
+        }
+      }
+    ]
+  },
+  "20": {
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "elements": [
+      {
+        "id": "heatGlow",
+        "type": "shape",
+        "shape": "circle",
+        "frame": {
+          "x": 70,
+          "y": 175,
+          "width": 430,
+          "height": 430
+        },
+        "style": {
+          "backgroundColor": "rgba(26,157,215,0.07)"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 0,
+          "durationFrames": 24
+        }
+      },
+      {
+        "id": "badgeBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 115,
+          "y": 185,
+          "width": 170,
+          "height": 40
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.72)",
+          "borderRadius": 20
+        },
+        "visible": false
+      },
+      {
+        "id": "badge",
+        "type": "text",
+        "text": "جفاف الصيف",
+        "frame": {
+          "x": 115,
+          "y": 193,
+          "width": 170,
+          "height": 24
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 19,
+          "lineHeight": 1.1,
+          "color": "#1A9DD7",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "visible": false
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "حر الصيف",
+        "frame": {
+          "x": 106,
+          "y": 244,
+          "width": 380,
+          "height": 72
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 72,
+          "lineHeight": 1.05,
+          "color": "#1A9DD7",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 6,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheadline",
+        "type": "text",
+        "text": "قد يسبب الجفاف\nويؤثر على توازن جسمك",
+        "frame": {
+          "x": 45,
+          "y": 342,
+          "width": 430,
+          "height": 92
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 31,
+          "lineHeight": 1.2,
+          "color": "#202020",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 16,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "chip1Bg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 110,
+          "y": 455,
+          "width": 170,
+          "height": 48
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.78)",
+          "borderRadius": 24
+        },
+        "visible": false
+      },
+      {
+        "id": "chip1",
+        "type": "text",
+        "text": "توازن السوائل",
+        "frame": {
+          "x": 113,
+          "y": 468,
+          "width": 170,
+          "height": 24
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 19,
+          "lineHeight": 1.1,
+          "color": "#1A9DD7",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "visible": false
+      },
+      {
+        "id": "chip2Bg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 295,
+          "y": 455,
+          "width": 145,
+          "height": 48
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.78)",
+          "borderRadius": 24
+        },
+        "visible": false
+      },
+      {
+        "id": "chip2",
+        "type": "text",
+        "text": "الأملاح",
+        "frame": {
+          "x": 295,
+          "y": 467,
+          "width": 145,
+          "height": 24
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 19,
+          "lineHeight": 1.1,
+          "color": "#1A9DD7",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "visible": false
+      },
+      {
+        "id": "ctaBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 147,
+          "y": 468,
+          "width": 320,
+          "height": 54
+        },
+        "style": {
+          "backgroundColor": "#1A9DD7",
+          "borderRadius": 27
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 30,
+          "durationFrames": 16
+        }
+      },
+      {
+        "id": "cta",
+        "type": "text",
+        "text": "ابدأ فحصك بخطوة بسيطة",
+        "frame": {
+          "x": 157,
+          "y": 479,
+          "width": 320,
+          "height": 30
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 31,
+          "lineHeight": 1.1,
+          "color": "#FFFFFF",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 38,
+          "durationFrames": 14
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-20-1782248637175.png",
+    "id": "smartlab-posts-scene-20",
+    "brand": "smartlab-posts",
+    "aspectRatio": "4:5",
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 500
+    },
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "21": {
+    "id": "smartmed-bone-cancer-awareness-month-001",
+    "type": "posterOverlay",
+    "brand": "smartmed",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 500,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "hashtagBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 779,
+          "y": 19,
+          "width": 300,
+          "height": 40
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.78)",
+          "borderRadius": 20
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 0,
+          "durationFrames": 12
+        }
+      },
+      {
+        "id": "hashtag",
+        "type": "text",
+        "text": "#شهر_التوعية_بسرطان_العظام",
+        "frame": {
+          "x": 799,
+          "y": 30,
+          "width": 266,
+          "height": 22
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 19,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 4,
+          "durationFrames": 12
+        }
+      },
+      {
+        "id": "badgeBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 408,
+          "y": 148,
+          "width": 264,
+          "height": 42
+        },
+        "style": {
+          "backgroundColor": "rgba(255,243,201,0.92)",
+          "borderRadius": 21
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 8,
+          "durationFrames": 12
+        }
+      },
+      {
+        "id": "badge",
+        "type": "text",
+        "text": "شهر التوعية",
+        "frame": {
+          "x": 408,
+          "y": 159,
+          "width": 264,
+          "height": 24
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 20,
+          "lineHeight": 1.1,
+          "color": "#B68A00",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 10,
+          "durationFrames": 12
+        }
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "سرطان العظام",
+        "frame": {
+          "x": 170,
+          "y": 204,
+          "width": 740,
+          "height": 76
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 62,
+          "lineHeight": 1.05,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 14,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheadline",
+        "type": "text",
+        "text": "ألم العظام المستمر إشارة تستحق الانتباه",
+        "frame": {
+          "x": 150,
+          "y": 286,
+          "width": 780,
+          "height": 46
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 29,
+          "lineHeight": 1.2,
+          "color": "#222222",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 26,
+          "durationFrames": 18
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-21-1782825757894.png",
+    "aspectRatio": "4:5",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "22": {
+    "id": "smartlab-bone-cancer-awareness-month-002",
+    "type": "posterOverlay",
+    "brand": "smartlab-posts",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "brandStyle": {
+      "primaryColor": "#1A9DD7",
+      "fontFamily": "Tajawal",
+      "fontWeight": 500,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "hashtag",
+        "type": "text",
+        "text": "#شهر_التوعية_بسرطان_العظام",
+        "frame": {
+          "x": 655,
+          "y": 92,
+          "width": 365,
+          "height": 28
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 18,
+          "lineHeight": 1.1,
+          "color": "#C99A00",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 0,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "accentLine",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 990,
+          "y": 145,
+          "width": 8,
+          "height": 145
+        },
+        "style": {
+          "backgroundColor": "#F2C230",
+          "borderRadius": 4
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 6,
+          "durationFrames": 16
+        }
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "لا تجعل ألم العظام يحدّ من حركتك…",
+        "frame": {
+          "x": 446,
+          "y": 142,
+          "width": 520,
+          "height": 145
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 58,
+          "lineHeight": 1.12,
+          "color": "#1A9DD7",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 12,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subCard",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 528,
+          "y": 307,
+          "width": 459,
+          "height": 64
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.76)",
+          "borderRadius": 32
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 22,
+          "durationFrames": 16
+        }
+      },
+      {
+        "id": "subheadline",
+        "type": "text",
+        "text": " التشخيص المبكر هو بداية العلاج",
+        "frame": {
+          "x": 534,
+          "y": 322,
+          "width": 445,
+          "height": 34
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 32,
+          "lineHeight": 1.15,
+          "color": "#202020",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 30,
+          "durationFrames": 14
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-22-1782827641966.png",
+    "aspectRatio": "4:5",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "23": {
+    "id": "smartmed-complete-post-cesarean-care-001",
+    "type": "posterOverlay",
+    "brand": "smartmed-posts",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 500,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "packageBadgeBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 116,
+          "y": 197,
+          "width": 320,
+          "height": 48
+        },
+        "style": {
+          "backgroundColor": "#0F48C6",
+          "borderRadius": 24
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "packageBadge",
+        "type": "text",
+        "text": "Complete Post-Cesarean Care",
+        "frame": {
+          "x": 127,
+          "y": 213,
+          "width": 297,
+          "height": 29
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 22,
+          "lineHeight": 1.1,
+          "color": "#FFFFFF",
+          "textAlign": "center",
+          "direction": "ltr"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "رعاية متكاملة\nبعد القيصرية",
+        "frame": {
+          "x": 49,
+          "y": 269,
+          "width": 390,
+          "height": 150
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 58,
+          "lineHeight": 1.08,
+          "color": "#0F48C6",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "wipeRight",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "description",
+        "type": "text",
+        "text": "باقة شاملة لدعم الأم والمولود\nفي مرحلة التعافي براحة وخصوصية",
+        "frame": {
+          "x": 68,
+          "y": 401,
+          "width": 410,
+          "height": 86
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 27,
+          "lineHeight": 1.28,
+          "color": "#202020",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "sectionTitleBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 191,
+          "y": 546,
+          "width": 168,
+          "height": 48
+        },
+        "style": {
+          "backgroundColor": "#0F48C6",
+          "borderRadius": 24
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "sectionTitle",
+        "type": "text",
+        "text": "تشمل الباقة",
+        "frame": {
+          "x": 195,
+          "y": 559,
+          "width": 168,
+          "height": 26
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 24,
+          "lineHeight": 1.1,
+          "color": "#FFFFFF",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "item1Bg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 81,
+          "y": 630,
+          "width": 186,
+          "height": 54
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.88)",
+          "borderRadius": 18
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "item1",
+        "type": "text",
+        "text": "محاليل وريدية",
+        "frame": {
+          "x": 92,
+          "y": 645,
+          "width": 162,
+          "height": 24
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 21,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "item2Bg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 281,
+          "y": 631,
+          "width": 186,
+          "height": 54
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.88)",
+          "borderRadius": 18
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "item2",
+        "type": "text",
+        "text": "تحاليل أساسية",
+        "frame": {
+          "x": 297,
+          "y": 646,
+          "width": 162,
+          "height": 24
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 21,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "item3Bg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 81,
+          "y": 710,
+          "width": 186,
+          "height": 54
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.88)",
+          "borderRadius": 18
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "item3",
+        "type": "text",
+        "text": "زيارة استشارية",
+        "frame": {
+          "x": 98,
+          "y": 726,
+          "width": 162,
+          "height": 24
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 21,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "item4Bg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 273,
+          "y": 798,
+          "width": 186,
+          "height": 54
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.88)",
+          "borderRadius": 18
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "item4",
+        "type": "text",
+        "text": "سونار الحوض",
+        "frame": {
+          "x": 283,
+          "y": 813,
+          "width": 162,
+          "height": 24
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 21,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "item5Bg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 78,
+          "y": 796,
+          "width": 186,
+          "height": 54
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.88)",
+          "borderRadius": 18
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "item5",
+        "type": "text",
+        "text": "رعاية الجرح",
+        "frame": {
+          "x": 89,
+          "y": 813,
+          "width": 162,
+          "height": 24
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 21,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "item6Bg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 291,
+          "y": 717,
+          "width": 186,
+          "height": 54
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.88)",
+          "borderRadius": 18
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "item6",
+        "type": "text",
+        "text": "رعاية المولود",
+        "frame": {
+          "x": 300,
+          "y": 729,
+          "width": 162,
+          "height": 24
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 21,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "ctaBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 75,
+          "y": 881,
+          "width": 388,
+          "height": 64
+        },
+        "style": {
+          "backgroundColor": "#0F48C6",
+          "borderRadius": 32
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "cta",
+        "type": "text",
+        "text": "احجزي الآن",
+        "frame": {
+          "x": 66,
+          "y": 897,
+          "width": 398,
+          "height": 48
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 35,
+          "lineHeight": 1.1,
+          "color": "#FFFFFF",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 0,
+          "durationFrames": 18
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-23-1783335017940.png",
+    "aspectRatio": "4:5",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "24": {
+    "id": "smartlab-thyroid-awareness-001",
+    "type": "posterOverlay",
+    "brand": "smartlab-posts",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "brandStyle": {
+      "primaryColor": "#1A9DD7",
+      "fontFamily": "Tajawal",
+      "fontWeight": 500,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "الغدة الدرقية",
+        "frame": {
+          "x": 170,
+          "y": 176,
+          "width": 740,
+          "height": 78
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 66,
+          "lineHeight": 1.05,
+          "color": "#1A9DD7",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 0,
+          "durationFrames": 10
+        }
+      },
+      {
+        "id": "subheadline",
+        "type": "text",
+        "text": "توازنها ينعكس على طاقتك وصحة جسمك",
+        "frame": {
+          "x": 160,
+          "y": 270,
+          "width": 760,
+          "height": 44
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 29,
+          "lineHeight": 1.2,
+          "color": "#202020",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 0,
+          "durationFrames": 10
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-24-1783365204956.png",
+    "aspectRatio": "4:5",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  },
+  "25": {
+    "id": "smartmed-homecare-service-frame-01",
+    "brand": "smartmed-posts",
+    "aspectRatio": "4:5",
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-25-1783589636203.png",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 500,
+      "direction": "rtl"
+    },
+    "backgroundAnimation": {
+      "preset": "none"
+    },
+    "elements": [
+      {
+        "id": "tagBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 810,
+          "y": 56,
+          "width": 230,
+          "height": 44
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.86)",
+          "borderRadius": 22
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 0,
+          "durationFrames": 12
+        }
+      },
+      {
+        "id": "tag",
+        "type": "text",
+        "text": "رعاية منزلية",
+        "frame": {
+          "x": 830,
+          "y": 67,
+          "width": 190,
+          "height": 24
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 21,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 4,
+          "durationFrames": 12
+        }
+      },
+      {
+        "id": "accentLine",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 1060,
+          "y": 120,
+          "width": 8,
+          "height": 145
+        },
+        "style": {
+          "backgroundColor": "#0F48C6",
+          "borderRadius": 4
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 8,
+          "durationFrames": 14
+        }
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "الرعاية الطبية\nتصلك إلى منزلك",
+        "frame": {
+          "x": 495,
+          "y": 120,
+          "width": 540,
+          "height": 145
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 58,
+          "lineHeight": 1.08,
+          "color": "#0F48C6",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 12,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "خدمات صحية موثوقة براحة وخصوصية",
+        "frame": {
+          "x": 520,
+          "y": 280,
+          "width": 500,
+          "height": 42
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 28,
+          "lineHeight": 1.2,
+          "color": "#202020",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 22,
+          "durationFrames": 16
+        }
+      },
+      {
+        "id": "chip1Bg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 652,
+          "y": 350,
+          "width": 122,
+          "height": 44
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.86)",
+          "borderRadius": 22
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 30,
+          "durationFrames": 12
+        }
+      },
+      {
+        "id": "chip1",
+        "type": "text",
+        "text": "تمريض",
+        "frame": {
+          "x": 652,
+          "y": 362,
+          "width": 122,
+          "height": 22
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 19,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 34,
+          "durationFrames": 10
+        }
+      },
+      {
+        "id": "chip2Bg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 788,
+          "y": 350,
+          "width": 122,
+          "height": 44
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.86)",
+          "borderRadius": 22
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 32,
+          "durationFrames": 12
+        }
+      },
+      {
+        "id": "chip2",
+        "type": "text",
+        "text": "تحاليل",
+        "frame": {
+          "x": 788,
+          "y": 362,
+          "width": 122,
+          "height": 22
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 19,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 36,
+          "durationFrames": 10
+        }
+      },
+      {
+        "id": "chip3Bg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 924,
+          "y": 350,
+          "width": 122,
+          "height": 44
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.86)",
+          "borderRadius": 22
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 34,
+          "durationFrames": 12
+        }
+      },
+      {
+        "id": "chip3",
+        "type": "text",
+        "text": "رعاية",
+        "frame": {
+          "x": 924,
+          "y": 362,
+          "width": 122,
+          "height": 22
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 19,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 38,
+          "durationFrames": 10
+        }
+      }
+    ],
+    "type": "posterOverlay",
+    "version": "1.0",
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    }
+  },
+  "26": {
+    "id": "smartlab-hba1c-centered-immersive-009",
+    "type": "posterOverlay",
+    "brand": "smartlab-posts",
+    "version": "1.2",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-26-1783606562565.png",
+    "aspectRatio": "4:5",
+    "backgroundAnimation": {
+      "preset": "none"
+    },
+    "brandStyle": {
+      "primaryColor": "#1A9DD7",
+      "fontFamily": "Tajawal",
+      "fontWeight": 500,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "topRightTagBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 853,
+          "y": 13,
+          "width": 220,
+          "height": 46
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.82)",
+          "borderRadius": 23
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 0,
+          "durationFrames": 55
+        }
+      },
+      {
+        "id": "topRightTag",
+        "type": "text",
+        "text": "فحص HbA1c",
+        "frame": {
+          "x": 880,
+          "y": 24,
+          "width": 180,
+          "height": 24
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 23,
+          "lineHeight": 1.1,
+          "color": "#1A9DD7",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 5,
+          "durationFrames": 50
+        }
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "السكر التراكمي",
+        "frame": {
+          "x": 150,
+          "y": 178,
+          "width": 780,
+          "height": 92
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 78,
+          "lineHeight": 1.05,
+          "color": "#1A9DD7",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 8,
+          "durationFrames": 60
+        }
+      },
+      {
+        "id": "subheadline",
+        "type": "text",
+        "text": " التحكم بالسكر التراكمي يقلل من خطر المضاعفات ويحافظ على جودة الحياة",
+        "frame": {
+          "x": 120,
+          "y": 282,
+          "width": 840,
+          "height": 46
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 26,
+          "lineHeight": 1.2,
+          "color": "#202020",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 16,
+          "durationFrames": 55
+        }
+      },
+      {
+        "id": "miniInsightBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 312,
+          "y": 352,
+          "width": 456,
+          "height": 54
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.72)",
+          "borderRadius": 27
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 24,
+          "durationFrames": 52
+        }
+      },
+      {
+        "id": "miniInsight",
+        "type": "text",
+        "text": "قياس واحد… رؤية أوضح",
+        "frame": {
+          "x": 332,
+          "y": 367,
+          "width": 416,
+          "height": 24
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 23,
+          "lineHeight": 1.1,
+          "color": "#1A9DD7",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 28,
+          "durationFrames": 50
+        }
+      },
+      {
+        "id": "cellPointerBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 60,
+          "y": 650,
+          "width": 340,
+          "height": 54
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.84)",
+          "borderRadius": 27
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 38,
+          "durationFrames": 55
+        }
+      },
+      {
+        "id": "cellPointerText",
+        "type": "text",
+        "text": "متوسط السكر خلال ٣ شهور",
+        "frame": {
+          "x": 76,
+          "y": 665,
+          "width": 328,
+          "height": 25
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 20,
+          "lineHeight": 1.1,
+          "color": "#1A9DD7",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 42,
+          "durationFrames": 50
+        }
+      },
+      {
+        "id": "cellPointerLine",
+        "type": "shape",
+        "shape": "line",
+        "frame": {
+          "x": 400,
+          "y": 678,
+          "width": 102,
+          "height": 3
+        },
+        "style": {
+          "backgroundColor": "#1A9DD7"
+        },
+        "animation": {
+          "preset": "wipeRight",
+          "startFrame": 48,
+          "durationFrames": 48
+        }
+      },
+      {
+        "id": "cellPointerDot",
+        "type": "shape",
+        "shape": "circle",
+        "frame": {
+          "x": 495,
+          "y": 671,
+          "width": 16,
+          "height": 16
+        },
+        "style": {
+          "backgroundColor": "#1A9DD7"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 56,
+          "durationFrames": 40
+        }
+      },
+      {
+        "id": "indicatorBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 70,
+          "y": 945,
+          "width": 360,
+          "height": 56
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.86)",
+          "borderRadius": 28
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 66,
+          "durationFrames": 52
+        }
+      },
+      {
+        "id": "indicatorText",
+        "type": "text",
+        "text": "يرتبط السكر بكريات الدم الحمراء",
+        "frame": {
+          "x": 86,
+          "y": 961,
+          "width": 328,
+          "height": 25
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 20,
+          "lineHeight": 1.1,
+          "color": "#1A9DD7",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 70,
+          "durationFrames": 48
+        }
+      },
+      {
+        "id": "indicatorLine",
+        "type": "shape",
+        "shape": "line",
+        "frame": {
+          "x": 430,
+          "y": 972,
+          "width": 77,
+          "height": 3
+        },
+        "style": {
+          "backgroundColor": "#1A9DD7"
+        },
+        "animation": {
+          "preset": "wipeRight",
+          "startFrame": 76,
+          "durationFrames": 45
+        }
+      },
+      {
+        "id": "indicatorDot",
+        "type": "shape",
+        "shape": "circle",
+        "frame": {
+          "x": 504,
+          "y": 966,
+          "width": 15,
+          "height": 15
+        },
+        "style": {
+          "backgroundColor": "#1A9DD7"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 82,
+          "durationFrames": 38
+        }
+      },
+      {
+        "id": "lowerInfoBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 640,
+          "y": 990,
+          "width": 330,
+          "height": 56
+        },
+        "style": {
+          "backgroundColor": "rgba(26,157,215,0.92)",
+          "borderRadius": 28
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 88,
+          "durationFrames": 50
+        }
+      },
+      {
+        "id": "lowerInfoText",
+        "type": "text",
+        "text": "تكبير يوضح الارتباط",
+        "frame": {
+          "x": 656,
+          "y": 1006,
+          "width": 298,
+          "height": 25
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 20,
+          "lineHeight": 1.1,
+          "color": "#FFFFFF",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 94,
+          "durationFrames": 45
+        }
+      }
+    ]
+  }
+}

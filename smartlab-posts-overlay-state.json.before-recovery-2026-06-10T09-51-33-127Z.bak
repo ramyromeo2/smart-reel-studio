@@ -1,0 +1,79 @@
+{
+  "1": {
+    "id": "smartmed-chest-pain-post-001",
+    "type": "posterOverlay",
+    "brand": "smartmed",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 400,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "ألم الصدر المفاجئ إشارة لا تُهمل",
+        "frame": {
+          "x": 283,
+          "y": 124,
+          "width": 780,
+          "height": 82
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 54,
+          "lineHeight": 1.12,
+          "color": "#0F48C6",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 6,
+          "durationFrames": 18
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "مع سمارت ميد، تبدأ الطمأنينة من تقييم الحالة في وقتها",
+        "frame": {
+          "x": 415,
+          "y": 188,
+          "width": 635,
+          "height": 71
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 400,
+          "fontSize": 32,
+          "lineHeight": 1.22,
+          "color": "#222222",
+          "textAlign": "right",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 16,
+          "durationFrames": 18
+        }
+      }
+    ],
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-1-1781083485254.png",
+    "aspectRatio": "4:5",
+    "backgroundAnimation": {
+      "preset": "none"
+    }
+  }
+}

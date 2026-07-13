@@ -1,0 +1,118 @@
+{
+  "scene1Image": "generated/smartlab/scene1.jpg",
+  "scene2Image": "generated/smartlab/scene2.jpg",
+  "scene3Image": "generated/smartlab/scene3.jpg",
+  "scene4Image": "generated/smartlab/scene4.jpg",
+  "scene1Headline": "تحاليل منزلية براحة وأمان",
+  "scene1Subtitle": "نسحب العينة من منزلك بدقة وخصوصية",
+  "s1HeadlineAnim": {
+    "entry": "word-stagger",
+    "durFrames": 20,
+    "delayFrames": 8
+  },
+  "s1SubtitleAnim": {
+    "entry": "fade-up",
+    "durFrames": 22,
+    "delayFrames": 38
+  },
+  "scene2Headline": "لماذا سمارت لاب؟",
+  "scene2Subtitle": "خدمة منزلية موثوقة تناسب يومك",
+  "scene2Benefits": [
+    "خصوصية وراحة في المنزل",
+    "سرعة في الحجز والوصول",
+    "نتائج دقيقة باحترافية"
+  ],
+  "s2HeadlineAnim": {
+    "entry": "word-stagger",
+    "durFrames": 20,
+    "delayFrames": 8
+  },
+  "s2SubtitleAnim": {
+    "entry": "fade-up",
+    "durFrames": 22,
+    "delayFrames": 32
+  },
+  "s2BenefitsAnim": {
+    "entry": "slide-from-right",
+    "durFrames": 22,
+    "delayFrames": 56
+  },
+  "s2BenefitsStaggerFrames": 16,
+  "scene3Headline": "خدماتنا",
+  "scene3Subtitle": "مختبرك... في منزلك",
+  "scene3Cards": [
+    {
+      "icon": "fa-solid fa-house-medical",
+      "text": "سحب عينات منزلي"
+    },
+    {
+      "icon": "fa-regular fa-clock",
+      "text": "نتائج دقيقة وسريعة"
+    },
+    {
+      "icon": "fa-solid fa-door-open",
+      "text": "راحة وخدمة\nإلى باب منزلك"
+    },
+    {
+      "icon": "fa-solid fa-user-doctor",
+      "text": "فريق مختبر مؤهل"
+    }
+  ],
+  "s3HeadlineAnim": {
+    "entry": "word-stagger",
+    "durFrames": 20,
+    "delayFrames": 8
+  },
+  "s3SubtitleAnim": {
+    "entry": "fade-up",
+    "durFrames": 22,
+    "delayFrames": 32
+  },
+  "s3CardsAnim": {
+    "entry": "scale-pop",
+    "durFrames": 24,
+    "delayFrames": 56
+  },
+  "s3CardsStaggerFrames": 10,
+  "scene4Logo": "",
+  "scene4Headline": "احجز الآن",
+  "scene4Subtitle": "تحاليل منزلية دقيقة ومريحة",
+  "scene4Contacts": [
+    {
+      "icon": "fa-solid fa-globe",
+      "text": "smartlab.sa"
+    },
+    {
+      "icon": "fa-solid fa-phone",
+      "text": "9200 22520",
+      "isNumber": true
+    }
+  ],
+  "s4LogoAnim": {
+    "entry": "spring-zoom-fade",
+    "durFrames": 22,
+    "delayFrames": 4
+  },
+  "s4HeadlineAnim": {
+    "entry": "word-stagger",
+    "durFrames": 22,
+    "delayFrames": 26,
+    "loop": "heartbeat"
+  },
+  "s4SubtitleAnim": {
+    "entry": "fade-up",
+    "durFrames": 22,
+    "delayFrames": 56
+  },
+  "s4ContactsAnim": {
+    "entry": "slide-from-left",
+    "durFrames": 24,
+    "delayFrames": 78
+  },
+  "s4ContactsStaggerFrames": 18,
+  "scene1DurationSec": 5,
+  "scene2DurationSec": 5,
+  "scene3DurationSec": 5,
+  "scene4DurationSec": 5,
+  "crossfadeFrames": 18
+}

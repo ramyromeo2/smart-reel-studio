@@ -1,0 +1,21 @@
+{
+  "scene1Image": "generated/smartmed/scene1.jpg",
+  "scene2Image": "generated/smartmed/scene2.jpg",
+  "scene3Image": "generated/smartmed/scene3.jpg",
+  "scene1HeadlineLine1": "رعاية منزلية",
+  "scene1HeadlineLine2": "تطمئن عائلتك",
+  "scene1Subtitle": "خدمات طبية وتمريضية في راحة منزلك",
+  "scene2Pills": [
+    { "text": "زيارة منزلية", "icon": "home-med" },
+    { "text": "متابعة مستمرة", "icon": "refresh" },
+    { "text": "فريق طبي مؤهل", "icon": "person-check" },
+    { "text": "راحة وأمان في المنزل", "icon": "home-heart" }
+  ],
+  "scene3Headline": "احجز الآن",
+  "scene3Subtitle": "رعاية منزلية خاصة لراحة أحبائك",
+  "scene3Contacts": [
+    { "icon": "whatsapp", "label": "واتساب", "value": "920001974" },
+    { "icon": "phone", "label": "خدمة العملاء", "value": "0530055499" },
+    { "icon": "globe", "label": "الموقع الإلكتروني", "value": "www.smartmed.sa" }
+  ]
+}

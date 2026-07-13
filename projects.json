@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "projects": [
+    {
+      "id": "smartmed",
+      "name": "SmartMed",
+      "tagline": "Home medical services — 3 scenes, vertical reel",
+      "studioUrl": "smartmed-preview.html",
+      "presetsFile": "smartmed-presets.json",
+      "bakeCommand": "npm run bake:smartmed",
+      "renderCommand": "npm run render:smartmed",
+      "videoOut": "out/smartmed-v1.mp4",
+      "scenes": 3,
+      "aspect": "1080×1920 (9:16)",
+      "color": "#194ea4"
+    },
+    {
+      "id": "smartlab",
+      "name": "SmartLab",
+      "tagline": "Home lab testing — 4 scenes, square-ish",
+      "studioUrl": "smartlab-preview.html",
+      "presetsFile": "smartlab-presets.json",
+      "bakeCommand": "npm run bake:smartlab",
+      "renderCommand": "npm run render:smartlab",
+      "videoOut": "out/smartlab-v1.mp4",
+      "scenes": 4,
+      "aspect": "1080×1350 (4:5)",
+      "color": "#1A9DD7"
+    },
+    {
+      "id": "smartmed-hajj",
+      "name": "SmartMed — Hajj",
+      "tagline": "Hajj home-medical campaign — 5 scenes, vertical reel",
+      "studioUrl": "smartmed-hajj-preview.html",
+      "presetsFile": "smartmed-hajj-presets.json",
+      "bakeCommand": "npm run bake:smartmed-hajj",
+      "renderCommand": "npm run render:smartmed-hajj",
+      "videoOut": "out/smartmed-hajj-v1.mp4",
+      "scenes": 5,
+      "aspect": "1080×1920 (9:16)",
+      "color": "#0B2A4A"
+    },
+    {
+      "id": "smartlab-posts",
+      "name": "smartlab-posts",
+      "tagline": "",
+      "studioUrl": "smartlab-posts-preview.html",
+      "presetsFile": "smartlab-posts-presets.json",
+      "propsFile": "smartlab-posts-props.json",
+      "renderCommand": "npm run render:smartlab-posts",
+      "videoOut": "out/smartlab-posts-v1.mp4",
+      "scenes": 4,
+      "aspect": "1080×1350 (4:5)",
+      "color": "#3b82f6",
+      "custom": true,
+      "createdAt": "2026-06-07T12:25:30.275Z"
+    },
+    {
+      "id": "err4rte",
+      "name": "err4rte",
+      "tagline": "",
+      "studioUrl": "err4rte-preview.html",
+      "presetsFile": "err4rte-presets.json",
+      "propsFile": "err4rte-props.json",
+      "renderCommand": "npm run render:err4rte",
+      "videoOut": "out/err4rte-v1.mp4",
+      "scenes": 3,
+      "aspect": "1080×1350 (4:5)",
+      "color": "#3b82f6",
+      "starter": "smartlab-posts",
+      "advancedPoster": true,
+      "custom": true,
+      "createdAt": "2026-07-07T10:07:58.358Z"
+    },
+    {
+      "id": "kjhgfdsdfghjkl",
+      "name": "kjhgfdsdfghjkl",
+      "tagline": "",
+      "studioUrl": "kjhgfdsdfghjkl-preview.html",
+      "presetsFile": "kjhgfdsdfghjkl-presets.json",
+      "propsFile": "kjhgfdsdfghjkl-props.json",
+      "renderCommand": "npm run render:kjhgfdsdfghjkl",
+      "videoOut": "out/kjhgfdsdfghjkl-v1.mp4",
+      "scenes": 3,
+      "aspect": "1080×1350 (4:5)",
+      "color": "#3b82f6",
+      "starter": "smartlab-posts",
+      "advancedPoster": true,
+      "custom": true,
+      "createdAt": "2026-07-07T10:57:16.064Z"
+    }
+  ]
+}

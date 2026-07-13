@@ -1,0 +1,205 @@
+/* SMARTMED reel — auto-generated from preset "current". DO NOT EDIT BY HAND. */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800&family=Tajawal:wght@500;600;700;800;900&display=swap');
+
+.sm-video {
+  direction: rtl;
+  font-family: "Tajawal", "Cairo", "Arial", sans-serif;
+  background: #ffffff;
+  color: #194ea4;
+  overflow: hidden;
+}
+
+.sm-photo { position: absolute; inset: 0; overflow: hidden; }
+.sm-photo img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transform-origin: center; will-change: transform;
+}
+
+/* ── Scene 1 ────────────────────────────────────────────────── */
+.sm-headline {
+  position: absolute;
+  top: 14%;
+  left: 0; right: 0;
+  text-align: center;
+  direction: rtl;
+  z-index: 5;
+  display: flex; flex-direction: column;
+  gap: 0px;
+}
+.sm-headline-line {
+  font-family: "Tajawal", "Cairo", "Arial", sans-serif;
+  font-size: 124px;
+  line-height: 1.15;
+  font-weight: 500;
+  color: #194ea4;
+  letter-spacing: -1px;
+  will-change: transform, opacity;
+}
+.sm-subtitle {
+  position: absolute;
+  top: 31%;
+  left: 0; right: 0;
+  text-align: center;
+  direction: rtl;
+  padding: 0 90px;
+  font-family: "Tajawal", "Cairo", "Arial", sans-serif;
+  font-size: 44px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #194ea4;
+  will-change: transform, opacity;
+  z-index: 5;
+}
+
+/* ── Scene 2: pills ─────────────────────────────────────────── */
+.sm-pills {
+  position: absolute;
+  top: 26%;
+  right: 46px;
+  display: flex; flex-direction: column;
+  gap: 57px;
+  z-index: 5;
+}
+.sm-pill {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  gap: 22px;
+  padding: 18px 28px 18px 18px;
+  background: #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 14px 36px rgba(0, 30, 90, 0.18),
+              0 2px 6px rgba(0, 30, 90, 0.06);
+  width: 656px;
+  will-change: transform, opacity;
+}
+.sm-pill-text {
+  font-family: "Tajawal", "Cairo", "Arial", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #194ea4;
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+}
+.sm-pill-icon {
+  width: 88px;
+  height: 88px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  background: #e6f4fb;
+  border-radius: 999px;
+  color: #004e9e;
+  padding: 18px;
+  box-shadow: inset 0 -3px 8px rgba(0, 30, 90, 0.06);
+  will-change: transform;
+}
+.sm-pill-icon svg { width: 100%; height: 100%; }
+
+/* ── Scene 3: CTA + contacts ────────────────────────────────── */
+.sm-cta-headline {
+  position: absolute;
+  top: 36.5%;
+  left: 0; right: 0;
+  text-align: center;
+  direction: rtl;
+  padding: 0 0px;
+  font-family: "Tajawal", "Tajawal", "Cairo", "Arial", sans-serif;
+  font-size: 95px;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #194ea4;
+  letter-spacing: -1px;
+  transform: translateX(0px);
+  z-index: 5;
+  will-change: transform, opacity;
+}
+.sm-cta-subtitle {
+  position: absolute;
+  top: 45%;
+  left: 0; right: 0;
+  text-align: center;
+  direction: rtl;
+  padding: 0 90px;
+  font-family: "Tajawal", "Tajawal", "Cairo", "Arial", sans-serif;
+  font-size: 42px;
+  line-height: 1.35;
+  font-weight: 500;
+  color: #194ea4;
+  transform: translateX(0px);
+  z-index: 5;
+  will-change: transform, opacity;
+}
+
+.sm-contact-list {
+  position: absolute;
+  top: 49%;
+  right: 139px;
+  width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  z-index: 5;
+}
+.sm-contact-row {
+  width: 100%;
+  height: 152px;
+  display: flex;
+  flex-direction: row;
+  direction: ltr;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 3px solid #B8CDF0;
+  will-change: transform, opacity;
+}
+.sm-contact-row:last-child { border-bottom: none; }
+.sm-contact-icon-wrap {
+  width: 132px; min-width: 132px;
+  display: flex; justify-content: center; align-items: center;
+}
+.sm-contact-icon {
+  width: 88px;
+  height: 88px;
+  flex: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #194ea4;
+  will-change: transform;
+}
+.sm-contact-icon svg { width: 100%; height: 100%; display: block; }
+.sm-contact-divider {
+  width: 3px;
+  height: 78px;
+  background: #AFC6EC;
+  margin: 0 38px;
+  flex-shrink: 0;
+}
+.sm-contact-label {
+  direction: rtl;
+  text-align: left;
+  color: #194ea4;
+  font-family: "Tajawal", "Tajawal", "Cairo", sans-serif;
+  font-size: 37px;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1;
+  min-width: 240px;
+  margin-right: 24px;
+}
+.sm-contact-value {
+  color: #194ea4;
+  font-family: "Tajawal", "Tajawal", "Cairo", sans-serif;
+  font-size: 61px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  direction: ltr;
+  text-align: right;
+  margin-left: 24px;
+  letter-spacing: -1px;
+  flex: 1 1 auto;
+}
+.sm-contact-value.web { font-size: 41px; }
+.sm-contact-label.web { font-size: 32px; }

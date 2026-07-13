@@ -1,0 +1,3534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SmartLab Studio</title>
+<link rel="icon" href="data:," />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: #050811; color: #e4e8f0; }
+body { display: flex; gap: 16px; padding: 16px; min-height: 100vh; }
+body.blank-project .scene > :not(.scene-bg):not(.layers-host):not(.shapes-host):not(.markers-host):not(.poster-overlay-host) {
+  display: none !important;
+}
+
+  /* ── Stage (canvas size follows the active overlay JSON, scaled by fitStage) ─ */
+  .stage-wrap {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-top: 8px;
+    overflow: hidden;
+  }
+  .stage-frame {
+    flex: 1 1 0;
+    min-height: 0;
+    width: 100%;
+    align-self: stretch;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+  /* The shell takes the *scaled* dimensions so the surrounding layout
+     flows around the visible stage rect, not the unscaled 1080×1350. */
+  .stage-shell {
+    position: relative;
+    width: 0;
+    height: 0;
+    flex: none;
+  }
+
+  /* ── Timeline strip ─────────────────────────────────────── */
+  .timeline-bar {
+    width: min(100%, 1180px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: linear-gradient(180deg, rgba(16,22,36,0.97), rgba(8,13,24,0.97));
+    border: 1px solid rgba(148,163,184,0.18);
+    border-radius: 14px;
+    padding: 14px 16px 12px;
+    box-shadow: 0 18px 48px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+  .timeline-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #93c5fd;
+    font-weight: 800;
+    font-family: 'SF Mono', ui-monospace, monospace;
+  }
+  .timeline-top .spacer { flex: 1 1 160px; }
+  .tl-btn {
+    min-height: 34px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(148,163,184,0.2);
+    color: #f8fafc;
+    padding: 7px 14px;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+  .tl-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(147,197,253,0.36); }
+  .tl-btn.render { background: linear-gradient(135deg, #10b981, #059669); border-color: rgba(16,185,129,0.9); color: #fff; box-shadow: 0 8px 22px rgba(16,185,129,0.24); }
+  .tl-btn.render:hover { background: linear-gradient(135deg, #34d399, #10b981); }
+  .tl-btn:disabled { opacity: 0.5; cursor: wait; }
+  .tl-scroll-btn {
+    width: 34px;
+    min-width: 34px;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1;
+  }
+  .timeline {
+    display: flex;
+    gap: 12px;
+    min-height: 90px;
+    align-items: stretch;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 2px 4px 12px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    overscroll-behavior-x: contain;
+  }
+  .timeline::-webkit-scrollbar { height: 10px; }
+  .timeline::-webkit-scrollbar-track { background: rgba(255,255,255,0.055); border-radius: 999px; }
+  .timeline::-webkit-scrollbar-thumb { background: rgba(147,197,253,0.42); border-radius: 999px; border: 2px solid rgba(10,15,27,0.96); }
+  .timeline::-webkit-scrollbar-thumb:hover { background: rgba(147,197,253,0.62); }
+  .tl-scene {
+    position: relative;
+    display: grid;
+    grid-template-rows: 24px 1fr 16px;
+    align-items: center;
+    justify-items: stretch;
+    padding: 8px 10px 9px;
+    background: linear-gradient(180deg, rgba(28,48,86,0.76), rgba(14,28,55,0.84));
+    border: 1px solid rgba(96,165,250,0.3);
+    border-radius: 12px;
+    color: #bfdbfe;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    user-select: none;
+    transition: transform .14s ease, background .14s ease, border-color .14s ease, box-shadow .14s ease;
+    overflow: hidden;
+    min-width: 146px;
+    height: 86px;
+    flex: 0 0 146px !important;
+    scroll-snap-align: start;
+  }
+  .tl-scene::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 24% 0%, rgba(147,197,253,0.16), transparent 44%);
+    opacity: .8;
+    pointer-events: none;
+  }
+  .tl-scene:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(180deg, rgba(37,72,137,0.82), rgba(18,43,86,0.9));
+    border-color: rgba(147,197,253,0.5);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+  }
+  .tl-scene.active {
+    background: linear-gradient(180deg, #3b82f6, #2563eb);
+    border-color: rgba(191,219,254,0.92);
+    color: #fff;
+    box-shadow: 0 12px 28px rgba(37,99,235,0.38), inset 0 1px 0 rgba(255,255,255,0.18);
+  }
+  .tl-scene.hidden {
+    opacity: 0.5;
+    background: rgba(255,255,255,0.045);
+    border-color: rgba(255,255,255,0.1);
+    color: #7d8ba1;
+    cursor: not-allowed;
+  }
+  .tl-scene .tl-label {
+    pointer-events: none;
+    position: relative;
+    z-index: 1;
+    grid-row: 2;
+    justify-self: center;
+    align-self: center;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-shadow: 0 3px 12px rgba(0,0,0,0.24);
+  }
+  .tl-dur {
+    position: relative;
+    z-index: 1;
+    grid-row: 3;
+    justify-self: start;
+    align-self: end;
+    font-size: 11px;
+    color: rgba(226,238,255,0.78);
+    font-family: 'SF Mono', monospace;
+    pointer-events: none;
+  }
+  .tl-scene .tl-controls {
+    position: relative;
+    z-index: 2;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 22px);
+    gap: 4px;
+    justify-content: start;
+    align-items: center;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .tl-scene .tl-ctrl {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    background: rgba(2,6,23,0.46);
+    border: 1px solid rgba(255,255,255,0.22);
+    color: #f8fbff;
+    border-radius: 6px;
+    font-size: 11px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  }
+  .tl-scene.active .tl-ctrl { background: rgba(15,23,42,0.42); }
+  .tl-scene .tl-ctrl:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.38); }
+  .tl-scene .tl-delete:hover { background: rgba(239,68,68,0.34); border-color: rgba(248,113,113,0.55); }
+  .tl-scene[draggable="true"] { cursor: grab; }
+  .tl-scene[draggable="true"]:active { cursor: grabbing; }
+  .tl-scene.drag-over { box-shadow: inset 0 0 0 2px #fbbf24; }
+
+  .render-overlay { position: fixed; inset: 0; background: rgba(5,8,17,0.92); backdrop-filter: blur(6px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 40px; }
+  .render-overlay.show { display: flex; }
+  .render-modal { width: 100%; max-width: 720px; background: linear-gradient(180deg, rgba(20,25,40,0.98), rgba(12,16,28,0.98)); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 24px; color: #e7ecf5; }
+  .render-modal h2 { font-size: 18px; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+  .render-modal .render-sub { color: #8b95a8; font-size: 12px; margin-bottom: 16px; font-family: 'SF Mono', monospace; }
+  .render-progress { height: 8px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; margin-bottom: 14px; }
+  .render-progress > span { display: block; height: 100%; background: linear-gradient(90deg, #3b82f6, #10b981); border-radius: 999px; transition: width .3s ease; }
+  .render-log { background: #0a0e1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 10px 12px; font-family: 'SF Mono', ui-monospace, monospace; font-size: 11px; color: #cdd6e3; max-height: 280px; overflow-y: auto; white-space: pre-wrap; line-height: 1.45; margin-bottom: 14px; }
+  .render-modal .render-actions { display: flex; gap: 8px; justify-content: flex-end; }
+  .render-modal video { width: 100%; border-radius: 10px; margin-bottom: 14px; background: #000; max-height: 50vh; }
+  .stage {
+    width: 1080px;
+    height: 1350px;
+    transform-origin: top left;
+    /* transform: scale(...) set live by fitStage() — no hardcoded scale */
+    background: var(--bg-color, #ffffff);
+    position: absolute;
+    top: 0; left: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    direction: rtl;
+    font-family: 'Tajawal', Arial, sans-serif;
+    container-type: inline-size;
+  }
+  .scene { position: absolute; inset: 0; display: none; }
+  .scene.active { display: block; }
+  .scene-bg { position: absolute; inset: 0; z-index: 0; }
+  .scene-bg img { width: 100%; height: 100%; object-fit: contain; display: block; background: #fff; }
+  .scene > *:not(.scene-bg):not(.layers-host) { position: relative; z-index: 10; }
+  .scene > .poster-overlay-host {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 80 !important;
+    display: block !important;
+    pointer-events: auto !important;
+    overflow: hidden !important;
+  }
+  .scene > .poster-overlay-host .poster-overlay-node {
+    position: absolute !important;
+    z-index: 1 !important;
+  }
+  .layers-host { position: absolute; inset: 0; pointer-events: none; }
+  .layers-host img { position: absolute; transform-origin: center center; will-change: transform, opacity; }
+
+  /* Scene 1 */
+  .sl-s1-text { position: absolute; top: var(--s1-top, 245px); width: 100%; text-align: center; direction: rtl; }
+  .sl-s1-text h1 { color: var(--primary-color, #071B3A); font-family: 'Tajawal', sans-serif; font-size: var(--s1-h-size, 58px); font-weight: var(--s1-h-weight, 400); line-height: 1.25; letter-spacing: -0.5px; }
+  .sl-s1-text p { margin: var(--s1-gap, 22px) 0 0; color: var(--accent-color, #1A9DD7); font-family: 'Tajawal', sans-serif; font-size: var(--s1-s-size, 36px); font-weight: 400; line-height: 1.3; }
+
+  /* Scene 2 */
+  .sl-s2-text { position: absolute; top: var(--s2-top, 210px); width: 100%; padding: 0 90px; text-align: center; direction: rtl; }
+  .sl-s2-text h1 { color: var(--primary-color, #071B3A); font-size: var(--s2-h-size, 62px); font-weight: 500; line-height: 1.25; }
+  .sl-s2-text .subtitle { margin: 22px 0 var(--s2-gap, 42px); color: var(--accent-color, #1A9DD7); font-size: var(--s2-s-size, 38px); font-weight: 500; line-height: 1.3; }
+  .sl-benefits { display: inline-flex; flex-direction: column; gap: var(--s2-bgap, 18px); align-items: flex-start; }
+  .sl-benefit { display: flex; align-items: center; gap: 18px; color: var(--primary-color, #071B3A); font-size: var(--s2-b-size, 34px); font-weight: 500; line-height: 1.25; white-space: nowrap; }
+  .sl-check { width: 42px; height: 42px; border: 3px solid var(--accent-color, #1A9DD7); border-radius: 50%; color: var(--accent-color, #1A9DD7); display: flex; align-items: center; justify-content: center; font-size: 28px; font-family: Arial, sans-serif; font-weight: 700; flex-shrink: 0; }
+
+  /* Scene 3 */
+  .sl-services { position: absolute; top: var(--s3-top, 135px); width: 100%; padding: 0 145px; text-align: center; direction: rtl; }
+  .sl-services h1 { color: var(--primary-color, #071B3A); font-size: var(--s3-h-size, 72px); font-weight: 500; line-height: 1.1; }
+  .sl-services .subtitle { margin-top: 14px; color: var(--accent-color, #1A9DD7); font-size: var(--s3-s-size, 44px); font-weight: 500; line-height: 1.2; }
+  .sl-cards { margin-top: var(--s3-cgap-top, 38px); display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3-card-gap, 22px) 28px; direction: rtl; }
+  .sl-card { height: var(--s3-card-h, 152px); background: rgba(255,255,255,0.94); border-radius: 28px; box-shadow: 0 14px 34px rgba(7,27,58,0.09), inset 0 0 0 1px rgba(26,157,215,0.04); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .sl-card i { font-size: var(--s3-card-icon, 56px); color: var(--accent-color, #1A9DD7); margin-bottom: 16px; line-height: 1; }
+  .sl-card p { color: var(--primary-color, #071B3A); font-size: var(--s3-card-text, 28px); font-weight: 500; line-height: 1.25; }
+
+  /* Scene 4 */
+  .sl-outro { position: absolute; top: var(--s4-top, 255px); width: 100%; text-align: center; direction: rtl; padding: 0 120px; }
+  .sl-brand-logo { width: var(--s4-logo-w, 360px); margin: 0 auto var(--s4-logo-gap, 70px); display: block; }
+  .sl-outro h1 { color: var(--primary-color, #071B3A); font-size: var(--s4-h-size, 82px); font-weight: 500; line-height: 1.1; letter-spacing: -1px; }
+  .sl-outro .subtitle { margin-top: 28px; color: var(--accent-color, #1A9DD7); font-size: var(--s4-s-size, 42px); font-weight: 500; line-height: 1.25; }
+  .sl-contact-list { margin: var(--s4-list-top, 58px) auto 0; width: fit-content; display: flex; flex-direction: column; gap: var(--s4-list-gap, 28px); direction: ltr; }
+  .sl-contact-row { display: grid; grid-template-columns: 80px 28px 1fr; align-items: center; gap: 24px; text-align: left; }
+  .sl-icon-circle { width: 70px; height: 70px; border-radius: 50%; background: rgba(26,157,215,0.08); display: flex; align-items: center; justify-content: center; }
+  .sl-icon-circle i { color: var(--accent-color, #1A9DD7); font-size: 42px; }
+  .sl-divider { width: 3px; height: 58px; background: var(--accent-color, #1A9DD7); border-radius: 20px; }
+  .sl-contact-text { color: var(--primary-color, #071B3A); font-size: var(--s4-c-size, 44px); font-weight: 500; line-height: 1; }
+  .sl-contact-text.number { font-family: 'DIN Alternate', Arial, sans-serif; font-weight: 700; letter-spacing: 0.5px; }
+
+  /* ── Right control panel ─────────────────────────────────── */
+  .panel {
+    width: 420px;
+    flex: none;
+    background: linear-gradient(180deg, rgba(20,25,40,0.95), rgba(12,16,28,0.95));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-height: calc(100vh - 32px);
+  }
+  .panel-toolbar { padding: 14px 14px 10px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .toolbar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .toolbar-row:last-child { margin-bottom: 0; }
+  .back-link { color: #8b95a8; text-decoration: none; font-size: 12px; padding: 4px 8px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.08); }
+  .back-link:hover { color: #f4f6fb; }
+  h2 { font-size: 14px; font-weight: 700; color: #f4f6fb; display: flex; align-items: center; gap: 8px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #10b981; flex: none; }
+  .dot.dirty { background: #f59e0b; }
+  .toolbar-status { margin-left: auto; font-size: 11px; color: #10b981; font-weight: 600; }
+  .toolbar-status.dirty { color: #f59e0b; }
+  .btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #f4f6fb; padding: 7px 12px; border-radius: 7px; font-size: 12px; font-weight: 600; cursor: pointer; }
+  .btn:hover { background: rgba(255,255,255,0.1); }
+  .btn-primary { background: #3b82f6; border-color: #3b82f6; }
+  .btn-primary:hover { background: #2563eb; }
+  .btn-danger { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3); color: #f87171; }
+  .btn-render { background: linear-gradient(135deg, #10b981, #059669); border-color: #10b981; color: #fff; }
+  select, input[type=text], input[type=number] { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 7px; padding: 7px 10px; color: #fff; font-size: 12px; font-family: inherit; }
+  .toolbar-search { width: 100%; padding: 8px 12px; }
+
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(58px, 1fr));
+    gap: 4px;
+    background: rgba(0,0,0,0.2);
+    padding: 4px;
+    border-radius: 8px;
+    margin-top: 8px;
+    max-height: 116px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+  }
+  .tabs::-webkit-scrollbar { width: 6px; }
+  .tabs::-webkit-scrollbar-thumb { background: rgba(147,197,253,0.22); border-radius: 999px; }
+  .tab { min-width: 0; background: transparent; border: none; color: #8b95a8; padding: 7px 6px; font-size: 10px; line-height: 1.15; font-weight: 700; cursor: pointer; border-radius: 5px; white-space: normal; }
+  .tab.active { background: rgba(59,130,246,0.2); color: #93c5fd; }
+
+  .panel-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+  .panel-body::-webkit-scrollbar { width: 8px; }
+  .panel-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 999px; }
+
+  .group { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; overflow: hidden; flex: 0 0 auto; }
+  .group[open] { background: rgba(255,255,255,0.04); }
+  .group > summary { list-style: none; cursor: pointer; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .group > summary::-webkit-details-marker { display: none; }
+  .group > summary::after { content: ''; width: 7px; height: 7px; border-right: 2px solid #8b95a8; border-bottom: 2px solid #8b95a8; transform: rotate(-45deg); transition: transform .15s ease; flex: none; }
+  .group[open] > summary::after { transform: rotate(45deg); }
+  .group > summary h3 { font-size: 12px; font-weight: 700; color: #f4f6fb; margin: 0; }
+  .badge { font-size: 9px; color: #93c5fd; background: rgba(59,130,246,0.12); padding: 2px 6px; border-radius: 4px; text-transform: uppercase; }
+  .group-content { padding: 8px 12px 12px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 6px; }
+
+  .row { display: flex; align-items: center; gap: 8px; font-size: 11px; padding: 3px 0; }
+  .row.hidden { display: none; }
+  .row label { flex: 1; color: #b8c2d4; font-weight: 500; line-height: 1.3; }
+  .row input[type=range] { flex: 1.7; accent-color: #1A9DD7; height: 3px; }
+  .row .val { min-width: 50px; text-align: right; font-family: 'SF Mono', ui-monospace, monospace; font-size: 10px; color: #93c5fd; font-weight: 600; background: rgba(59,130,246,0.08); padding: 2px 5px; border-radius: 4px; }
+  .row input[type=color] { width: 30px; height: 28px; border: 1px solid rgba(255,255,255,0.18); border-radius: 6px; background: transparent; padding: 2px; cursor: pointer; }
+  .row input[type=text] { flex: 1.7; direction: rtl; text-align: right; font-family: 'Tajawal', sans-serif; }
+  .row select { flex: 1.7; padding: 6px 8px; }
+
+  .panel-footer { padding: 12px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; gap: 8px; flex-wrap: wrap; align-items: stretch; }
+  .panel-footer .btn { flex: 1 1 84px; min-height: 42px; }
+
+  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px); background: #10b981; color: #fff; padding: 10px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; opacity: 0; transition: all .2s ease; pointer-events: none; z-index: 100; }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+  .toast.error { background: #ef4444; }
+</style>
+</head>
+<body class="blank-project">
+
+<!-- ═══════════════ STAGE ═══════════════ -->
+<div class="stage-wrap">
+<div class="timeline-bar">
+  <div class="timeline-top">
+    <span id="tl-total">Total: 22.0s</span>
+    <span class="spacer"></span>
+    <button class="tl-btn tl-scroll-btn" id="tl-scroll-left" title="Scroll scenes left">‹</button>
+    <button class="tl-btn tl-scroll-btn" id="tl-scroll-right" title="Scroll scenes right">›</button>
+    <button class="tl-btn" id="tl-add-scene" title="Clones the active scene as a new editable copy">＋ Add scene</button>
+    <button class="tl-btn" id="tl-show-all">👁 Show all</button>
+    <button class="tl-btn render" id="tl-render-btn">🎬 Render video</button>
+  </div>
+  <div class="timeline" id="timeline-strip"></div>
+</div>
+<div class="stage-frame">
+ <div class="stage-shell" id="stage-shell">
+<div class="stage" id="stage">
+
+  <!-- Scene 1 -->
+  <div class="scene active" data-scene="1">
+    <div class="scene-bg"><img src="public/generated/blank-white.svg" onerror="this.style.display='none'"></div>
+    <div class="layers-host" data-stage-layers="1"></div>
+    <svg class="shapes-host" data-stage-shapes="1" viewBox="0 0 1080 1350" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;"></svg>
+    <svg class="markers-host" data-stage-markers="1" viewBox="0 0 1080 1350" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:6;"></svg>
+    <div class="sl-s1-text">
+      <h1 id="sl-s1-h1">تحاليل منزلية براحة وأمان</h1>
+      <p id="sl-s1-p">نسحب العينة من منزلك بدقة وخصوصية</p>
+    </div>
+  </div>
+
+  <!-- Scene 2 -->
+  <div class="scene" data-scene="2">
+    <div class="scene-bg"><img src="public/generated/blank-white.svg" onerror="this.style.display='none'"></div>
+    <div class="layers-host" data-stage-layers="2"></div>
+    <svg class="shapes-host" data-stage-shapes="2" viewBox="0 0 1080 1350" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;"></svg>
+    <svg class="markers-host" data-stage-markers="2" viewBox="0 0 1080 1350" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:6;"></svg>
+    <div class="sl-s2-text">
+      <h1 id="sl-s2-h1">لماذا سمارت لاب؟</h1>
+      <div class="subtitle" id="sl-s2-sub">خدمة منزلية موثوقة تناسب يومك</div>
+      <div class="sl-benefits" id="sl-s2-benefits"></div>
+    </div>
+  </div>
+
+  <!-- Scene 3 -->
+  <div class="scene" data-scene="3">
+    <div class="scene-bg"><img src="public/generated/blank-white.svg" onerror="this.style.display='none'"></div>
+    <div class="layers-host" data-stage-layers="3"></div>
+    <svg class="shapes-host" data-stage-shapes="3" viewBox="0 0 1080 1350" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;"></svg>
+    <svg class="markers-host" data-stage-markers="3" viewBox="0 0 1080 1350" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:6;"></svg>
+    <section class="sl-services">
+      <h1 id="sl-s3-h1">خدماتنا</h1>
+      <div class="subtitle" id="sl-s3-sub">مختبرك... في منزلك</div>
+      <div class="sl-cards" id="sl-s3-cards"></div>
+    </section>
+  </div>
+
+  <!-- Scene 4 -->
+  <div class="scene" data-scene="4">
+    <div class="scene-bg"><img src="public/generated/blank-white.svg" onerror="this.style.display='none'"></div>
+    <div class="layers-host" data-stage-layers="4"></div>
+    <svg class="shapes-host" data-stage-shapes="4" viewBox="0 0 1080 1350" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;"></svg>
+    <svg class="markers-host" data-stage-markers="4" viewBox="0 0 1080 1350" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:6;"></svg>
+    <section class="sl-outro">
+      <img class="sl-brand-logo" id="sl-s4-logo" src="" alt="" onerror="this.style.opacity=0.2;this.alt='[logo missing]'" />
+      <h1 id="sl-s4-h1">احجز الآن</h1>
+      <div class="subtitle" id="sl-s4-sub">تحاليل منزلية دقيقة ومريحة</div>
+      <div class="sl-contact-list" id="sl-s4-contacts"></div>
+    </section>
+  </div>
+
+</div>
+ </div>
+</div>
+</div>
+
+<!-- ═══════════════ PANEL ═══════════════ -->
+<div class="panel">
+  <div class="panel-toolbar">
+    <div class="toolbar-row">
+      <h2><span class="dot" id="sl-status-dot"></span>SmartLab Studio</h2>
+      <span class="toolbar-status" id="sl-status-text">All changes saved</span>
+    </div>
+    <div class="toolbar-row" style="font-size:11px;color:#93c5fd;font-family:'SF Mono',ui-monospace,monospace;font-weight:600;">
+      <span id="sl-total-dur" style="background:rgba(59,130,246,0.12);padding:3px 8px;border-radius:5px;">Total: 18.0s</span>
+      <button class="btn" id="sl-play-toggle" style="margin-left:auto;font-size:11px;padding:4px 10px;">▶ Play scene</button>
+      <button class="btn" id="sl-play-all-toggle" style="font-size:11px;padding:4px 10px;">▶ Play all</button>
+    </div>
+    <div class="toolbar-row">
+      <a class="back-link" href="index.html">← Hub</a>
+      <button class="btn btn-primary" id="sl-save-btn">💾 Save</button>
+      <button class="btn" id="sl-preset-btn">⭐ Preset</button>
+    </div>
+    <div class="toolbar-row">
+      <select id="sl-preset-load" style="flex:1;">
+        <option value="">— Load preset —</option>
+      </select>
+      <button class="btn btn-danger" id="sl-preset-del" style="padding:7px 10px;">🗑</button>
+    </div>
+    <input type="text" class="toolbar-search" id="sl-search" placeholder="Search controls…" />
+    <div class="tabs">
+      <button class="tab active" data-scene="all">All</button>
+      <button class="tab" data-scene="1">Scene 1</button>
+      <button class="tab" data-scene="2">Scene 2</button>
+      <button class="tab" data-scene="3">Scene 3</button>
+      <button class="tab" data-scene="4">Scene 4</button>
+    </div>
+  </div>
+
+  <div class="panel-body" id="panel-body">
+
+    <!-- Global -->
+    <details class="group" data-scene="all" open>
+      <summary><h3>🎨 Global <span class="badge">colors</span></h3></summary>
+      <div class="group-content">
+        <div class="row">
+          <label>Background color</label>
+          <input type="color" id="bg-color" value="#ffffff">
+        </div>
+        <div class="row">
+          <label>Primary (text) color</label>
+          <input type="color" id="primary-color" value="#071B3A">
+        </div>
+        <div class="row">
+          <label>Accent color</label>
+          <input type="color" id="accent-color" value="#1A9DD7">
+        </div>
+      </div>
+    </details>
+
+    <!-- Scene Timing — durations + crossfade -->
+    <details class="group" data-scene="all">
+      <summary><h3>⏱ Scene Timing <span class="badge">durations</span></h3></summary>
+      <div class="group-content">
+        <div class="row"><label>Scene 1 duration</label><input type="range" id="s1-dur" min="2.0" max="10.0" step="0.1" value="5.0"><span class="val" id="s1-durV">5.0s</span></div>
+        <div class="row"><label>Scene 2 duration</label><input type="range" id="s2-dur" min="2.0" max="10.0" step="0.1" value="5.0"><span class="val" id="s2-durV">5.0s</span></div>
+        <div class="row"><label>Scene 3 duration</label><input type="range" id="s3-dur" min="2.0" max="10.0" step="0.1" value="5.0"><span class="val" id="s3-durV">5.0s</span></div>
+        <div class="row"><label>Scene 4 duration</label><input type="range" id="s4-dur" min="2.0" max="10.0" step="0.1" value="5.0"><span class="val" id="s4-durV">5.0s</span></div>
+        <div class="row"><label>Crossfade (frames)</label><input type="range" id="crossfade-frames" min="0" max="36" value="18"><span class="val" id="crossfade-framesV">18</span></div>
+      </div>
+    </details>
+
+    <!-- Audio + cross-project scene clipboard -->
+    <details class="group" data-scene="all">
+      <summary><h3>🎵 Audio & Scene Tools <span class="badge">music · clip · copy/paste</span></h3></summary>
+      <div class="group-content">
+        <div class="row">
+          <label>Audio file</label>
+          <div style="flex:1.7; display:flex; gap:6px; flex-direction:column;">
+            <input type="file" id="audio-upload" accept="audio/*" style="padding:5px; font-size:11px;">
+            <audio id="audio-player" controls style="width:100%; height:32px;"></audio>
+            <div style="display:flex; gap:6px;">
+              <button class="btn" id="audio-clear" style="flex:1; font-size:10px; padding:4px;">Clear audio</button>
+              <span id="audio-info" style="flex:1; font-size:10px; color:#93c5fd; align-self:center; text-align:right;">No file</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="font-weight:700; color:#93c5fd; font-size:10px; text-transform:uppercase; letter-spacing:.4px; border-top:1px dashed rgba(147,197,253,.18); padding-top:8px; margin-top:6px;">Per-scene tools</div>
+
+        <!-- Scene 1 row -->
+        <div style="background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); border-radius:7px; padding:8px; margin-top:4px;">
+          <div style="display:flex; gap:6px; margin-bottom:6px;">
+            <span style="font-size:11px; font-weight:700; color:#93c5fd; align-self:center; min-width:50px;">Scene 1</span>
+            <button class="btn copy-scene-btn" data-scene-id="s1" style="flex:1; padding:4px; font-size:10px;">📋 Copy</button>
+            <button class="btn paste-scene-btn" data-scene-id="s1" style="flex:1; padding:4px; font-size:10px;">📥 Paste</button>
+            <button class="btn audio-play-btn" data-scene-id="s1" style="flex:1; padding:4px; font-size:10px;">▶ Play</button>
+          </div>
+          <div class="row"><label>Audio start (s)</label><input type="range" id="s1-audio-start" min="0" max="60" step="0.01" value="0"><span class="val" id="s1-audio-startV">0.00s</span></div>
+          <div class="row"><label>Audio end (s)</label><input type="range" id="s1-audio-end" min="0" max="60" step="0.01" value="0"><span class="val" id="s1-audio-endV">0.00s</span></div>
+        </div>
+        <!-- Scene 2 row -->
+        <div style="background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); border-radius:7px; padding:8px; margin-top:4px;">
+          <div style="display:flex; gap:6px; margin-bottom:6px;">
+            <span style="font-size:11px; font-weight:700; color:#93c5fd; align-self:center; min-width:50px;">Scene 2</span>
+            <button class="btn copy-scene-btn" data-scene-id="s2" style="flex:1; padding:4px; font-size:10px;">📋 Copy</button>
+            <button class="btn paste-scene-btn" data-scene-id="s2" style="flex:1; padding:4px; font-size:10px;">📥 Paste</button>
+            <button class="btn audio-play-btn" data-scene-id="s2" style="flex:1; padding:4px; font-size:10px;">▶ Play</button>
+          </div>
+          <div class="row"><label>Audio start (s)</label><input type="range" id="s2-audio-start" min="0" max="60" step="0.01" value="0"><span class="val" id="s2-audio-startV">0.00s</span></div>
+          <div class="row"><label>Audio end (s)</label><input type="range" id="s2-audio-end" min="0" max="60" step="0.01" value="0"><span class="val" id="s2-audio-endV">0.00s</span></div>
+        </div>
+        <!-- Scene 3 row -->
+        <div style="background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); border-radius:7px; padding:8px; margin-top:4px;">
+          <div style="display:flex; gap:6px; margin-bottom:6px;">
+            <span style="font-size:11px; font-weight:700; color:#93c5fd; align-self:center; min-width:50px;">Scene 3</span>
+            <button class="btn copy-scene-btn" data-scene-id="s3" style="flex:1; padding:4px; font-size:10px;">📋 Copy</button>
+            <button class="btn paste-scene-btn" data-scene-id="s3" style="flex:1; padding:4px; font-size:10px;">📥 Paste</button>
+            <button class="btn audio-play-btn" data-scene-id="s3" style="flex:1; padding:4px; font-size:10px;">▶ Play</button>
+          </div>
+          <div class="row"><label>Audio start (s)</label><input type="range" id="s3-audio-start" min="0" max="60" step="0.01" value="0"><span class="val" id="s3-audio-startV">0.00s</span></div>
+          <div class="row"><label>Audio end (s)</label><input type="range" id="s3-audio-end" min="0" max="60" step="0.01" value="0"><span class="val" id="s3-audio-endV">0.00s</span></div>
+        </div>
+        <!-- Scene 4 row -->
+        <div style="background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); border-radius:7px; padding:8px; margin-top:4px;">
+          <div style="display:flex; gap:6px; margin-bottom:6px;">
+            <span style="font-size:11px; font-weight:700; color:#93c5fd; align-self:center; min-width:50px;">Scene 4</span>
+            <button class="btn copy-scene-btn" data-scene-id="s4" style="flex:1; padding:4px; font-size:10px;">📋 Copy</button>
+            <button class="btn paste-scene-btn" data-scene-id="s4" style="flex:1; padding:4px; font-size:10px;">📥 Paste</button>
+            <button class="btn audio-play-btn" data-scene-id="s4" style="flex:1; padding:4px; font-size:10px;">▶ Play</button>
+          </div>
+          <div class="row"><label>Audio start (s)</label><input type="range" id="s4-audio-start" min="0" max="60" step="0.01" value="0"><span class="val" id="s4-audio-startV">0.00s</span></div>
+          <div class="row"><label>Audio end (s)</label><input type="range" id="s4-audio-end" min="0" max="60" step="0.01" value="0"><span class="val" id="s4-audio-endV">0.00s</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- Animations: Scene 1 -->
+    <details class="group" data-scene="1">
+      <summary><h3>✨ Scene 1 Animations <span class="badge">headline · subtitle</span></h3></summary>
+      <div class="group-content">
+        <div class="row"><label>Headline anim</label><select id="s1-h-anim" data-anim-picker></select></div>
+        <div class="row"><label>Headline dur</label><input type="range" id="s1-h-anim-dur" min="6" max="60" value="20"><span class="val" id="s1-h-anim-durV">20f</span></div>
+        <div class="row"><label>Headline delay</label><input type="range" id="s1-h-anim-delay" min="0" max="120" value="8"><span class="val" id="s1-h-anim-delayV">8f</span></div>
+        <div class="row"><label>Subtitle anim</label><select id="s1-s-anim" data-anim-picker></select></div>
+        <div class="row"><label>Subtitle dur</label><input type="range" id="s1-s-anim-dur" min="6" max="60" value="22"><span class="val" id="s1-s-anim-durV">22f</span></div>
+        <div class="row"><label>Subtitle delay</label><input type="range" id="s1-s-anim-delay" min="0" max="120" value="38"><span class="val" id="s1-s-anim-delayV">38f</span></div>
+      </div>
+    </details>
+
+    <!-- Animations: Scene 2 -->
+    <details class="group" data-scene="2">
+      <summary><h3>✨ Scene 2 Animations <span class="badge">+ benefits</span></h3></summary>
+      <div class="group-content">
+        <div class="row"><label>Headline anim</label><select id="s2-h-anim" data-anim-picker></select></div>
+        <div class="row"><label>Headline dur</label><input type="range" id="s2-h-anim-dur" min="6" max="60" value="20"><span class="val" id="s2-h-anim-durV">20f</span></div>
+        <div class="row"><label>Headline delay</label><input type="range" id="s2-h-anim-delay" min="0" max="120" value="8"><span class="val" id="s2-h-anim-delayV">8f</span></div>
+        <div class="row"><label>Subtitle anim</label><select id="s2-s-anim" data-anim-picker></select></div>
+        <div class="row"><label>Subtitle dur</label><input type="range" id="s2-s-anim-dur" min="6" max="60" value="22"><span class="val" id="s2-s-anim-durV">22f</span></div>
+        <div class="row"><label>Subtitle delay</label><input type="range" id="s2-s-anim-delay" min="0" max="120" value="32"><span class="val" id="s2-s-anim-delayV">32f</span></div>
+        <div class="row"><label>Benefits anim</label><select id="s2-benefits-anim" data-anim-picker></select></div>
+        <div class="row"><label>Benefits dur</label><input type="range" id="s2-benefits-anim-dur" min="6" max="60" value="22"><span class="val" id="s2-benefits-anim-durV">22f</span></div>
+        <div class="row"><label>Benefits delay</label><input type="range" id="s2-benefits-anim-delay" min="0" max="120" value="56"><span class="val" id="s2-benefits-anim-delayV">56f</span></div>
+        <div class="row"><label>Benefits stagger</label><input type="range" id="s2-benefits-stagger" min="0" max="40" value="16"><span class="val" id="s2-benefits-staggerV">16f</span></div>
+      </div>
+    </details>
+
+    <!-- Animations: Scene 3 -->
+    <details class="group" data-scene="3">
+      <summary><h3>✨ Scene 3 Animations <span class="badge">+ cards</span></h3></summary>
+      <div class="group-content">
+        <div class="row"><label>Headline anim</label><select id="s3-h-anim" data-anim-picker></select></div>
+        <div class="row"><label>Headline dur</label><input type="range" id="s3-h-anim-dur" min="6" max="60" value="20"><span class="val" id="s3-h-anim-durV">20f</span></div>
+        <div class="row"><label>Headline delay</label><input type="range" id="s3-h-anim-delay" min="0" max="120" value="8"><span class="val" id="s3-h-anim-delayV">8f</span></div>
+        <div class="row"><label>Subtitle anim</label><select id="s3-s-anim" data-anim-picker></select></div>
+        <div class="row"><label>Subtitle dur</label><input type="range" id="s3-s-anim-dur" min="6" max="60" value="22"><span class="val" id="s3-s-anim-durV">22f</span></div>
+        <div class="row"><label>Subtitle delay</label><input type="range" id="s3-s-anim-delay" min="0" max="120" value="32"><span class="val" id="s3-s-anim-delayV">32f</span></div>
+        <div class="row"><label>Cards anim</label><select id="s3-cards-anim" data-anim-picker></select></div>
+        <div class="row"><label>Cards dur</label><input type="range" id="s3-cards-anim-dur" min="6" max="60" value="24"><span class="val" id="s3-cards-anim-durV">24f</span></div>
+        <div class="row"><label>Cards delay</label><input type="range" id="s3-cards-anim-delay" min="0" max="120" value="56"><span class="val" id="s3-cards-anim-delayV">56f</span></div>
+        <div class="row"><label>Cards stagger</label><input type="range" id="s3-cards-stagger" min="0" max="40" value="10"><span class="val" id="s3-cards-staggerV">10f</span></div>
+      </div>
+    </details>
+
+    <!-- Animation preset bundles (Phase 5) — one-click apply curated combos -->
+    <details class="group" data-scene="all" open>
+      <summary><h3>🎭 Animation Style Presets <span class="badge">1-click</span></h3></summary>
+      <div class="group-content">
+        <div style="font-size:11px;color:#8b95a8;margin-bottom:8px;line-height:1.4;">
+          Click a style → every animation dropdown across all scenes updates to a curated combo. Use the dropdowns below to fine-tune after.
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+          <button class="btn" data-style-preset="subtle">🕊️ Subtle</button>
+          <button class="btn" data-style-preset="default">🎬 Default</button>
+          <button class="btn" data-style-preset="dramatic">💥 Dramatic</button>
+          <button class="btn" data-style-preset="playful">🎉 Playful</button>
+          <button class="btn" data-style-preset="cinematic" style="grid-column:1/-1;">🎥 Cinematic (slow)</button>
+        </div>
+      </div>
+    </details>
+
+    <!-- Animated markers (Phase 4) — one group per scene with 4 marker slots -->
+    <details class="group" data-scene="1">
+      <summary><h3>🎯 Scene 1 Markers <span class="badge">4 slots</span></h3></summary>
+      <div class="group-content" data-markers-host="1"></div>
+    </details>
+    <details class="group" data-scene="2">
+      <summary><h3>🎯 Scene 2 Markers <span class="badge">4 slots</span></h3></summary>
+      <div class="group-content" data-markers-host="2"></div>
+    </details>
+    <details class="group" data-scene="3">
+      <summary><h3>🎯 Scene 3 Markers <span class="badge">4 slots</span></h3></summary>
+      <div class="group-content" data-markers-host="3"></div>
+    </details>
+    <details class="group" data-scene="4">
+      <summary><h3>🎯 Scene 4 Markers <span class="badge">4 slots</span></h3></summary>
+      <div class="group-content" data-markers-host="4"></div>
+    </details>
+
+    <!-- Shape primitives (Phase 3) — one group per scene with 3 shape slots -->
+    <details class="group" data-scene="1">
+      <summary><h3>📐 Scene 1 Shapes <span class="badge">3 slots</span></h3></summary>
+      <div class="group-content" data-shapes-host="1"></div>
+    </details>
+    <details class="group" data-scene="2">
+      <summary><h3>📐 Scene 2 Shapes <span class="badge">3 slots</span></h3></summary>
+      <div class="group-content" data-shapes-host="2"></div>
+    </details>
+    <details class="group" data-scene="3">
+      <summary><h3>📐 Scene 3 Shapes <span class="badge">3 slots</span></h3></summary>
+      <div class="group-content" data-shapes-host="3"></div>
+    </details>
+    <details class="group" data-scene="4">
+      <summary><h3>📐 Scene 4 Shapes <span class="badge">3 slots</span></h3></summary>
+      <div class="group-content" data-shapes-host="4"></div>
+    </details>
+
+    <!-- Image Layers — one group per scene, auto-populated with 3 layer slots -->
+    <details class="group" data-scene="1">
+      <summary><h3>🖼️ Scene 1 Layers <span class="badge">3 slots</span></h3></summary>
+      <div class="group-content" data-layers-host="1"></div>
+    </details>
+    <details class="group" data-scene="2">
+      <summary><h3>🖼️ Scene 2 Layers <span class="badge">3 slots</span></h3></summary>
+      <div class="group-content" data-layers-host="2"></div>
+    </details>
+    <details class="group" data-scene="3">
+      <summary><h3>🖼️ Scene 3 Layers <span class="badge">3 slots</span></h3></summary>
+      <div class="group-content" data-layers-host="3"></div>
+    </details>
+    <details class="group" data-scene="4">
+      <summary><h3>🖼️ Scene 4 Layers <span class="badge">3 slots</span></h3></summary>
+      <div class="group-content" data-layers-host="4"></div>
+    </details>
+
+    <!-- Animations: Scene 4 -->
+    <details class="group" data-scene="4">
+      <summary><h3>✨ Scene 4 Animations <span class="badge">+ logo + loop</span></h3></summary>
+      <div class="group-content">
+        <div class="row"><label>Logo anim</label><select id="s4-logo-anim" data-anim-picker></select></div>
+        <div class="row"><label>Logo dur</label><input type="range" id="s4-logo-anim-dur" min="6" max="60" value="22"><span class="val" id="s4-logo-anim-durV">22f</span></div>
+        <div class="row"><label>Logo delay</label><input type="range" id="s4-logo-anim-delay" min="0" max="120" value="4"><span class="val" id="s4-logo-anim-delayV">4f</span></div>
+        <div class="row"><label>Headline anim</label><select id="s4-h-anim" data-anim-picker></select></div>
+        <div class="row"><label>Headline dur</label><input type="range" id="s4-h-anim-dur" min="6" max="60" value="22"><span class="val" id="s4-h-anim-durV">22f</span></div>
+        <div class="row"><label>Headline delay</label><input type="range" id="s4-h-anim-delay" min="0" max="120" value="26"><span class="val" id="s4-h-anim-delayV">26f</span></div>
+        <div class="row"><label>Headline LOOP</label><select id="s4-h-loop" data-anim-picker data-loop-only></select></div>
+        <div class="row"><label>Subtitle anim</label><select id="s4-s-anim" data-anim-picker></select></div>
+        <div class="row"><label>Subtitle dur</label><input type="range" id="s4-s-anim-dur" min="6" max="60" value="22"><span class="val" id="s4-s-anim-durV">22f</span></div>
+        <div class="row"><label>Subtitle delay</label><input type="range" id="s4-s-anim-delay" min="0" max="120" value="56"><span class="val" id="s4-s-anim-delayV">56f</span></div>
+        <div class="row"><label>Contacts anim</label><select id="s4-contacts-anim" data-anim-picker></select></div>
+        <div class="row"><label>Contacts dur</label><input type="range" id="s4-contacts-anim-dur" min="6" max="60" value="24"><span class="val" id="s4-contacts-anim-durV">24f</span></div>
+        <div class="row"><label>Contacts delay</label><input type="range" id="s4-contacts-anim-delay" min="0" max="120" value="78"><span class="val" id="s4-contacts-anim-delayV">78f</span></div>
+        <div class="row"><label>Contacts stagger</label><input type="range" id="s4-contacts-stagger" min="0" max="40" value="18"><span class="val" id="s4-contacts-staggerV">18f</span></div>
+      </div>
+    </details>
+
+    <!-- Scene 1 -->
+    <details class="group" data-scene="1" open>
+      <summary><h3>📝 Scene 1 — Headline <span class="badge">text · size</span></h3></summary>
+      <div class="group-content">
+        <div class="row"><label>Headline</label><input type="text" id="s1-h-text" value="تحاليل منزلية براحة وأمان"></div>
+        <div class="row"><label>Subtitle</label><input type="text" id="s1-s-text" value="نسحب العينة من منزلك بدقة وخصوصية"></div>
+        <div class="row"><label>Container Y</label><input type="range" id="s1-top" min="100" max="500" value="245"><span class="val" id="s1-topV">245px</span></div>
+        <div class="row"><label>Headline size</label><input type="range" id="s1-h-size" min="30" max="120" value="58"><span class="val" id="s1-h-sizeV">58px</span></div>
+        <div class="row"><label>Headline weight</label><input type="range" id="s1-h-weight" min="300" max="900" step="100" value="400"><span class="val" id="s1-h-weightV">400</span></div>
+        <div class="row"><label>Subtitle size</label><input type="range" id="s1-s-size" min="20" max="80" value="36"><span class="val" id="s1-s-sizeV">36px</span></div>
+        <div class="row"><label>Gap H1→Sub</label><input type="range" id="s1-gap" min="0" max="100" value="22"><span class="val" id="s1-gapV">22px</span></div>
+      </div>
+    </details>
+
+    <!-- Scene 2 -->
+    <details class="group" data-scene="2">
+      <summary><h3>📋 Scene 2 — Why + Benefits <span class="badge">3 items</span></h3></summary>
+      <div class="group-content">
+        <div class="row"><label>Headline</label><input type="text" id="s2-h-text" value="لماذا سمارت لاب؟"></div>
+        <div class="row"><label>Subtitle</label><input type="text" id="s2-s-text" value="خدمة منزلية موثوقة تناسب يومك"></div>
+        <div class="row"><label>Benefit 1</label><input type="text" id="s2-b1" value="خصوصية وراحة في المنزل"></div>
+        <div class="row"><label>Benefit 2</label><input type="text" id="s2-b2" value="سرعة في الحجز والوصول"></div>
+        <div class="row"><label>Benefit 3</label><input type="text" id="s2-b3" value="نتائج دقيقة باحترافية"></div>
+        <div class="row"><label>Container Y</label><input type="range" id="s2-top" min="100" max="500" value="210"><span class="val" id="s2-topV">210px</span></div>
+        <div class="row"><label>Headline size</label><input type="range" id="s2-h-size" min="40" max="100" value="62"><span class="val" id="s2-h-sizeV">62px</span></div>
+        <div class="row"><label>Subtitle size</label><input type="range" id="s2-s-size" min="20" max="80" value="38"><span class="val" id="s2-s-sizeV">38px</span></div>
+        <div class="row"><label>Subtitle→list gap</label><input type="range" id="s2-gap" min="20" max="120" value="42"><span class="val" id="s2-gapV">42px</span></div>
+        <div class="row"><label>Benefit size</label><input type="range" id="s2-b-size" min="20" max="60" value="34"><span class="val" id="s2-b-sizeV">34px</span></div>
+        <div class="row"><label>Benefit gap</label><input type="range" id="s2-bgap" min="6" max="60" value="18"><span class="val" id="s2-bgapV">18px</span></div>
+      </div>
+    </details>
+
+    <!-- Scene 3 -->
+    <details class="group" data-scene="3">
+      <summary><h3>🃏 Scene 3 — Services 2×2 <span class="badge">cards</span></h3></summary>
+      <div class="group-content">
+        <div class="row"><label>Headline</label><input type="text" id="s3-h-text" value="خدماتنا"></div>
+        <div class="row"><label>Subtitle</label><input type="text" id="s3-s-text" value="مختبرك... في منزلك"></div>
+        <div class="row"><label>Card 1 text</label><input type="text" id="s3-c1-t" value="سحب عينات منزلي"></div>
+        <div class="row"><label>Card 1 icon</label><input type="text" id="s3-c1-i" value="fa-solid fa-house-medical" style="direction:ltr;text-align:left;font-family:monospace;font-size:11px;"></div>
+        <div class="row"><label>Card 2 text</label><input type="text" id="s3-c2-t" value="نتائج دقيقة وسريعة"></div>
+        <div class="row"><label>Card 2 icon</label><input type="text" id="s3-c2-i" value="fa-regular fa-clock" style="direction:ltr;text-align:left;font-family:monospace;font-size:11px;"></div>
+        <div class="row"><label>Card 3 text</label><input type="text" id="s3-c3-t" value="راحة وخدمة\nإلى باب منزلك"></div>
+        <div class="row"><label>Card 3 icon</label><input type="text" id="s3-c3-i" value="fa-solid fa-door-open" style="direction:ltr;text-align:left;font-family:monospace;font-size:11px;"></div>
+        <div class="row"><label>Card 4 text</label><input type="text" id="s3-c4-t" value="فريق مختبر مؤهل"></div>
+        <div class="row"><label>Card 4 icon</label><input type="text" id="s3-c4-i" value="fa-solid fa-user-doctor" style="direction:ltr;text-align:left;font-family:monospace;font-size:11px;"></div>
+        <div class="row"><label>Container Y</label><input type="range" id="s3-top" min="80" max="400" value="135"><span class="val" id="s3-topV">135px</span></div>
+        <div class="row"><label>Headline size</label><input type="range" id="s3-h-size" min="40" max="120" value="72"><span class="val" id="s3-h-sizeV">72px</span></div>
+        <div class="row"><label>Subtitle size</label><input type="range" id="s3-s-size" min="20" max="80" value="44"><span class="val" id="s3-s-sizeV">44px</span></div>
+        <div class="row"><label>Grid Y offset</label><input type="range" id="s3-cgap-top" min="10" max="120" value="38"><span class="val" id="s3-cgap-topV">38px</span></div>
+        <div class="row"><label>Card height</label><input type="range" id="s3-card-h" min="100" max="240" value="152"><span class="val" id="s3-card-hV">152px</span></div>
+        <div class="row"><label>Card row gap</label><input type="range" id="s3-card-gap" min="6" max="60" value="22"><span class="val" id="s3-card-gapV">22px</span></div>
+        <div class="row"><label>Card icon size</label><input type="range" id="s3-card-icon" min="30" max="100" value="56"><span class="val" id="s3-card-iconV">56px</span></div>
+        <div class="row"><label>Card text size</label><input type="range" id="s3-card-text" min="14" max="50" value="28"><span class="val" id="s3-card-textV">28px</span></div>
+      </div>
+    </details>
+
+    <!-- Scene 4 -->
+    <details class="group" data-scene="4">
+      <summary><h3>📞 Scene 4 — Outro CTA <span class="badge">logo · contacts</span></h3></summary>
+      <div class="group-content">
+        <div class="row"><label>Headline</label><input type="text" id="s4-h-text" value="احجز الآن"></div>
+        <div class="row"><label>Subtitle</label><input type="text" id="s4-s-text" value="تحاليل منزلية دقيقة ومريحة"></div>
+        <div class="row"><label>Contact 1 icon</label><input type="text" id="s4-c1-i" value="fa-solid fa-globe" style="direction:ltr;text-align:left;font-family:monospace;font-size:11px;"></div>
+        <div class="row"><label>Contact 1 text</label><input type="text" id="s4-c1-t" value="smartlab.sa"></div>
+        <div class="row"><label>Contact 2 icon</label><input type="text" id="s4-c2-i" value="fa-solid fa-phone" style="direction:ltr;text-align:left;font-family:monospace;font-size:11px;"></div>
+        <div class="row"><label>Contact 2 text</label><input type="text" id="s4-c2-t" value="9200 22520"></div>
+        <div class="row"><label>Contact 2 is number?</label><select id="s4-c2-num"><option value="true" selected>Yes (DIN font)</option><option value="false">No</option></select></div>
+        <div class="row"><label>Container Y</label><input type="range" id="s4-top" min="100" max="500" value="255"><span class="val" id="s4-topV">255px</span></div>
+        <div class="row"><label>Logo width</label><input type="range" id="s4-logo-w" min="100" max="700" value="360"><span class="val" id="s4-logo-wV">360px</span></div>
+        <div class="row"><label>Logo→H1 gap</label><input type="range" id="s4-logo-gap" min="20" max="200" value="70"><span class="val" id="s4-logo-gapV">70px</span></div>
+        <div class="row"><label>Headline size</label><input type="range" id="s4-h-size" min="40" max="140" value="82"><span class="val" id="s4-h-sizeV">82px</span></div>
+        <div class="row"><label>Subtitle size</label><input type="range" id="s4-s-size" min="20" max="80" value="42"><span class="val" id="s4-s-sizeV">42px</span></div>
+        <div class="row"><label>Sub→list gap</label><input type="range" id="s4-list-top" min="20" max="200" value="58"><span class="val" id="s4-list-topV">58px</span></div>
+        <div class="row"><label>Row gap</label><input type="range" id="s4-list-gap" min="10" max="80" value="28"><span class="val" id="s4-list-gapV">28px</span></div>
+        <div class="row"><label>Contact text size</label><input type="range" id="s4-c-size" min="20" max="80" value="44"><span class="val" id="s4-c-sizeV">44px</span></div>
+      </div>
+    </details>
+
+  </div>
+
+  <div class="panel-footer">
+    <button class="btn" id="copy-btn">📋 Copy JSON</button>
+    <button class="btn" id="sl-export-btn">📦 Export</button>
+    <button class="btn" id="sl-import-btn">📥 Import</button>
+    <input type="file" id="sl-import-file" accept="application/json,.json" style="display:none">
+    <button class="btn" id="sl-export-image-btn">🖼 Image</button>
+    <button class="btn btn-render" id="sl-render-btn">🎬 Render</button>
+    <button class="btn btn-danger" id="sl-reset-btn">↺</button>
+  </div>
+</div>
+
+<div class="toast" id="sl-toast"></div>
+
+<!-- Render progress overlay -->
+<div class="render-overlay" id="render-overlay">
+  <div class="render-modal">
+    <h2 id="render-title">🎬 Rendering…</h2>
+    <div class="render-sub" id="render-sub">smartlab — starting render…</div>
+    <div class="render-progress"><span id="render-bar" style="width:0%"></span></div>
+    <video id="render-video" controls style="display:none"></video>
+    <pre class="render-log" id="render-log">Initializing…</pre>
+    <div class="render-actions">
+      <button class="tl-btn" id="render-close">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="kjhgfdsdfghjkl-recovery-state.js?v=20260610-restore"></script>
+<script src="poster-overlay-studio.js?v=20260610-rtl-numeric-inputs"></script>
+<script>
+const stage = document.getElementById('stage');
+const SL_DEFAULT_CANVAS = { width: 1080, height: 1350 };
+let slCanvasSize = { ...SL_DEFAULT_CANVAS };
+
+// ── Auto-fit stage to available area ──────────────────────
+// Stage uses the active overlay canvas size. Scale it to fit the .stage-frame's
+// available rect and size .stage-shell to the scaled dimensions so the
+// surrounding layout (timeline above, panel beside) flows correctly.
+function fitStage() {
+  const shell = document.getElementById('stage-shell');
+  const frame = document.querySelector('.stage-frame');
+  if (!shell || !frame || !stage) return;
+  const availW = frame.clientWidth;
+  const availH = frame.clientHeight;
+  if (availW <= 0 || availH <= 0) return;
+  const padding = 16;
+  const canvasW = Math.max(1, Number(slCanvasSize.width || SL_DEFAULT_CANVAS.width));
+  const canvasH = Math.max(1, Number(slCanvasSize.height || SL_DEFAULT_CANVAS.height));
+  const sW = (availW - padding) / canvasW;
+  const sH = (availH - padding) / canvasH;
+  const scale = Math.max(0.05, Math.min(sW, sH));
+  stage.style.width = canvasW + 'px';
+  stage.style.height = canvasH + 'px';
+  stage.style.transform = `scale(${scale})`;
+  shell.style.width  = (canvasW * scale) + 'px';
+  shell.style.height = (canvasH * scale) + 'px';
+}
+window.addEventListener('resize', fitStage);
+new MutationObserver(records => {
+  if (records.some(record => record.attributeName === 'class' && record.target.classList?.contains('scene'))) {
+    slQueueActiveCanvasFit();
+  }
+}).observe(stage, { subtree: true, attributes: true, attributeFilter: ['class'] });
+document.addEventListener('click', event => {
+  if (event.target?.closest?.('.tab[data-scene], .tl-scene')) slQueueActiveCanvasFit();
+});
+
+function slApplyEditorCanvas(canvas) {
+  const width = Number(canvas?.width || SL_DEFAULT_CANVAS.width);
+  const height = Number(canvas?.height || SL_DEFAULT_CANVAS.height);
+  if (!Number.isFinite(width) || !Number.isFinite(height) || width <= 0 || height <= 0) return;
+  slCanvasSize = { width, height };
+  stage.style.width = width + 'px';
+  stage.style.height = height + 'px';
+  requestAnimationFrame(fitStage);
+}
+
+function slApplyActiveOverlayCanvas() {
+  slSyncEditorCanvasNow();
+}
+
+function slSyncEditorCanvasNow() {
+  const activeScene = document.querySelector('.scene.active[data-scene]')?.dataset.scene;
+  const doc = activeScene ? window.posterOverlayStudio?.getRenderState?.()?.[activeScene] : null;
+  const img = activeScene ? document.querySelector(`.scene[data-scene="${activeScene}"] .scene-bg img`) : null;
+  const docHasVisibleOverlay = doc?.canvas?.width && doc?.canvas?.height && Array.isArray(doc.elements) && doc.elements.length > 0;
+  if (docHasVisibleOverlay) {
+    slApplyEditorCanvas(doc.canvas);
+    return;
+  }
+  if (img?.naturalWidth && img?.naturalHeight) {
+    slApplyEditorCanvas({ width: img.naturalWidth, height: img.naturalHeight });
+    return;
+  }
+  if (img) {
+    img.addEventListener('load', () => {
+      const currentActive = document.querySelector('.scene.active[data-scene]')?.dataset.scene;
+      if (String(currentActive) === String(activeScene) && img.naturalWidth && img.naturalHeight) {
+        slApplyEditorCanvas({ width: img.naturalWidth, height: img.naturalHeight });
+      }
+    }, { once: true });
+    return;
+  }
+  slApplyEditorCanvas(doc?.canvas || SL_DEFAULT_CANVAS);
+}
+
+window.slApplyOverlayCanvas = (_sceneId, doc) => {
+  const activeScene = document.querySelector('.scene.active[data-scene]')?.dataset.scene;
+  if (!doc || String(_sceneId).replace(/^s/, '') !== String(activeScene || '')) return;
+  slQueueActiveCanvasFit();
+};
+
+function slQueueActiveCanvasFit() {
+  requestAnimationFrame(() => {
+    slSyncEditorCanvasNow();
+    requestAnimationFrame(slSyncEditorCanvasNow);
+  });
+}
+
+const SL_STORAGE_KEY = 'kjhgfdsdfghjkl-preview-v1';
+const SL_DRAFT_KEY = SL_STORAGE_KEY + '-draft';
+const SL_PRESETS_KEY = 'kjhgfdsdfghjkl-presets-v1';
+const SL_ACTIVE_KEY = 'kjhgfdsdfghjkl-active-preset';
+const SL_TOOLBAR_INPUT_IDS = new Set(['sl-preset-load', 'sl-search']);
+let slServerStateReady = false;
+let slPersistStudioTimer = null;
+const slGetActive = () => { try { return localStorage.getItem(SL_ACTIVE_KEY) || ''; } catch(_) { return ''; } };
+const slSetActive = (n) => {
+  try {
+    if (n) localStorage.setItem(SL_ACTIVE_KEY, n);
+    else localStorage.removeItem(SL_ACTIVE_KEY);
+  } catch(_) {}
+};
+
+// ── Helpers ─────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const collectInputs = () => Array.from(document.querySelectorAll('input[id], select[id], textarea[id]'))
+  .filter(el => !SL_TOOLBAR_INPUT_IDS.has(el.id));
+
+const toast = (msg, kind='ok') => {
+  const t = $('sl-toast');
+  t.textContent = msg;
+  t.classList.remove('error');
+  if (kind === 'error') t.classList.add('error');
+  t.classList.add('show');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => t.classList.remove('show'), 1800);
+};
+
+// ─────────────────────────────────────────────────────────────────
+// Animation registry mirror — MUST stay in sync with src/animations.ts.
+// When you add an animation to animations.ts, append an entry here.
+// Field meaning:
+//   name      = unique key used by Remotion (matches src/animations.ts)
+//   label     = display text in the dropdown
+//   kind      = 'entry' (one-shot) or 'loop' (continuous, applies after entry)
+//   defaultDur= default duration in frames (used when adding the anim fresh)
+// ─────────────────────────────────────────────────────────────────
+const SL_ANIMATIONS = [
+  { name: 'none', label: 'None', kind: 'entry', defaultDur: 1 },
+  { name: 'fade-in', label: 'Fade in', kind: 'entry', defaultDur: 18 },
+  { name: 'fade-up', label: 'Fade + slide up', kind: 'entry', defaultDur: 22 },
+  { name: 'fade-down', label: 'Fade + slide down', kind: 'entry', defaultDur: 22 },
+  { name: 'slide-from-right', label: 'Slide from right', kind: 'entry', defaultDur: 22 },
+  { name: 'slide-from-left', label: 'Slide from left', kind: 'entry', defaultDur: 22 },
+  { name: 'slide-up-large', label: 'Big slide up', kind: 'entry', defaultDur: 26 },
+  { name: 'scale-pop', label: 'Spring pop', kind: 'entry', defaultDur: 24 },
+  { name: 'spring-zoom-fade', label: 'Spring zoom', kind: 'entry', defaultDur: 24 },
+  { name: 'scale-in', label: 'Scale in', kind: 'entry', defaultDur: 20 },
+  { name: 'zoom-in', label: 'Zoom in (camera)', kind: 'entry', defaultDur: 24 },
+  { name: 'blur-in', label: 'Blur in', kind: 'entry', defaultDur: 22 },
+  { name: 'rotate-in', label: 'Rotate in', kind: 'entry', defaultDur: 22 },
+  { name: 'word-stagger', label: 'Word stagger (headlines)', kind: 'entry', defaultDur: 20 },
+  { name: 'heartbeat', label: 'Heartbeat pulse (loop)', kind: 'loop', defaultDur: 1 },
+  { name: 'pulse', label: 'Opacity pulse (loop)', kind: 'loop', defaultDur: 1 },
+  { name: 'breathe', label: 'Breathe (loop)', kind: 'loop', defaultDur: 1 },
+];
+
+// Default animation per element ID — kept in sync with smartlab-props.json
+// (the source of truth for what Remotion renders). When the bake script
+// writes props.json, these defaults should match so the live preview shows
+// the same animations the rendered MP4 will have.
+const SL_ANIM_DEFAULTS = {
+  's1-h-anim': 'word-stagger',
+  's1-s-anim': 'fade-up',
+  's2-h-anim': 'word-stagger',
+  's2-s-anim': 'fade-up',
+  's2-benefits-anim': 'slide-from-right',
+  's3-h-anim': 'word-stagger',
+  's3-s-anim': 'fade-up',
+  's3-cards-anim': 'scale-pop',
+  's4-logo-anim': 'spring-zoom-fade',
+  's4-h-anim': 'word-stagger',
+  's4-h-loop': 'heartbeat',
+  's4-s-anim': 'fade-up',
+  's4-contacts-anim': 'slide-from-left',
+};
+
+// ─────────────────────────────────────────────────────────────────
+// Phase 2: image layers per scene.
+// Generates 3 layer sub-panels per scene's "🖼️ Scene N Layers" group.
+// Each layer slot has compact controls. Empty src = layer not rendered.
+// Live preview <img> elements are auto-created/updated in the stage.
+// ─────────────────────────────────────────────────────────────────
+const MAX_LAYERS = 3;
+function buildLayerControls(scene, slot) {
+  const p = `s${scene}-l${slot}`;
+  // Animation dropdown options (entry-only, includes 'none')
+  const animOpts = SL_ANIMATIONS
+    .filter((a) => a.kind === 'entry')
+    .map((a) => `<option value="${a.name}"${a.name === 'fade-in' ? ' selected' : ''}>${a.label}</option>`)
+    .join('');
+  return `
+    <div class="layer-slot" style="border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:8px 10px;margin-bottom:8px;">
+      <div style="font-size:11px;font-weight:700;color:#93c5fd;margin-bottom:6px;">Layer ${slot}</div>
+      <div class="row"><label>Source</label><input type="text" id="${p}-src" placeholder="generated/smartlab/extra.png" style="direction:ltr;text-align:left;font-family:monospace;font-size:10px;flex:1.7;"></div>
+      <div class="row"><label>X / Y</label>
+        <input type="range" id="${p}-x" min="-200" max="1280" value="0" style="flex:0.8;">
+        <input type="range" id="${p}-y" min="-200" max="1550" value="0" style="flex:0.8;">
+        <span class="val" id="${p}-xV" style="min-width:40px;">0</span>
+      </div>
+      <div class="row"><label>W / H</label>
+        <input type="range" id="${p}-w" min="0" max="1080" value="400" style="flex:0.8;">
+        <input type="range" id="${p}-h" min="0" max="1080" value="0" style="flex:0.8;">
+        <span class="val" id="${p}-wV" style="min-width:40px;">400</span>
+      </div>
+      <div class="row"><label>Rotate</label><input type="range" id="${p}-rotate" min="-180" max="180" value="0"><span class="val" id="${p}-rotateV">0°</span></div>
+      <div class="row"><label>Scale</label><input type="range" id="${p}-scale" min="0.1" max="3.0" step="0.05" value="1.0"><span class="val" id="${p}-scaleV">1.00×</span></div>
+      <div class="row"><label>Opacity</label><input type="range" id="${p}-opacity" min="0" max="1" step="0.05" value="1"><span class="val" id="${p}-opacityV">1.00</span></div>
+      <div class="row"><label>Z-index</label><input type="range" id="${p}-z" min="0" max="10" value="1"><span class="val" id="${p}-zV">1</span></div>
+      <div class="row"><label>Anim</label><select id="${p}-anim">${animOpts}</select></div>
+      <div class="row"><label>Anim dur</label><input type="range" id="${p}-anim-dur" min="6" max="60" value="22"><span class="val" id="${p}-anim-durV">22f</span></div>
+      <div class="row"><label>Anim delay</label><input type="range" id="${p}-anim-delay" min="0" max="120" value="0"><span class="val" id="${p}-anim-delayV">0f</span></div>
+    </div>
+  `;
+}
+document.querySelectorAll('[data-layers-host]').forEach((host) => {
+  const scene = Number(host.dataset.layersHost);
+  let html = '';
+  for (let i = 1; i <= MAX_LAYERS; i++) html += buildLayerControls(scene, i);
+  host.innerHTML = html;
+});
+
+// Render layer previews on the stage based on input values.
+function updateLayerPreviews() {
+  for (let scene = 1; scene <= 4; scene++) {
+    const host = document.querySelector(`[data-stage-layers="${scene}"]`);
+    if (!host) continue;
+    host.innerHTML = '';
+    for (let i = 1; i <= MAX_LAYERS; i++) {
+      const p = `s${scene}-l${i}`;
+      const src = $(`${p}-src`)?.value?.trim();
+      if (!src) continue;
+      const x = Number($(`${p}-x`).value);
+      const y = Number($(`${p}-y`).value);
+      const w = Number($(`${p}-w`).value);
+      const h = Number($(`${p}-h`).value);
+      const rotate = Number($(`${p}-rotate`).value);
+      const scale = Number($(`${p}-scale`).value);
+      const opacity = Number($(`${p}-opacity`).value);
+      const z = Number($(`${p}-z`).value);
+      const img = document.createElement('img');
+      img.src = src.startsWith('public/') || src.startsWith('http') ? src : 'public/' + src;
+      img.onerror = () => { img.style.outline = '2px dashed #ef4444'; };
+      img.dataset.slot = i; // so previewFrame can find this slot's animation
+      img.style.left = x + 'px';
+      img.style.top = y + 'px';
+      img.style.width = w > 0 ? w + 'px' : 'auto';
+      img.style.height = h > 0 ? h + 'px' : 'auto';
+      img.style.opacity = opacity;
+      img.style.zIndex = z;
+      const transformParts = [];
+      if (rotate !== 0) transformParts.push(`rotate(${rotate}deg)`);
+      if (scale !== 1) transformParts.push(`scale(${scale})`);
+      const staticT = transformParts.join(' ');
+      img.dataset.staticTransform = staticT; // preserved across anim previews
+      if (staticT) img.style.transform = staticT;
+      host.appendChild(img);
+    }
+  }
+}
+// Wire every layer input to the preview updater
+function wireLayerInputs() {
+  for (let scene = 1; scene <= 4; scene++) {
+    for (let i = 1; i <= MAX_LAYERS; i++) {
+      const p = `s${scene}-l${i}`;
+      ['src', 'x', 'y', 'w', 'h', 'rotate', 'scale', 'opacity', 'z'].forEach((field) => {
+        const el = $(`${p}-${field}`);
+        if (el) el.addEventListener('input', updateLayerPreviews);
+      });
+      // Also show the numeric labels for the position/size sliders
+      [['x', ''], ['y', ''], ['w', ''], ['h', '']].forEach(([field, suf]) => {
+        const el = $(`${p}-${field}`);
+        const out = $(`${p}-${field}V`);
+        if (!el || !out) return;
+        const apply = () => { out.textContent = el.value + suf; };
+        el.addEventListener('input', apply);
+        apply();
+      });
+      // Compact display for combined X/Y and W/H rows: show X (Y shows in same span)
+      const xEl = $(`${p}-x`), yEl = $(`${p}-y`), xyOut = $(`${p}-xV`);
+      const wEl = $(`${p}-w`), hEl = $(`${p}-h`), whOut = $(`${p}-wV`);
+      const applyXY = () => xyOut && (xyOut.textContent = `${xEl.value},${yEl.value}`);
+      const applyWH = () => whOut && (whOut.textContent = `${wEl.value}×${hEl.value || 'auto'}`);
+      xEl.addEventListener('input', applyXY); yEl.addEventListener('input', applyXY); applyXY();
+      wEl.addEventListener('input', applyWH); hEl.addEventListener('input', applyWH); applyWH();
+      // Rotate / Scale / Opacity / Z value displays
+      [['rotate', '°'], ['scale', '×'], ['opacity', ''], ['z', '']].forEach(([field, suf]) => {
+        const el = $(`${p}-${field}`); const out = $(`${p}-${field}V`);
+        if (!el || !out) return;
+        const apply = () => {
+          let v = el.value;
+          if (field === 'scale' || field === 'opacity') v = Number(v).toFixed(2);
+          out.textContent = v + suf;
+        };
+        el.addEventListener('input', apply); apply();
+      });
+    }
+  }
+}
+wireLayerInputs();
+updateLayerPreviews();
+
+// ─────────────────────────────────────────────────────────────────
+// Phase 3: shape primitives per scene.
+// 3 shape slots per scene, each with kind dropdown + coords + style + anim.
+// ─────────────────────────────────────────────────────────────────
+const MAX_SHAPES = 3;
+function buildShapeControls(scene, slot) {
+  const p = `s${scene}-shape-${slot}`;
+  const animOpts = SL_ANIMATIONS
+    .filter((a) => a.kind === 'entry')
+    .map((a) => `<option value="${a.name}"${a.name === 'fade-in' ? ' selected' : ''}>${a.label}</option>`)
+    .join('');
+  return `
+    <div class="shape-slot" style="border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:8px 10px;margin-bottom:8px;">
+      <div style="font-size:11px;font-weight:700;color:#fbbf24;margin-bottom:6px;">Shape ${slot}</div>
+      <div class="row"><label>Kind</label><select id="${p}-kind">
+        <option value="">None (disabled)</option>
+        <option value="circle">Circle (ring)</option>
+        <option value="dot">Dot (filled)</option>
+        <option value="rect">Rectangle</option>
+        <option value="line">Line</option>
+        <option value="arrow">Arrow</option>
+        <option value="text">Text</option>
+      </select></div>
+      <div class="row"><label>X / Y</label>
+        <input type="range" id="${p}-x" min="-200" max="1280" value="540" style="flex:0.8;">
+        <input type="range" id="${p}-y" min="-200" max="1550" value="500" style="flex:0.8;">
+        <span class="val" id="${p}-xV" style="min-width:60px;">540,500</span>
+      </div>
+      <div class="row"><label>W / H</label>
+        <input type="range" id="${p}-w" min="0" max="1080" value="200" style="flex:0.8;">
+        <input type="range" id="${p}-h" min="0" max="1080" value="200" style="flex:0.8;">
+        <span class="val" id="${p}-wV" style="min-width:60px;">200×200</span>
+      </div>
+      <div class="row"><label>X2 / Y2 (line)</label>
+        <input type="range" id="${p}-x2" min="-200" max="1280" value="700" style="flex:0.8;">
+        <input type="range" id="${p}-y2" min="-200" max="1550" value="500" style="flex:0.8;">
+        <span class="val" id="${p}-x2V" style="min-width:60px;">700,500</span>
+      </div>
+      <div class="row"><label>Stroke</label><input type="color" id="${p}-stroke" value="#1A9DD7"></div>
+      <div class="row"><label>Fill</label><input type="color" id="${p}-fill" value="#1A9DD7"></div>
+      <div class="row"><label>Stroke width</label><input type="range" id="${p}-stroke-width" min="0" max="20" value="3"><span class="val" id="${p}-stroke-widthV">3</span></div>
+      <div class="row"><label>Text (kind:text)</label><input type="text" id="${p}-text" placeholder="" style="font-size:11px;"></div>
+      <div class="row"><label>Font size</label><input type="range" id="${p}-fontSize" min="14" max="120" value="28"><span class="val" id="${p}-fontSizeV">28</span></div>
+      <div class="row"><label>Rotate</label><input type="range" id="${p}-rotate" min="-180" max="180" value="0"><span class="val" id="${p}-rotateV">0°</span></div>
+      <div class="row"><label>Opacity</label><input type="range" id="${p}-opacity" min="0" max="1" step="0.05" value="1"><span class="val" id="${p}-opacityV">1.00</span></div>
+      <div class="row"><label>Z-index</label><input type="range" id="${p}-z" min="0" max="10" value="5"><span class="val" id="${p}-zV">5</span></div>
+      <div class="row"><label>Anim</label><select id="${p}-anim">${animOpts}</select></div>
+      <div class="row"><label>Anim dur</label><input type="range" id="${p}-anim-dur" min="6" max="60" value="22"><span class="val" id="${p}-anim-durV">22f</span></div>
+      <div class="row"><label>Anim delay</label><input type="range" id="${p}-anim-delay" min="0" max="120" value="0"><span class="val" id="${p}-anim-delayV">0f</span></div>
+    </div>
+  `;
+}
+document.querySelectorAll('[data-shapes-host]').forEach((host) => {
+  const scene = Number(host.dataset.shapesHost);
+  let html = '';
+  for (let i = 1; i <= MAX_SHAPES; i++) html += buildShapeControls(scene, i);
+  host.innerHTML = html;
+});
+
+function updateShapePreviews() {
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  for (let scene = 1; scene <= 4; scene++) {
+    const svg = document.querySelector(`[data-stage-shapes="${scene}"]`);
+    if (!svg) continue;
+    svg.innerHTML = '';
+    for (let i = 1; i <= MAX_SHAPES; i++) {
+      const p = `s${scene}-shape-${i}`;
+      const kind = $(`${p}-kind`)?.value;
+      if (!kind) continue;
+      const x = Number($(`${p}-x`).value);
+      const y = Number($(`${p}-y`).value);
+      const w = Number($(`${p}-w`).value);
+      const h = Number($(`${p}-h`).value);
+      const x2 = Number($(`${p}-x2`).value);
+      const y2 = Number($(`${p}-y2`).value);
+      const stroke = $(`${p}-stroke`).value;
+      const fill = $(`${p}-fill`).value;
+      const sw = Number($(`${p}-stroke-width`).value);
+      const rotate = Number($(`${p}-rotate`).value);
+      const opacity = Number($(`${p}-opacity`).value);
+      const text = $(`${p}-text`).value;
+      const fontSize = Number($(`${p}-fontSize`).value);
+      const cx = (kind === 'circle' || kind === 'dot') ? x : x + w / 2;
+      const cy = (kind === 'circle' || kind === 'dot') ? y : y + h / 2;
+      let el;
+      switch (kind) {
+        case 'circle':
+          el = document.createElementNS(SVG_NS, 'circle');
+          el.setAttribute('cx', x); el.setAttribute('cy', y); el.setAttribute('r', w / 2);
+          el.setAttribute('stroke', stroke); el.setAttribute('fill', 'none'); el.setAttribute('stroke-width', sw);
+          break;
+        case 'dot':
+          el = document.createElementNS(SVG_NS, 'circle');
+          el.setAttribute('cx', x); el.setAttribute('cy', y); el.setAttribute('r', (w || 16) / 2);
+          el.setAttribute('fill', fill);
+          break;
+        case 'rect':
+          el = document.createElementNS(SVG_NS, 'rect');
+          el.setAttribute('x', x); el.setAttribute('y', y); el.setAttribute('width', w); el.setAttribute('height', h);
+          el.setAttribute('stroke', stroke); el.setAttribute('fill', fill === '#000000' ? 'none' : fill); el.setAttribute('stroke-width', sw);
+          el.setAttribute('rx', 8);
+          break;
+        case 'line':
+        case 'arrow':
+          el = document.createElementNS(SVG_NS, 'line');
+          el.setAttribute('x1', x); el.setAttribute('y1', y); el.setAttribute('x2', x2); el.setAttribute('y2', y2);
+          el.setAttribute('stroke', stroke); el.setAttribute('stroke-width', sw); el.setAttribute('stroke-linecap', 'round');
+          break;
+        case 'text':
+          el = document.createElementNS(SVG_NS, 'text');
+          el.setAttribute('x', x); el.setAttribute('y', y);
+          el.setAttribute('fill', fill);
+          el.setAttribute('font-size', fontSize);
+          el.setAttribute('font-family', 'Tajawal, Arial, sans-serif');
+          el.textContent = text || '';
+          break;
+        default: continue;
+      }
+      el.setAttribute('opacity', opacity);
+      if (rotate) el.setAttribute('transform', `rotate(${rotate} ${cx} ${cy})`);
+      svg.appendChild(el);
+    }
+  }
+}
+function wireShapeInputs() {
+  for (let scene = 1; scene <= 4; scene++) {
+    for (let i = 1; i <= MAX_SHAPES; i++) {
+      const p = `s${scene}-shape-${i}`;
+      ['kind', 'x', 'y', 'w', 'h', 'x2', 'y2', 'stroke', 'fill', 'stroke-width', 'rotate', 'opacity', 'z', 'text', 'fontSize'].forEach((f) => {
+        const el = $(`${p}-${f}`);
+        if (el) el.addEventListener('input', updateShapePreviews);
+      });
+      // Value labels
+      const showXY = () => $(`${p}-xV`).textContent = `${$(`${p}-x`).value},${$(`${p}-y`).value}`;
+      const showWH = () => $(`${p}-wV`).textContent = `${$(`${p}-w`).value}×${$(`${p}-h`).value}`;
+      const showX2Y2 = () => $(`${p}-x2V`).textContent = `${$(`${p}-x2`).value},${$(`${p}-y2`).value}`;
+      $(`${p}-x`).addEventListener('input', showXY); $(`${p}-y`).addEventListener('input', showXY); showXY();
+      $(`${p}-w`).addEventListener('input', showWH); $(`${p}-h`).addEventListener('input', showWH); showWH();
+      $(`${p}-x2`).addEventListener('input', showX2Y2); $(`${p}-y2`).addEventListener('input', showX2Y2); showX2Y2();
+      [['stroke-width', ''], ['rotate', '°'], ['opacity', ''], ['z', ''], ['fontSize', '']].forEach(([f, suf]) => {
+        const el = $(`${p}-${f}`); const out = $(`${p}-${f}V`);
+        if (!el || !out) return;
+        const apply = () => {
+          let v = el.value;
+          if (f === 'opacity') v = Number(v).toFixed(2);
+          out.textContent = v + suf;
+        };
+        el.addEventListener('input', apply); apply();
+      });
+    }
+  }
+}
+wireShapeInputs();
+updateShapePreviews();
+
+// ─────────────────────────────────────────────────────────────────
+// Phase 4: animated markers per scene.
+// 4 marker slots per scene; live preview shows static dot+callout
+// (real pulse animation is only in the rendered MP4).
+// ─────────────────────────────────────────────────────────────────
+const MAX_MARKERS = 4;
+function buildMarkerControls(scene, slot) {
+  const p = `s${scene}-marker-${slot}`;
+  return `
+    <div class="marker-slot" style="border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:8px 10px;margin-bottom:8px;">
+      <div style="font-size:11px;font-weight:700;color:#10b981;margin-bottom:6px;">Marker ${slot}</div>
+      <div class="row"><label>Enabled</label><select id="${p}-enabled"><option value="">Off</option><option value="true">On</option></select></div>
+      <div class="row"><label>X / Y</label>
+        <input type="range" id="${p}-x" min="0" max="1080" value="540" style="flex:0.8;">
+        <input type="range" id="${p}-y" min="0" max="1350" value="600" style="flex:0.8;">
+        <span class="val" id="${p}-xV" style="min-width:60px;">540,600</span>
+      </div>
+      <div class="row"><label>Label</label><input type="text" id="${p}-label" placeholder="callout text" style="font-size:11px;"></div>
+      <div class="row"><label>Activate at (f)</label><input type="range" id="${p}-activateFrame" min="0" max="180" value="20"><span class="val" id="${p}-activateFrameV">20f</span></div>
+      <div class="row"><label>Duration (f)</label><input type="range" id="${p}-durationFrames" min="20" max="200" value="90"><span class="val" id="${p}-durationFramesV">90f</span></div>
+      <div class="row"><label>Color</label><input type="color" id="${p}-color" value="#1A9DD7"></div>
+      <div class="row"><label>Ring size</label><input type="range" id="${p}-ringSize" min="30" max="200" value="80"><span class="val" id="${p}-ringSizeV">80</span></div>
+      <div class="row"><label>Dot size</label><input type="range" id="${p}-dotSize" min="6" max="40" value="14"><span class="val" id="${p}-dotSizeV">14</span></div>
+      <div class="row"><label>Label offset X</label><input type="range" id="${p}-labelOffsetX" min="-300" max="300" value="60"><span class="val" id="${p}-labelOffsetXV">60</span></div>
+      <div class="row"><label>Label offset Y</label><input type="range" id="${p}-labelOffsetY" min="-150" max="150" value="-10"><span class="val" id="${p}-labelOffsetYV">-10</span></div>
+      <div class="row"><label>Label size</label><input type="range" id="${p}-labelSize" min="16" max="80" value="32"><span class="val" id="${p}-labelSizeV">32</span></div>
+      <div class="row"><label>Label bg</label><input type="color" id="${p}-labelBg" value="#ffffff"></div>
+      <div class="row"><label>Label color</label><input type="color" id="${p}-labelColor" value="#071B3A"></div>
+    </div>
+  `;
+}
+document.querySelectorAll('[data-markers-host]').forEach((host) => {
+  const scene = Number(host.dataset.markersHost);
+  let html = '';
+  for (let i = 1; i <= MAX_MARKERS; i++) html += buildMarkerControls(scene, i);
+  host.innerHTML = html;
+});
+
+function updateMarkerPreviews() {
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  for (let scene = 1; scene <= 4; scene++) {
+    const svg = document.querySelector(`[data-stage-markers="${scene}"]`);
+    if (!svg) continue;
+    svg.innerHTML = '';
+    for (let i = 1; i <= MAX_MARKERS; i++) {
+      const p = `s${scene}-marker-${i}`;
+      if ($(`${p}-enabled`)?.value !== 'true') continue;
+      const x = Number($(`${p}-x`).value);
+      const y = Number($(`${p}-y`).value);
+      const color = $(`${p}-color`).value;
+      const dotSize = Number($(`${p}-dotSize`).value);
+      const ringSize = Number($(`${p}-ringSize`).value);
+      const lblX = x + Number($(`${p}-labelOffsetX`).value);
+      const lblY = y + Number($(`${p}-labelOffsetY`).value);
+      const lblSize = Number($(`${p}-labelSize`).value);
+      const lblBg = $(`${p}-labelBg`).value;
+      const lblColor = $(`${p}-labelColor`).value;
+      const label = $(`${p}-label`).value;
+      // Pulse ring (static at 70% expansion for preview)
+      const ring = document.createElementNS(SVG_NS, 'circle');
+      ring.setAttribute('cx', x); ring.setAttribute('cy', y); ring.setAttribute('r', ringSize * 0.7);
+      ring.setAttribute('fill', 'none'); ring.setAttribute('stroke', color); ring.setAttribute('stroke-width', 3);
+      ring.setAttribute('opacity', '0.3');
+      ring.setAttribute('data-marker-slot', i);
+      svg.appendChild(ring);
+      // Dot
+      const dot = document.createElementNS(SVG_NS, 'circle');
+      dot.setAttribute('cx', x); dot.setAttribute('cy', y); dot.setAttribute('r', dotSize);
+      dot.setAttribute('fill', color);
+      dot.setAttribute('data-marker-slot', i);
+      svg.appendChild(dot);
+      // Inner highlight
+      const inner = document.createElementNS(SVG_NS, 'circle');
+      inner.setAttribute('cx', x); inner.setAttribute('cy', y); inner.setAttribute('r', dotSize * 0.45);
+      inner.setAttribute('fill', 'rgba(255,255,255,0.8)');
+      inner.setAttribute('data-marker-slot', i);
+      svg.appendChild(inner);
+      // Callout label
+      if (label) {
+        const padding = 12;
+        const labelW = label.length * lblSize * 0.55 + padding * 2;
+        const labelH = lblSize + padding * 1.4;
+        // Connector line
+        const offX = Number($(`${p}-labelOffsetX`).value);
+        const line = document.createElementNS(SVG_NS, 'line');
+        line.setAttribute('x1', x + (offX > 0 ? dotSize : -dotSize));
+        line.setAttribute('y1', y);
+        line.setAttribute('x2', lblX - (offX > 0 ? padding : -padding));
+        line.setAttribute('y2', lblY + labelH / 2);
+        line.setAttribute('stroke', color); line.setAttribute('stroke-width', 2);
+        line.setAttribute('data-marker-slot', i);
+        svg.appendChild(line);
+        // Background pill
+        const rect = document.createElementNS(SVG_NS, 'rect');
+        rect.setAttribute('x', lblX); rect.setAttribute('y', lblY);
+        rect.setAttribute('width', labelW); rect.setAttribute('height', labelH);
+        rect.setAttribute('rx', labelH / 2);
+        rect.setAttribute('fill', lblBg); rect.setAttribute('stroke', color); rect.setAttribute('stroke-width', 2);
+        rect.setAttribute('data-marker-slot', i);
+        svg.appendChild(rect);
+        // Text
+        const text = document.createElementNS(SVG_NS, 'text');
+        text.setAttribute('x', lblX + labelW / 2); text.setAttribute('y', lblY + labelH / 2 + lblSize * 0.35);
+        text.setAttribute('fill', lblColor); text.setAttribute('font-size', lblSize);
+        text.setAttribute('font-weight', '700'); text.setAttribute('text-anchor', 'middle');
+        text.setAttribute('font-family', 'Tajawal, Arial, sans-serif');
+        text.textContent = label;
+        text.setAttribute('data-marker-slot', i);
+        svg.appendChild(text);
+      }
+    }
+  }
+}
+function wireMarkerInputs() {
+  for (let scene = 1; scene <= 4; scene++) {
+    for (let i = 1; i <= MAX_MARKERS; i++) {
+      const p = `s${scene}-marker-${i}`;
+      ['enabled', 'x', 'y', 'label', 'activateFrame', 'durationFrames', 'color', 'ringSize', 'dotSize', 'labelOffsetX', 'labelOffsetY', 'labelSize', 'labelBg', 'labelColor'].forEach((f) => {
+        const el = $(`${p}-${f}`);
+        if (el) el.addEventListener('input', updateMarkerPreviews);
+      });
+      const showXY = () => $(`${p}-xV`).textContent = `${$(`${p}-x`).value},${$(`${p}-y`).value}`;
+      $(`${p}-x`).addEventListener('input', showXY); $(`${p}-y`).addEventListener('input', showXY); showXY();
+      [['activateFrame', 'f'], ['durationFrames', 'f'], ['ringSize', ''], ['dotSize', ''], ['labelOffsetX', ''], ['labelOffsetY', ''], ['labelSize', '']].forEach(([f, suf]) => {
+        const el = $(`${p}-${f}`); const out = $(`${p}-${f}V`);
+        if (!el || !out) return;
+        const apply = () => { out.textContent = el.value + suf; };
+        el.addEventListener('input', apply); apply();
+      });
+    }
+  }
+}
+wireMarkerInputs();
+updateMarkerPreviews();
+
+// ─────────────────────────────────────────────────────────────────
+// Phase 5: Animation style presets — one-click bundles.
+// Each preset is a map of element-id → animation name (or also dur/delay).
+// Layers/shapes/markers anims are unchanged (those are content-specific).
+// ─────────────────────────────────────────────────────────────────
+const STYLE_PRESETS = {
+  subtle: {
+    desc: 'Gentle fades everywhere, no springs, slower',
+    map: {
+      's1-h-anim': 'fade-in', 's1-s-anim': 'fade-in',
+      's2-h-anim': 'fade-in', 's2-s-anim': 'fade-in',
+      's2-benefits-anim': 'fade-in',
+      's3-h-anim': 'fade-in', 's3-s-anim': 'fade-in',
+      's3-cards-anim': 'fade-in',
+      's4-logo-anim': 'fade-in', 's4-h-anim': 'fade-up', 's4-h-loop': 'none', 's4-s-anim': 'fade-in',
+      's4-contacts-anim': 'fade-in',
+    },
+    durations: { default: 26 },
+  },
+  default: {
+    desc: 'SmartLab defaults (word stagger headlines, slides, springs)',
+    map: {
+      's1-h-anim': 'word-stagger', 's1-s-anim': 'fade-up',
+      's2-h-anim': 'word-stagger', 's2-s-anim': 'fade-up',
+      's2-benefits-anim': 'slide-from-right',
+      's3-h-anim': 'word-stagger', 's3-s-anim': 'fade-up',
+      's3-cards-anim': 'scale-pop',
+      's4-logo-anim': 'spring-zoom-fade', 's4-h-anim': 'word-stagger', 's4-h-loop': 'heartbeat', 's4-s-anim': 'fade-up',
+      's4-contacts-anim': 'slide-from-left',
+    },
+  },
+  dramatic: {
+    desc: 'Big motion — scale-pop, slide-up-large, blur-in, fast',
+    map: {
+      's1-h-anim': 'slide-up-large', 's1-s-anim': 'blur-in',
+      's2-h-anim': 'slide-up-large', 's2-s-anim': 'blur-in',
+      's2-benefits-anim': 'scale-pop',
+      's3-h-anim': 'slide-up-large', 's3-s-anim': 'blur-in',
+      's3-cards-anim': 'scale-pop',
+      's4-logo-anim': 'scale-pop', 's4-h-anim': 'slide-up-large', 's4-h-loop': 'heartbeat', 's4-s-anim': 'blur-in',
+      's4-contacts-anim': 'scale-pop',
+    },
+    durations: { default: 24 },
+  },
+  playful: {
+    desc: 'Springs + rotations everywhere',
+    map: {
+      's1-h-anim': 'scale-pop', 's1-s-anim': 'scale-pop',
+      's2-h-anim': 'rotate-in', 's2-s-anim': 'scale-pop',
+      's2-benefits-anim': 'scale-pop',
+      's3-h-anim': 'rotate-in', 's3-s-anim': 'scale-pop',
+      's3-cards-anim': 'rotate-in',
+      's4-logo-anim': 'rotate-in', 's4-h-anim': 'scale-pop', 's4-h-loop': 'pulse', 's4-s-anim': 'scale-pop',
+      's4-contacts-anim': 'rotate-in',
+    },
+    durations: { default: 28 },
+  },
+  cinematic: {
+    desc: 'Slow blur-ins + camera zooms, premium feel',
+    map: {
+      's1-h-anim': 'blur-in', 's1-s-anim': 'blur-in',
+      's2-h-anim': 'blur-in', 's2-s-anim': 'blur-in',
+      's2-benefits-anim': 'zoom-in',
+      's3-h-anim': 'blur-in', 's3-s-anim': 'blur-in',
+      's3-cards-anim': 'zoom-in',
+      's4-logo-anim': 'blur-in', 's4-h-anim': 'blur-in', 's4-h-loop': 'breathe', 's4-s-anim': 'blur-in',
+      's4-contacts-anim': 'zoom-in',
+    },
+    durations: { default: 40 }, // slower
+  },
+};
+
+function applyStylePreset(name) {
+  const preset = STYLE_PRESETS[name];
+  if (!preset) return;
+  // Apply animation names
+  Object.entries(preset.map).forEach(([elId, anim]) => {
+    const el = $(elId);
+    if (el) { el.value = anim; el.dispatchEvent(new Event('change', { bubbles: true })); }
+  });
+  // Optional duration override for all anim-dur sliders
+  if (preset.durations?.default) {
+    document.querySelectorAll('input[id$="-anim-dur"]').forEach((el) => {
+      el.value = preset.durations.default;
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+  }
+  toast(`🎭 Applied "${name}" style`);
+}
+document.querySelectorAll('[data-style-preset]').forEach((btn) => {
+  btn.addEventListener('click', () => applyStylePreset(btn.dataset.stylePreset));
+});
+
+// Populate every animation dropdown. `data-loop-only` selects only kind=loop.
+document.querySelectorAll('select[data-anim-picker]').forEach((sel) => {
+  const loopOnly = sel.hasAttribute('data-loop-only');
+  // Loop-only dropdowns get a 'none' option even though 'none' is kind=entry
+  if (loopOnly) {
+    const opt = document.createElement('option');
+    opt.value = 'none';
+    opt.textContent = 'None';
+    sel.appendChild(opt);
+  }
+  SL_ANIMATIONS.forEach((a) => {
+    if (loopOnly && a.kind !== 'loop') return;
+    if (!loopOnly && a.name === 'none' && a.kind !== 'entry') return; // skip dupes
+    const opt = document.createElement('option');
+    opt.value = a.name;
+    opt.textContent = a.label;
+    sel.appendChild(opt);
+  });
+  // Set default
+  const def = SL_ANIM_DEFAULTS[sel.id];
+  if (def) sel.value = def;
+});
+
+// ── Scene duration sliders + total reel duration indicator ────
+const SCENE_DUR_IDS = ['s1-dur', 's2-dur', 's3-dur', 's4-dur'];
+const XFADE_ID = 'crossfade-frames';
+function recomputeTotalDuration() {
+  if (window.__slTimelineReady && typeof slTlTotal === 'function') {
+    const totalSec = slTlTotal().toFixed(1);
+    const totalFrames = Math.round(Number(totalSec) * 30);
+    $('sl-total-dur').textContent = `Total: ${totalSec}s · ${totalFrames}f`;
+    return;
+  }
+  const s = SCENE_DUR_IDS.map((id) => Number($(id).value) || 5.0);
+  const xf = Number($(XFADE_ID).value) || 18;
+  const totalFrames = Math.round(s.reduce((a, b) => a + b, 0) * 30 - 3 * xf);
+  const totalSec = (totalFrames / 30).toFixed(1);
+  $('sl-total-dur').textContent = `Total: ${totalSec}s · ${totalFrames}f`;
+}
+[...SCENE_DUR_IDS, XFADE_ID].forEach((id) => {
+  const el = $(id);
+  const out = $(id + 'V');
+  if (!el) return;
+  const apply = () => {
+    if (out) out.textContent = id === XFADE_ID ? el.value : el.value + 's';
+    recomputeTotalDuration();
+  };
+  el.addEventListener('input', apply);
+  apply();
+});
+
+// Generic frame-suffix sliders for *-anim-dur, *-anim-delay, *-stagger
+document.querySelectorAll('input[type="range"][id$="-anim-dur"], input[type="range"][id$="-anim-delay"], input[type="range"][id$="-stagger"]').forEach((el) => {
+  const out = $(el.id + 'V');
+  if (!out) return;
+  const apply = () => { out.textContent = el.value + 'f'; };
+  el.addEventListener('input', apply);
+  apply();
+});
+
+// ── Live preview playback ─────────────────────────────────────
+// Plays entry animations on the stage for one scene or all visible scenes.
+let playState = {
+  running: false,
+  mode: 'scene',
+  startMs: 0,
+  sceneStartMs: 0,
+  sceneIds: [],
+  sceneIndex: 0,
+  raf: null,
+};
+// Higher-fidelity JS port of src/animations.ts.
+// Now includes spring overshoot (damped oscillator) for scale-pop/spring-zoom,
+// continuous loop animations (heartbeat/pulse/breathe), and the special
+// 'word-stagger' is handled separately because it returns multi-element output.
+function eIOcubic(x) { return 1 - Math.pow(1 - x, 3); }
+
+// Damped harmonic oscillator — JS approximation of Remotion's spring().
+// Returns a value that starts at 0, overshoots ~1.05, then settles at 1.
+// Frame is relative to the animation start. damping/stiffness tuned per anim.
+function jsSpring(frame, fps, damping, stiffness) {
+  if (frame <= 0) return 0;
+  const t = frame / fps;
+  // Underdamped: y(t) = 1 - e^(-zeta*omega*t) * cos(omega_d*t)
+  const omega = Math.sqrt(stiffness);
+  const zeta = damping / (2 * Math.sqrt(stiffness));
+  if (zeta >= 1) {
+    // Critically/overdamped — no overshoot
+    return 1 - Math.exp(-omega * t) * (1 + omega * t);
+  }
+  const omega_d = omega * Math.sqrt(1 - zeta * zeta);
+  return 1 - Math.exp(-zeta * omega * t) * Math.cos(omega_d * t);
+}
+
+function applyAnimStyle(name, frame, start, dur, fps) {
+  const local = frame - start;
+  const t = Math.max(0, Math.min(1, local / Math.max(1, dur)));
+  const e = eIOcubic(t);
+  switch (name) {
+    case 'none': return { opacity: 1, transform: 'none' };
+    case 'fade-in': return { opacity: t, transform: 'none' };
+    case 'fade-up': return { opacity: t, transform: `translateY(${(1-e)*22}px)` };
+    case 'fade-down': return { opacity: t, transform: `translateY(${-(1-e)*22}px)` };
+    case 'slide-from-right': return { opacity: t, transform: `translateX(${(1-e)*60}px)` };
+    case 'slide-from-left': return { opacity: t, transform: `translateX(${-(1-e)*60}px)` };
+    case 'slide-up-large': return { opacity: t, transform: `translateY(${(1-e)*80}px)` };
+    case 'scale-pop': {
+      const sp = jsSpring(local, fps, 13, 110);
+      return { opacity: t, transform: `scale(${0.7 + sp * 0.3})` };
+    }
+    case 'spring-zoom-fade': {
+      const sp = jsSpring(local, fps, 14, 100);
+      return { opacity: t, transform: `scale(${0.85 + sp * 0.15})` };
+    }
+    case 'scale-in': return { opacity: t, transform: `scale(${0.85 + e*0.15})` };
+    case 'zoom-in': return { opacity: t, transform: `scale(${1.3 - e*0.3})` };
+    case 'blur-in': return { opacity: t, filter: `blur(${(1-e)*12}px)`, transform: 'none' };
+    case 'rotate-in': return { opacity: t, transform: `rotate(${-(1-e)*15}deg)` };
+    case 'word-stagger': return { opacity: t, transform: `translateY(${(1-e)*22}px)` };
+    // Loop animations — phase-based, ignore dur, always playing while frame ≥ start
+    case 'heartbeat': {
+      if (local < 0) return { opacity: 1, transform: 'none' };
+      const cycle = fps * 2;
+      const phase = ((local) % cycle) / cycle;
+      return { opacity: 1, transform: `scale(${1 + 0.045 * Math.sin(phase * Math.PI * 2)})` };
+    }
+    case 'pulse': {
+      if (local < 0) return { opacity: 1, transform: 'none' };
+      const cycle = fps * 1.5;
+      const phase = ((local) % cycle) / cycle;
+      return { opacity: 0.65 + 0.35 * (0.5 + 0.5 * Math.sin(phase * Math.PI * 2)), transform: 'none' };
+    }
+    case 'breathe': {
+      if (local < 0) return { opacity: 1, transform: 'none' };
+      const cycle = fps * 3;
+      const phase = ((local) % cycle) / cycle;
+      return { opacity: 1, transform: `scale(${1 + 0.025 * Math.sin(phase * Math.PI * 2)})` };
+    }
+    default: return { opacity: 1, transform: 'none' };
+  }
+}
+
+// Track which headline elements have been split into word spans during the
+// current play session so we can restore them on stop.
+const wordStaggerCache = new Map(); // elId → originalText
+
+function applyWordStagger(elId, frame, start, dur, staggerFrames, fps) {
+  const el = $(elId);
+  if (!el) return;
+  // First-time split: cache original text and replace with spans
+  let original = wordStaggerCache.get(elId);
+  if (original === undefined) {
+    original = el.textContent || '';
+    wordStaggerCache.set(elId, original);
+  }
+  const words = original.split(' ');
+  // Rebuild children if span count doesn't match (text changed mid-play)
+  if (el.children.length !== words.length || !el.querySelector('span[data-wsi]')) {
+    el.innerHTML = words.map((w, i) =>
+      `<span data-wsi="${i}" style="display:inline-block;will-change:transform,opacity;">${w}${i < words.length - 1 ? ' ' : ''}</span>`
+    ).join('');
+  }
+  // Animate each span independently
+  el.querySelectorAll('span[data-wsi]').forEach((span, i) => {
+    const wStart = start + i * staggerFrames;
+    const style = applyAnimStyle('fade-up', frame, wStart, dur, fps);
+    span.style.opacity = style.opacity ?? 1;
+    span.style.transform = style.transform || '';
+  });
+  // Element itself is fully visible (its children carry the animation)
+  el.style.opacity = '1';
+  el.style.transform = '';
+}
+
+function restoreWordStagger() {
+  wordStaggerCache.forEach((original, elId) => {
+    const el = $(elId);
+    if (el) {
+      el.innerHTML = '';
+      el.textContent = original;
+      el.style.opacity = '';
+      el.style.transform = '';
+    }
+  });
+  wordStaggerCache.clear();
+}
+function applyAnimToEl(el, anim, frame, delay, dur, fps, opts) {
+  if (!el) return;
+  const style = applyAnimStyle(anim, frame, delay, dur, fps);
+  // Some elements have STATIC transforms (e.g. layer img with rotate/scale).
+  // Keep those by reading the cached value from dataset before overwriting.
+  const staticT = el.dataset.staticTransform || '';
+  el.style.opacity = style.opacity ?? 1;
+  if (style.filter !== undefined) el.style.filter = style.filter;
+  const animT = style.transform || '';
+  el.style.transform = [animT, staticT].filter(Boolean).join(' ');
+}
+
+// Stagger settings: how many frames between adjacent words for headlines
+const WORD_STAGGER_FRAMES = { default: 5, 's4-h': 6 };
+
+function previewFrame(frame) {
+  // Apply entry animations to the visible scene's elements + groups.
+  const activeSceneEl = stage.querySelector('.scene.active');
+  if (!activeSceneEl) return;
+  const sceneNum = activeSceneEl.dataset.scene;
+  const fps = 30;
+
+  // 1) Headline + subtitle. Headline gets special handling for word-stagger.
+  const baseMap = {
+    1: [['sl-s1-h1', 's1-h', true], ['sl-s1-p', 's1-s', false]],
+    2: [['sl-s2-h1', 's2-h', true], ['sl-s2-sub', 's2-s', false]],
+    3: [['sl-s3-h1', 's3-h', true], ['sl-s3-sub', 's3-s', false]],
+    4: [['sl-s4-h1', 's4-h', true], ['sl-s4-sub', 's4-s', false]],
+  }[sceneNum] || [];
+  baseMap.forEach(([elId, prefix, isHeadline]) => {
+    const anim = $(prefix + '-anim')?.value;
+    const dur = Number($(prefix + '-anim-dur')?.value || 22);
+    const delay = Number($(prefix + '-anim-delay')?.value || 0);
+    if (isHeadline && anim === 'word-stagger') {
+      const stagger = WORD_STAGGER_FRAMES[prefix] ?? WORD_STAGGER_FRAMES.default;
+      applyWordStagger(elId, frame, delay, dur, stagger, fps);
+      // Compose with optional CTA loop (Scene 4 headline has heartbeat etc.)
+      if (prefix === 's4-h') {
+        const loop = $('s4-h-loop')?.value;
+        if (loop && loop !== 'none') {
+          const loopStart = delay + dur;
+          const ls = applyAnimStyle(loop, frame, loopStart, 1, fps);
+          const wrapper = $(elId);
+          if (wrapper && ls.transform) {
+            wrapper.style.transform = ls.transform;
+            wrapper.style.transformOrigin = 'center center';
+          }
+        }
+      }
+    } else {
+      // Non-word-stagger headline: clear any prior split words first
+      if (isHeadline && wordStaggerCache.has(elId)) {
+        const el = $(elId);
+        const original = wordStaggerCache.get(elId);
+        if (el) el.textContent = original;
+        wordStaggerCache.delete(elId);
+      }
+      applyAnimToEl($(elId), anim, frame, delay, dur, fps);
+    }
+  });
+
+  // 2) Group choreography — benefits (Scene 2), cards (Scene 3), contacts (Scene 4)
+  // Each scene has an INNER element that gets its own independent spring animation
+  // on top of the outer group animation:
+  //   • Scene 2: .sl-check inside each .sl-benefit (spring 0.3→1.0, damping 9, stiffness 180)
+  //   • Scene 3: <i> inside each .sl-card (spring 0.3→1.0, damping 10, stiffness 160)
+  //   • Scene 4: .sl-icon-circle inside each .sl-contact-row (spring 0.4→1.0, damping 10, stiffness 150)
+  const groupConfig = {
+    '2': { selector: '.sl-benefit', prefix: 's2-benefits', innerSel: '.sl-check', innerOffset: 4, innerFrom: 0.3, innerDamping: 9, innerStiffness: 180 },
+    '3': { selector: '.sl-card', prefix: 's3-cards', innerSel: 'i', innerOffset: 8, innerFrom: 0.3, innerDamping: 10, innerStiffness: 160 },
+    '4': { selector: '.sl-contact-row', prefix: 's4-contacts', innerSel: '.sl-icon-circle', innerOffset: 6, innerFrom: 0.4, innerDamping: 10, innerStiffness: 150 },
+  }[sceneNum];
+  if (groupConfig) {
+    const items = activeSceneEl.querySelectorAll(groupConfig.selector);
+    const anim = $(groupConfig.prefix + '-anim')?.value;
+    const dur = Number($(groupConfig.prefix + '-anim-dur')?.value || 22);
+    const delay = Number($(groupConfig.prefix + '-anim-delay')?.value || 0);
+    const stagger = Number($(groupConfig.prefix + '-stagger')?.value || 0);
+    items.forEach((it, i) => {
+      const itemStart = delay + i * stagger;
+      applyAnimToEl(it, anim, frame, itemStart, dur, fps);
+      // Inner spring-pop (independent of the outer item animation)
+      const inner = it.querySelector(groupConfig.innerSel);
+      if (inner) {
+        const localFrame = frame - (itemStart + groupConfig.innerOffset);
+        const sp = jsSpring(localFrame, fps, groupConfig.innerDamping, groupConfig.innerStiffness);
+        const scale = groupConfig.innerFrom + sp * (1 - groupConfig.innerFrom);
+        inner.style.transform = `scale(${scale})`;
+        inner.style.display = inner.style.display || 'inline-flex';
+        inner.style.transformOrigin = 'center center';
+      }
+    });
+  }
+
+  // 3) Scene 4 logo (single image element above the contact list)
+  if (sceneNum === '4') {
+    const logoEl = activeSceneEl.querySelector('.sl-brand-logo');
+    const anim = $('s4-logo-anim')?.value;
+    const dur = Number($('s4-logo-anim-dur')?.value || 22);
+    const delay = Number($('s4-logo-anim-delay')?.value || 4);
+    applyAnimToEl(logoEl, anim, frame, delay, dur, fps);
+  }
+
+  // 4) Image layers (Phase 2) — each layer img has its own animation
+  const layersHost = activeSceneEl.querySelector('.layers-host');
+  if (layersHost) {
+    const imgs = layersHost.querySelectorAll('img');
+    imgs.forEach((img) => {
+      const slot = Number(img.dataset.slot);
+      if (!slot) return;
+      const p = `s${sceneNum}-l${slot}`;
+      const anim = $(p + '-anim')?.value;
+      const dur = Number($(p + '-anim-dur')?.value || 22);
+      const delay = Number($(p + '-anim-delay')?.value || 0);
+      applyAnimToEl(img, anim, frame, delay, dur, fps);
+    });
+  }
+
+  // 5) Shapes (Phase 3) — apply animation to each SVG shape child
+  const shapesHost = activeSceneEl.querySelector('.shapes-host');
+  if (shapesHost) {
+    const children = shapesHost.children;
+    for (let i = 0; i < children.length; i++) {
+      const shape = children[i];
+      const slot = i + 1;
+      const p = `s${sceneNum}-shape-${slot}`;
+      const anim = $(p + '-anim')?.value;
+      const dur = Number($(p + '-anim-dur')?.value || 22);
+      const delay = Number($(p + '-anim-delay')?.value || 0);
+      const style = applyAnimStyle(anim, frame, delay, dur, fps);
+      shape.setAttribute('opacity', style.opacity ?? 1);
+      // SVG transform attribute combines with any rotate already applied
+      // by updateShapePreviews. Append the anim transform if present.
+      const baseRotate = $(`${p}-rotate`)?.value;
+      const kind = $(`${p}-kind`)?.value;
+      const cx = (kind === 'circle' || kind === 'dot')
+        ? Number($(`${p}-x`).value)
+        : Number($(`${p}-x`).value) + Number($(`${p}-w`).value) / 2;
+      const cy = (kind === 'circle' || kind === 'dot')
+        ? Number($(`${p}-y`).value)
+        : Number($(`${p}-y`).value) + Number($(`${p}-h`).value) / 2;
+      const baseT = baseRotate && Number(baseRotate) !== 0 ? `rotate(${baseRotate} ${cx} ${cy})` : '';
+      const animT = style.transform || '';
+      shape.setAttribute('transform', [animT, baseT].filter(Boolean).join(' '));
+    }
+  }
+
+  // 6) Markers (Phase 4) — fade in/out on activate window, pulse ring loops
+  const markersHost = activeSceneEl.querySelector('.markers-host');
+  if (markersHost) {
+    // Markers are static-positioned in DOM via updateMarkerPreviews.
+    // For play preview, we modulate opacity by their activate/duration window.
+    let markerSlot = 0;
+    for (let i = 1; i <= 4; i++) {
+      const p = `s${sceneNum}-marker-${i}`;
+      if ($(`${p}-enabled`)?.value !== 'true') continue;
+      markerSlot++;
+      const activate = Number($(`${p}-activateFrame`).value);
+      const dur = Number($(`${p}-durationFrames`).value);
+      const local = frame - activate;
+      let op = 0;
+      if (local >= 0 && local <= dur + 12) {
+        const fadeIn = Math.min(1, local / 12);
+        const fadeOut = Math.max(0, 1 - (local - (dur - 12)) / 12);
+        op = Math.max(0, fadeIn * Math.min(1, fadeOut));
+      }
+      // Markers SVG has multiple <circle>/<line>/<rect>/<text> per marker.
+      // Each marker is a contiguous block of children; count from the start.
+      // Simpler: tag each marker block with data-marker-slot in updateMarkerPreviews
+      // (added in updateMarkerPreviews update below).
+      markersHost.querySelectorAll(`[data-marker-slot="${i}"]`).forEach((el) => {
+        el.setAttribute('opacity', op);
+      });
+    }
+  }
+}
+
+function resetPreviewStyles() {
+  // Restore any word-stagger headlines back to plain text
+  restoreWordStagger();
+  const ids = ['sl-s1-h1', 'sl-s1-p', 'sl-s2-h1', 'sl-s2-sub', 'sl-s3-h1', 'sl-s3-sub', 'sl-s4-h1', 'sl-s4-sub'];
+  ids.forEach((id) => {
+    const el = $(id);
+    if (el) { el.style.opacity = ''; el.style.transform = ''; el.style.filter = ''; }
+  });
+  document.querySelectorAll('.sl-benefit, .sl-card, .sl-contact-row, .sl-brand-logo').forEach((el) => {
+    el.style.opacity = ''; el.style.transform = ''; el.style.filter = '';
+  });
+  // Reset INNER spring-pop elements (checkmarks, card icons, contact icon circles)
+  document.querySelectorAll('.sl-check, .sl-card i, .sl-icon-circle').forEach((el) => {
+    el.style.transform = '';
+  });
+  document.querySelectorAll('.layers-host img').forEach((img) => {
+    img.style.opacity = '';
+    img.style.filter = '';
+    img.style.transform = img.dataset.staticTransform || '';
+  });
+  // Shapes: re-run the static updater to restore positions/styles
+  updateShapePreviews();
+  // Markers: re-run the static updater (resets opacity back to 1)
+  updateMarkerPreviews();
+  window.posterOverlayStudio?.stopPreviewAnimations?.();
+}
+
+function slActiveSceneId() {
+  return document.querySelector('.scene.active[data-scene]')?.dataset.scene ||
+    document.querySelector('.tl-scene.active[data-scene]')?.dataset.scene ||
+    slTlState?.order?.[0] ||
+    '1';
+}
+
+function slPreviewSceneDurationFrames(sceneId) {
+  const seconds = Number(slTlState?.durations?.[sceneId] || SL_DEFAULT_DUR || 5);
+  return Math.max(30, Math.round(seconds * 30));
+}
+
+function slPreviewVisibleSceneIds() {
+  return (slTlState?.order || [])
+    .map(String)
+    .filter(n => slTlState?.visible?.[n] !== false);
+}
+
+function slSetPreviewButtons() {
+  const sceneBtn = $('sl-play-toggle');
+  const allBtn = $('sl-play-all-toggle');
+  if (sceneBtn) sceneBtn.textContent = playState.running && playState.mode === 'scene' ? '⏸ Stop scene' : '▶ Play scene';
+  if (allBtn) allBtn.textContent = playState.running && playState.mode === 'all' ? '⏸ Stop all' : '▶ Play all';
+  document.querySelectorAll('.tl-play').forEach(btn => {
+    const active = playState.running && playState.mode === 'scene' && String(btn.dataset.scene) === String(playState.sceneIds[0]);
+    btn.textContent = active ? '⏸' : '▶';
+    btn.title = active ? `Stop Scene ${btn.dataset.scene} preview` : `Preview Scene ${btn.dataset.scene}`;
+  });
+}
+
+function slStopPreview() {
+  if (playState.running) {
+    playState.running = false;
+    if (playState.raf) cancelAnimationFrame(playState.raf);
+    playState.raf = null;
+    resetPreviewStyles();
+  }
+  slSetPreviewButtons();
+}
+
+function slStartPreview(mode = 'scene', requestedSceneId = null) {
+  if (playState.running) slStopPreview();
+  const sceneIds = mode === 'all'
+    ? slPreviewVisibleSceneIds()
+    : [String(requestedSceneId || slActiveSceneId())];
+  if (!sceneIds.length) {
+    toast('No visible scenes to preview', 'error');
+    return;
+  }
+  resetPreviewStyles();
+  playState.running = true;
+  playState.mode = mode;
+  playState.sceneIds = sceneIds;
+  playState.sceneIndex = 0;
+  playState.startMs = performance.now();
+  playState.sceneStartMs = playState.startMs;
+  slShowScene(sceneIds[0]);
+  window.posterOverlayStudio?.playSceneAnimations?.(sceneIds[0]);
+  slSetPreviewButtons();
+  const loop = (now) => {
+    if (!playState.running) return;
+    const sceneId = playState.sceneIds[playState.sceneIndex] || playState.sceneIds[0];
+    const elapsedMs = now - playState.sceneStartMs;
+    let frame = Math.round((elapsedMs / 1000) * 30);
+    const sceneFrames = slPreviewSceneDurationFrames(sceneId);
+    if (frame > sceneFrames) {
+      resetPreviewStyles();
+      if (playState.mode === 'all') {
+        playState.sceneIndex = (playState.sceneIndex + 1) % playState.sceneIds.length;
+      }
+      const nextSceneId = playState.sceneIds[playState.sceneIndex] || sceneId;
+      slShowScene(nextSceneId);
+      playState.sceneStartMs = now;
+      frame = 0;
+      window.posterOverlayStudio?.playSceneAnimations?.(nextSceneId);
+    }
+    previewFrame(frame);
+    playState.raf = requestAnimationFrame(loop);
+  };
+  playState.raf = requestAnimationFrame(loop);
+}
+
+$('sl-play-toggle').addEventListener('click', () => {
+  if (playState.running && playState.mode === 'scene') slStopPreview();
+  else slStartPreview('scene');
+});
+$('sl-play-all-toggle').addEventListener('click', () => {
+  if (playState.running && playState.mode === 'all') slStopPreview();
+  else slStartPreview('all');
+});
+// Stop preview when scene tab changes (style resets needed)
+document.querySelectorAll('.tab').forEach((tab) => {
+  tab.addEventListener('click', () => {
+    slStopPreview();
+  });
+});
+
+// ── CSS variable bindings (sliders + colors) ────────────────
+const SLIDERS = [
+  ['s1-top', '--s1-top', 'px'],
+  ['s1-h-size', '--s1-h-size', 'px'],
+  ['s1-h-weight', '--s1-h-weight', ''],
+  ['s1-s-size', '--s1-s-size', 'px'],
+  ['s1-gap', '--s1-gap', 'px'],
+  ['s2-top', '--s2-top', 'px'],
+  ['s2-h-size', '--s2-h-size', 'px'],
+  ['s2-s-size', '--s2-s-size', 'px'],
+  ['s2-gap', '--s2-gap', 'px'],
+  ['s2-b-size', '--s2-b-size', 'px'],
+  ['s2-bgap', '--s2-bgap', 'px'],
+  ['s3-top', '--s3-top', 'px'],
+  ['s3-h-size', '--s3-h-size', 'px'],
+  ['s3-s-size', '--s3-s-size', 'px'],
+  ['s3-cgap-top', '--s3-cgap-top', 'px'],
+  ['s3-card-h', '--s3-card-h', 'px'],
+  ['s3-card-gap', '--s3-card-gap', 'px'],
+  ['s3-card-icon', '--s3-card-icon', 'px'],
+  ['s3-card-text', '--s3-card-text', 'px'],
+  ['s4-top', '--s4-top', 'px'],
+  ['s4-logo-w', '--s4-logo-w', 'px'],
+  ['s4-logo-gap', '--s4-logo-gap', 'px'],
+  ['s4-h-size', '--s4-h-size', 'px'],
+  ['s4-s-size', '--s4-s-size', 'px'],
+  ['s4-list-top', '--s4-list-top', 'px'],
+  ['s4-list-gap', '--s4-list-gap', 'px'],
+  ['s4-c-size', '--s4-c-size', 'px'],
+];
+
+SLIDERS.forEach(([id, cssVar, suffix]) => {
+  const el = $(id);
+  const out = $(id + 'V');
+  if (!el || !out) return;
+  const apply = () => {
+    stage.style.setProperty(cssVar, el.value + (suffix === 'px' ? 'px' : ''));
+    out.textContent = el.value + suffix;
+  };
+  el.addEventListener('input', apply);
+  apply();
+});
+
+// Colors
+[['bg-color', '--bg-color'], ['primary-color', '--primary-color'], ['accent-color', '--accent-color']].forEach(([id, cssVar]) => {
+  const el = $(id);
+  const apply = () => stage.style.setProperty(cssVar, el.value);
+  el.addEventListener('input', apply);
+  apply();
+});
+
+// Text bindings — direct DOM updates
+const TEXT_BINDINGS = [
+  ['s1-h-text', 'sl-s1-h1'], ['s1-s-text', 'sl-s1-p'],
+  ['s2-h-text', 'sl-s2-h1'], ['s2-s-text', 'sl-s2-sub'],
+  ['s3-h-text', 'sl-s3-h1'], ['s3-s-text', 'sl-s3-sub'],
+  ['s4-h-text', 'sl-s4-h1'], ['s4-s-text', 'sl-s4-sub'],
+];
+TEXT_BINDINGS.forEach(([srcId, dstId]) => {
+  const src = $(srcId), dst = $(dstId);
+  if (!src || !dst) return;
+  src.addEventListener('input', () => dst.textContent = src.value);
+});
+
+// Render benefits (Scene 2)
+function renderBenefits() {
+  const wrap = $('sl-s2-benefits');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  [1, 2, 3].forEach(i => {
+    const text = $(`s2-b${i}`)?.value || '';
+    wrap.innerHTML += `<div class="sl-benefit"><span class="sl-check">✓</span><span>${text}</span></div>`;
+  });
+}
+[1,2,3].forEach(i => $(`s2-b${i}`)?.addEventListener('input', renderBenefits));
+renderBenefits();
+
+// Render cards (Scene 3)
+function renderCards() {
+  const wrap = $('sl-s3-cards');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  [1,2,3,4].forEach(i => {
+    const t = ($(`s3-c${i}-t`)?.value || '').replace(/\\n/g, '<br>');
+    const ic = $(`s3-c${i}-i`)?.value || '';
+    wrap.innerHTML += `<div class="sl-card"><i class="${ic}"></i><p>${t}</p></div>`;
+  });
+}
+[1,2,3,4].forEach(i => {
+  $(`s3-c${i}-t`)?.addEventListener('input', renderCards);
+  $(`s3-c${i}-i`)?.addEventListener('input', renderCards);
+});
+renderCards();
+
+// Render contacts (Scene 4)
+function renderContacts() {
+  const wrap = $('sl-s4-contacts');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  [1, 2].forEach(i => {
+    const ic = $(`s4-c${i}-i`)?.value || '';
+    const t = $(`s4-c${i}-t`)?.value || '';
+    const isNum = i === 2 && $('s4-c2-num')?.value === 'true';
+    wrap.innerHTML += `<div class="sl-contact-row">
+      <div class="sl-icon-circle"><i class="${ic}"></i></div>
+      <div class="sl-divider"></div>
+      <div class="sl-contact-text${isNum ? ' number' : ''}">${t}</div>
+    </div>`;
+  });
+}
+['s4-c1-i','s4-c1-t','s4-c2-i','s4-c2-t','s4-c2-num'].forEach(id => $(id)?.addEventListener('input', renderContacts));
+$('s4-c2-num')?.addEventListener('change', renderContacts);
+renderContacts();
+
+// ── Scene tabs (filter + stage display) ─────────────────────
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.scene;
+    if (!target) return;
+    if (target === 'all') {
+      slShowScene(slTlState?.order?.[0] || '1', 'all');
+      return;
+    }
+    slShowScene(target);
+  });
+});
+
+// ── Search filter ───────────────────────────────────────────
+$('sl-search').addEventListener('input', e => {
+  const q = e.target.value.toLowerCase().trim();
+  document.querySelectorAll('.group').forEach(g => {
+    if (!q) {
+      g.querySelectorAll('.row').forEach(r => r.classList.remove('hidden'));
+      return;
+    }
+    let anyMatch = false;
+    g.querySelectorAll('.row').forEach(r => {
+      const label = r.querySelector('label')?.textContent.toLowerCase() || '';
+      const match = label.includes(q);
+      r.classList.toggle('hidden', !match);
+      if (match) anyMatch = true;
+    });
+    if (q && anyMatch) g.setAttribute('open', '');
+  });
+});
+
+// ── Storage / save / preset / export ────────────────────────
+const snapshot = () => {
+  const d = {};
+  collectInputs().forEach(el => {
+    if (el.type === 'checkbox' || el.type === 'radio') d[el.id] = el.checked;
+    else d[el.id] = el.value;
+  });
+  if (typeof slTlState !== 'undefined') d.__timeline = structuredClone(slTlState);
+  return d;
+};
+
+let applyingSnapshot = false;
+function applySnapshot(data) {
+  applyingSnapshot = true;
+  try {
+    if (data.__timeline) {
+      slTlState = slTlNormalize(data.__timeline);
+      slTlWrite(slTlState);
+    }
+    collectInputs().forEach(el => {
+      if (!(el.id in data)) return;
+      if (el.type === 'checkbox' || el.type === 'radio') el.checked = !!data[el.id];
+      else el.value = data[el.id];
+    });
+    collectInputs().forEach(el => {
+      if (!(el.id in data)) return;
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+    renderBenefits();
+    renderCards();
+    renderContacts();
+    if (data.__timeline) {
+      slApplyTimelineToDom();
+      slBuildTimeline();
+      slShowScene(slTlState.order[0] || '1');
+    }
+  } finally {
+    applyingSnapshot = false;
+  }
+}
+
+function saveCanonical() {
+  try {
+    const snap = snapshot();
+    localStorage.setItem(SL_STORAGE_KEY, JSON.stringify(snap));
+    // Mirror into active preset so Save updates the preset entry too
+    const active = slGetActive();
+    if (active) {
+      const p = readPresets();
+      p[active] = snap;
+      writePresets(p);
+    }
+  } catch (_) {}
+}
+function slTimelineCountFromSnapshot(snap) {
+  const order = snap?.__timeline?.order;
+  return Array.isArray(order) ? order.length : 0;
+}
+function slTimelineCountFromStudioState(state) {
+  const order = state?.timeline?.order || state?.canonical?.__timeline?.order;
+  return Array.isArray(order) ? order.length : 0;
+}
+function slMaybeApplyRecoveryState() {
+  const recovery = window.__SMARTLAB_POSTS_RECOVERY_STATE__;
+  if (!recovery || typeof recovery !== 'object') return false;
+  const recoveryId = recovery.recoveryId || 'kjhgfdsdfghjkl-recovery';
+  const recoveryCount = slTimelineCountFromStudioState(recovery);
+  if (recoveryCount <= 1) return false;
+  try {
+    if (localStorage.getItem(`${SL_PROJECT_ID}-recovery-applied`) === recoveryId) return false;
+    const active = slGetActive();
+    const presets = readPresets();
+    const activeSnap = active && presets[active] ? presets[active] : null;
+    const canonicalSnap = JSON.parse(localStorage.getItem(SL_STORAGE_KEY) || 'null');
+    const localCount = Math.max(slTimelineCountFromSnapshot(activeSnap), slTimelineCountFromSnapshot(canonicalSnap));
+    if (localCount >= recoveryCount) return false;
+    const applied = slApplyStudioState(recovery);
+    if (!applied) return false;
+    localStorage.setItem(`${SL_PROJECT_ID}-recovery-applied`, recoveryId);
+    localStorage.setItem(SL_STORAGE_KEY, JSON.stringify(recovery.canonical || {}));
+    localStorage.setItem(SL_PRESETS_KEY, JSON.stringify(recovery.presets || {}));
+    if (recovery.sceneImages) localStorage.setItem(SL_SCENE_IMG_KEY, JSON.stringify(recovery.sceneImages));
+    if (recovery.timeline) localStorage.setItem(SL_TL_KEY, JSON.stringify(recovery.timeline));
+    return true;
+  } catch (error) {
+    console.error('Recovery state apply failed', error);
+    return false;
+  }
+}
+function loadCanonical() {
+  try {
+    if (slMaybeApplyRecoveryState()) return;
+    // Priority: active preset → canonical KEY → defaults
+    const active = slGetActive();
+    if (active) {
+      const p = readPresets();
+      if (p[active]) { applySnapshot(p[active]); return; }
+      slSetActive(''); // active preset gone, clear marker
+    }
+    const d = JSON.parse(localStorage.getItem(SL_STORAGE_KEY) || 'null');
+    if (d) applySnapshot(d);
+  } catch (_) {}
+}
+function readPresets() {
+  try { return JSON.parse(localStorage.getItem(SL_PRESETS_KEY) || '{}') || {}; }
+  catch (_) { return {}; }
+}
+function writePresets(p) {
+  try {
+    localStorage.setItem(SL_PRESETS_KEY, JSON.stringify(p));
+  } catch (_) {}
+}
+function refreshPresetList() {
+  const sel = $('sl-preset-load');
+  const presets = readPresets();
+  const active = slGetActive();
+  sel.innerHTML = '<option value="">— No preset (unnamed) —</option>';
+  Object.keys(presets).sort().forEach(name => {
+    const opt = document.createElement('option');
+    opt.value = name; opt.textContent = '⭐ ' + name;
+    sel.appendChild(opt);
+  });
+  // Always sync dropdown to currently-active preset so reload shows it
+  if (active && presets[active]) sel.value = active;
+  else sel.value = '';
+}
+
+// Dirty tracking
+const dot = $('sl-status-dot'), statusEl = $('sl-status-text');
+let dirty = false, initDone = false;
+const markDirty = () => {
+  if (dirty) return;
+  dirty = true;
+  dot.classList.add('dirty');
+  statusEl.textContent = 'Unsaved changes';
+  statusEl.classList.add('dirty');
+};
+const markClean = () => {
+  dirty = false;
+  dot.classList.remove('dirty');
+  statusEl.textContent = 'All changes saved';
+  statusEl.classList.remove('dirty');
+};
+
+function slBuildStudioState() {
+  return {
+    canonical: snapshot(),
+    presets: readPresets(),
+    activePreset: slGetActive(),
+    timeline: typeof slTlState !== 'undefined' ? structuredClone(slTlState) : null,
+    sceneImages: typeof slReadSceneImageOverrides === 'function' ? slReadSceneImageOverrides() : {},
+    overlayState: typeof slCollectPosterOverlayState === 'function' ? slCollectPosterOverlayState() : {},
+  };
+}
+
+async function slCommitStudioState() {
+  const state = slBuildStudioState();
+  localStorage.setItem(SL_STORAGE_KEY, JSON.stringify(state.canonical));
+  localStorage.setItem(SL_PRESETS_KEY, JSON.stringify(state.presets || {}));
+  if (state.sceneImages) localStorage.setItem(SL_SCENE_IMG_KEY, JSON.stringify(state.sceneImages));
+  if (state.timeline) localStorage.setItem(SL_TL_KEY, JSON.stringify(state.timeline));
+  if (!/^https?:$/.test(location.protocol)) return true;
+  const postJson = async (url, body) => {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) {
+      const text = await res.text().catch(() => '');
+      throw new Error(`${url} failed with ${res.status}${text ? `: ${text}` : ''}`);
+    }
+  };
+  await Promise.all([
+    postJson('/api/studio-state', { id: SL_PROJECT_ID, state }),
+    postJson('/api/overlay-state', { id: SL_PROJECT_ID, overlayState: state.overlayState || {} }),
+  ]);
+  return true;
+}
+
+function slApplyStudioState(state) {
+  if (!state || typeof state !== 'object') return false;
+  applyingSnapshot = true;
+  try {
+    if (state.presets && typeof state.presets === 'object') writePresets(state.presets);
+    if (state.activePreset) slSetActive(state.activePreset);
+    else slSetActive('');
+    if (state.sceneImages && typeof state.sceneImages === 'object') {
+      localStorage.setItem(SL_SCENE_IMG_KEY, JSON.stringify(state.sceneImages));
+    }
+    if (state.timeline) {
+      slTlState = slTlNormalize(state.timeline);
+      slTlWrite(slTlState);
+      slRestoreEmptyScenes();
+    }
+    if (state.canonical) applySnapshot(state.canonical);
+    if (state.overlayState && typeof state.overlayState === 'object') {
+      Object.entries(state.overlayState).forEach(([sceneId, doc]) => {
+        let input = document.getElementById(`s${sceneId}-overlay-doc`);
+        if (!input) {
+          input = document.createElement('input');
+          input.type = 'hidden';
+          input.id = `s${sceneId}-overlay-doc`;
+          document.body.appendChild(input);
+        }
+        input.value = doc ? JSON.stringify(doc) : '';
+      });
+      window.posterOverlayStudio?.refresh?.();
+    }
+  } catch (error) {
+    console.error('Failed to apply studio state', error);
+    return false;
+  } finally {
+    applyingSnapshot = false;
+  }
+  refreshPresetList();
+  slRestoreEmptyScenes();
+  slRestoreSceneImageOverrides();
+  slApplyTimelineToDom();
+  slBuildTimeline();
+  slShowScene(slTlState.order[0] || '1');
+  markClean();
+  return true;
+}
+
+async function slLoadStudioStateFromServer() {
+  if (!/^https?:$/.test(location.protocol)) {
+    slServerStateReady = true;
+    return;
+  }
+  try {
+    const res = await fetch(`/api/studio-state?id=${encodeURIComponent(SL_PROJECT_ID)}`);
+    const state = res.ok ? await res.json() : {};
+    const applied = state && Object.keys(state).length ? slApplyStudioState(state) : false;
+    slServerStateReady = true;
+  } catch (error) {
+    console.error('Failed to load studio state from server', error);
+    slServerStateReady = true;
+  }
+}
+
+document.addEventListener('input', e => {
+  if (!initDone || applyingSnapshot || !e.target.id || SL_TOOLBAR_INPUT_IDS.has(e.target.id)) return;
+  markDirty();
+  try { localStorage.setItem(SL_DRAFT_KEY, JSON.stringify(snapshot())); } catch (_) {}
+});
+
+// Save button
+$('sl-save-btn').addEventListener('click', async () => {
+  saveCanonical();   // also writes into active preset (see saveCanonical)
+  try {
+    await slCommitStudioState();
+  } catch (error) {
+    console.error('Save failed', error);
+    toast('Save failed. Try again.', 'error');
+    return;
+  }
+  markClean();
+  const active = slGetActive();
+  toast(active ? `✓ Saved → preset "${active}"` : '✓ Saved');
+});
+
+// Preset save (new)
+$('sl-preset-btn').addEventListener('click', async () => {
+  const name = (prompt('Preset name?') || '').trim();
+  if (!name) return;
+  const p = readPresets();
+  p[name] = snapshot();
+  writePresets(p);
+  slSetActive(name);          // newly-created preset becomes active
+  refreshPresetList();
+  try {
+    await slCommitStudioState();
+  } catch (error) {
+    console.error('Preset save failed', error);
+    toast('Preset save failed. Try again.', 'error');
+    return;
+  }
+  markClean();
+  toast(`⭐ Saved & activated "${name}"`);
+});
+
+// Preset load
+$('sl-preset-load').addEventListener('change', async e => {
+  const name = e.target.value;
+  if (!name) {
+    slSetActive('');
+    try { await slCommitStudioState(); } catch (_) {}
+    markClean();
+    toast('Detached from preset');
+    return;
+  }
+  const p = readPresets();
+  if (!p[name]) return;
+  applySnapshot(p[name]);
+  slSetActive(name);
+  saveCanonical();
+  try {
+    await slCommitStudioState();
+  } catch (error) {
+    console.error('Preset load save failed', error);
+    toast('Preset load save failed. Try again.', 'error');
+    return;
+  }
+  markClean();
+  toast(`✓ Loaded "${name}" (now active — Save writes back here)`);
+});
+
+// Preset delete
+$('sl-preset-del').addEventListener('click', () => {
+  const sel = $('sl-preset-load');
+  const name = sel.value;
+  if (!name) { toast('Pick a preset first', 'error'); return; }
+  if (!confirm(`Delete preset "${name}"?`)) return;
+  const p = readPresets();
+  delete p[name];
+  writePresets(p);
+  if (slGetActive() === name) slSetActive('');
+  refreshPresetList();
+  slCommitStudioState().catch(() => {});
+  toast(`🗑 Deleted "${name}"`);
+});
+
+// Reset
+$('sl-reset-btn').addEventListener('click', () => {
+  if (!confirm('Clear all (and forget any active preset) and reload?')) return;
+  localStorage.removeItem(SL_STORAGE_KEY);
+  localStorage.removeItem(SL_DRAFT_KEY);
+  slSetActive('');
+  location.reload();
+});
+
+// Copy JSON
+$('copy-btn').addEventListener('click', () => {
+  const data = {
+    exportedAt: new Date().toISOString(),
+    schemaVersion: 2,
+    project: SL_PROJECT_ID,
+    studioState: slBuildStudioState(),
+  };
+  navigator.clipboard.writeText(JSON.stringify(data, null, 2));
+  toast('📋 Copied full backup JSON');
+});
+
+// Export
+$('sl-export-btn').addEventListener('click', () => {
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    schemaVersion: 2,
+    project: SL_PROJECT_ID,
+    studioState: slBuildStudioState(),
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `kjhgfdsdfghjkl-backup-${new Date().toISOString().slice(0,19).replace(/[:T]/g, '-')}.json`;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const n = Object.keys(payload.studioState.presets || {}).length;
+  toast(`📦 Exported full backup (${n} preset${n === 1 ? '' : 's'})`);
+});
+
+function slNormalizeImportedStudioState(payload) {
+  if (!payload || typeof payload !== 'object') return null;
+  if (payload.studioState && typeof payload.studioState === 'object') return payload.studioState;
+  return {
+    canonical: payload.current || payload.canonical || payload,
+    presets: payload.presets || {},
+    activePreset: payload.activePreset || '',
+    timeline: payload.timeline || payload.current?.__timeline || payload.__timeline || null,
+    sceneImages: payload.sceneImages || {},
+    overlayState: payload.overlayState || {},
+  };
+}
+
+async function slImportStudioPayload(payload) {
+  const state = slNormalizeImportedStudioState(payload);
+  if (!state) throw new Error('Invalid SmartLab backup JSON');
+  slApplyStudioState(state);
+  await slCommitStudioState();
+  markClean();
+  toast('📥 Imported and saved backup');
+}
+
+$('sl-import-btn').addEventListener('click', async () => {
+  try {
+    const text = await navigator.clipboard.readText();
+    if (text && text.trim().startsWith('{')) {
+      await slImportStudioPayload(JSON.parse(text));
+      return;
+    }
+  } catch (_) {}
+  $('sl-import-file').click();
+});
+$('sl-import-file').addEventListener('change', async e => {
+  const file = e.target.files && e.target.files[0];
+  e.target.value = '';
+  if (!file) return;
+  try {
+    const payload = JSON.parse(await file.text());
+    await slImportStudioPayload(payload);
+  } catch (error) {
+    toast(`Import failed: ${error.message}`, 'error');
+  }
+});
+
+function slActiveSceneNumber() {
+  const activeStage = stage.querySelector('.scene.active[data-scene]');
+  if (activeStage?.dataset.scene) return String(activeStage.dataset.scene);
+  const activeTab = document.querySelector('.tab.active[data-scene]:not([data-scene="all"])');
+  if (activeTab?.dataset.scene) return String(activeTab.dataset.scene);
+  return String(slTlState?.order?.[0] || '1');
+}
+
+async function slExportSceneImage(sceneNum = slActiveSceneNumber()) {
+  sceneNum = String(sceneNum || slActiveSceneNumber()).replace(/^s/, '');
+  const hasServer = location.protocol === 'http:' || location.protocol === 'https:';
+  if (!hasServer) {
+    toast('Open via http://localhost:<port>/ to export PNG', 'error');
+    return;
+  }
+  toast(`🖼 Rendering Scene ${sceneNum} PNG…`);
+  await slCommitStudioState();
+  const response = await fetch('/api/export-png', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      id: SL_PROJECT_ID,
+      tlState: slTlState,
+      overlayState: slCollectPosterOverlayState(),
+      sceneId: sceneNum,
+    }),
+  });
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.error || 'PNG export failed');
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+  const a = document.createElement('a');
+  a.href = `${data.outputPath}?ts=${Date.now()}`;
+  a.download = `kjhgfdsdfghjkl-scene-${sceneNum}-${stamp}.png`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  toast(`🖼 Exported Scene ${sceneNum} PNG`);
+}
+
+window.slExportSceneImage = slExportSceneImage;
+window.slExportActiveSceneImage = () => slExportSceneImage();
+
+$('sl-export-image-btn').addEventListener('click', () => {
+  slExportSceneImage().catch(error => {
+    console.error(error);
+    toast(`Image export failed: ${error.message}`, 'error');
+  });
+});
+
+// Render — copy the bake + render command
+$('sl-render-btn').addEventListener('click', () => {
+  const active = $('sl-preset-load').value || 'current';
+  const cmd = `node scripts/bake-smartlab-preset.mjs ${active} && npm run render:kjhgfdsdfghjkl`;
+  navigator.clipboard.writeText(cmd);
+  toast(`🎬 Command copied — paste in terminal`);
+});
+
+// ── Project audio + per-scene crop ───────────────────────────
+const SL_AUDIO_SRC_KEY = 'kjhgfdsdfghjkl-audio-src';
+const SL_AUDIO_NAME_KEY = 'kjhgfdsdfghjkl-audio-name';
+const slAudioEl = $('audio-player');
+const slAudioUpload = $('audio-upload');
+const slAudioInfo = $('audio-info');
+
+function slApplyAudioDuration(dur) {
+  ['s1','s2','s3','s4'].forEach(sc => ['start','end'].forEach(k => {
+    const el = $(`${sc}-audio-${k}`); if (el) el.max = dur.toFixed(2);
+  }));
+}
+function slLoadAudio() {
+  try {
+    const src = localStorage.getItem(SL_AUDIO_SRC_KEY);
+    const name = localStorage.getItem(SL_AUDIO_NAME_KEY) || '';
+    if (src) {
+      slAudioEl.src = src;
+      slAudioInfo.textContent = name || 'audio loaded';
+      slAudioEl.addEventListener('loadedmetadata', () => slApplyAudioDuration(slAudioEl.duration), { once: true });
+    } else { slAudioInfo.textContent = 'No file'; }
+  } catch(_) {}
+}
+slAudioUpload.addEventListener('change', (e) => {
+  const file = e.target.files && e.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      localStorage.setItem(SL_AUDIO_SRC_KEY, reader.result);
+      localStorage.setItem(SL_AUDIO_NAME_KEY, file.name);
+      slAudioEl.src = reader.result;
+      slAudioInfo.textContent = file.name;
+      slAudioEl.addEventListener('loadedmetadata', () => slApplyAudioDuration(slAudioEl.duration), { once: true });
+      toast(`✓ Audio loaded: ${file.name}`);
+    } catch (err) { toast('Audio too large for browser storage', 'error'); }
+  };
+  reader.readAsDataURL(file);
+});
+$('audio-clear').addEventListener('click', () => {
+  if (!confirm('Remove the audio file?')) return;
+  localStorage.removeItem(SL_AUDIO_SRC_KEY);
+  localStorage.removeItem(SL_AUDIO_NAME_KEY);
+  slAudioEl.removeAttribute('src'); slAudioEl.load();
+  slAudioInfo.textContent = 'No file'; slAudioUpload.value = '';
+  toast('🗑 Audio cleared');
+});
+document.querySelectorAll('.audio-play-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (!slAudioEl.src) { toast('Upload an audio file first', 'error'); return; }
+    const sc = btn.dataset.sceneId;
+    const start = parseFloat($(`${sc}-audio-start`).value) || 0;
+    const end   = parseFloat($(`${sc}-audio-end`).value)   || 0;
+    slAudioEl.currentTime = start; slAudioEl.play();
+    if (end > start) {
+      const stop = () => { if (slAudioEl.currentTime >= end) { slAudioEl.pause(); slAudioEl.removeEventListener('timeupdate', stop); } };
+      slAudioEl.addEventListener('timeupdate', stop);
+    }
+  });
+});
+
+// ── Cross-project scene clipboard ────────────────────────────
+const SCENE_CLIPBOARD = 'reel-studio-scene-clipboard';
+const SL_PROJECT_ID = 'kjhgfdsdfghjkl';
+
+// Semantic role map per scene — used as fallback when direct
+// prefix-rewrite paste doesn't match (cross-project paste).
+const SL_ROLES_BY_SCENE = {
+  s1: { 's1-h-text': 'h1', 's1-s-text': 'subtitle' },
+  s2: { 's2-h-text': 'h1', 's2-s-text': 'subtitle',
+        's2-b1': 'item-1-strong', 's2-b2': 'item-2-strong', 's2-b3': 'item-3-strong' },
+  s3: { 's3-h-text': 'h1', 's3-s-text': 'subtitle' },
+  s4: { 's4-h-text': 'h1', 's4-s-text': 'subtitle' },
+};
+function slRolesForScene(sc) { return SL_ROLES_BY_SCENE[sc] || {}; }
+function slInputIdForRole(targetScene, role) {
+  const map = slRolesForScene(targetScene);
+  for (const [id, r] of Object.entries(map)) if (r === role) return id;
+  return null;
+}
+
+function slCaptureScene(sc) {
+  const re = new RegExp(`(^|-)${sc}(-|$)`);
+  const snap = {};
+  document.querySelectorAll('input[id], select[id]').forEach(el => {
+    if (SL_TOOLBAR_INPUT_IDS.has(el.id)) return;
+    if (re.test(el.id)) snap[el.id] = el.value;
+  });
+  Object.keys(slRolesForScene(sc)).forEach(id => {
+    const el = document.getElementById(id);
+    if (el && !(id in snap)) snap[id] = el.value;
+  });
+  return snap;
+}
+
+// Capture CSS-var overrides on the stage that belong to this scene.
+function slCaptureCssVars(sc) {
+  const prefixRe = new RegExp(`^--(?:(?:${sc})$|(?:.*-)?${sc}(?:-|$))`);
+  const out = {};
+  const styleAttr = stage.getAttribute('style') || '';
+  styleAttr.split(';').forEach(decl => {
+    const idx = decl.indexOf(':');
+    if (idx < 0) return;
+    const prop = decl.slice(0, idx).trim();
+    const value = decl.slice(idx + 1).trim();
+    if (prop.startsWith('--') && prefixRe.test(prop)) out[prop] = value;
+  });
+  return out;
+}
+function slApplyCssVars(targetScene, vars, sourceScene) {
+  let applied = 0, skippedOwned = 0;
+  Object.entries(vars || {}).forEach(([prop, value]) => {
+    const remapped = prop.replace(new RegExp(`(^|-)${sourceScene}(-|$)`, 'g'),
+                                  (_m, pre, post) => `${pre}${targetScene}${post}`);
+    // If the target studio has its own input that drives this var
+    // (slider/color/select id matches the var name minus the leading `--`),
+    // skip — the input-apply pass already wrote the right value, and the
+    // incoming var may have a completely different semantic in the source
+    // studio (e.g. another studio's `--s1-gap` would clobber ours).
+    const inputId = remapped.replace(/^--/, '');
+    if (document.getElementById(inputId)) { skippedOwned++; return; }
+    stage.style.setProperty(remapped, value);
+    applied++;
+  });
+  return applied;
+}
+function slCaptureRoles(sc) {
+  const map = slRolesForScene(sc);
+  const roles = {};
+  Object.entries(map).forEach(([id, role]) => { if (document.getElementById(id)) roles[id] = role; });
+  return roles;
+}
+
+// ── Per-scene background image: capture / apply / persist ──────
+const SL_SCENE_IMG_KEY = `${SL_PROJECT_ID}-scene-images`;
+function slSceneNumFromId(sc) { return String(sc).replace(/^s/, ''); }
+function slNormalizeSceneImageSrc(src) {
+  const clean = String(src || '').replace(/^\/+/, '');
+  return clean.startsWith('generated/') ? `public/${clean}` : clean;
+}
+function slSceneBgImgEl(sc) {
+  const n = slSceneNumFromId(sc);
+  return document.querySelector(`.scene[data-scene="${n}"] .scene-bg img`);
+}
+function slCaptureSceneImage(sc) {
+  const img = slSceneBgImgEl(sc);
+  if (!img) return null;
+  return img.getAttribute('src') || img.src || null;
+}
+function slReadSceneImageOverrides() {
+  try { return JSON.parse(localStorage.getItem(SL_SCENE_IMG_KEY) || '{}') || {}; }
+  catch(_) { return {}; }
+}
+function slWriteSceneImageOverride(sc, src) {
+  try {
+    const o = slReadSceneImageOverrides();
+    if (src) o[sc] = src; else delete o[sc];
+    localStorage.setItem(SL_SCENE_IMG_KEY, JSON.stringify(o));
+  } catch(_) {}
+}
+function slApplySceneImage(targetScene, src) {
+  if (!src) return false;
+  const normalized = slNormalizeSceneImageSrc(src);
+  const n = slSceneNumFromId(targetScene);
+  const sceneEl = document.querySelector(`.scene[data-scene="${n}"]`);
+  if (!sceneEl) return false;
+  let bg = sceneEl.querySelector('.scene-bg');
+  if (!bg) {
+    bg = document.createElement('div');
+    bg.className = 'scene-bg';
+    sceneEl.insertBefore(bg, sceneEl.firstChild);
+  }
+  bg.style.background = '';
+  let img = bg.querySelector('img');
+  if (!img) {
+    img = document.createElement('img');
+    img.alt = '';
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'contain';
+    img.style.background = '#fff';
+    img.style.display = 'block';
+    bg.appendChild(img);
+  }
+  img.style.display = 'block';
+  img.onerror = () => {
+    img.style.display = 'none';
+    toast(`Image not found: ${normalized}`, 'error');
+  };
+  img.onload = () => {
+    img.style.display = 'block';
+    slQueueActiveCanvasFit();
+  };
+  img.setAttribute('src', normalized);
+  slQueueActiveCanvasFit();
+  slWriteSceneImageOverride(targetScene, normalized);
+  return true;
+}
+function slRestoreSceneImageOverrides() {
+  const o = slReadSceneImageOverrides();
+  Object.entries(o).forEach(([sc, src]) => {
+    if (src) slApplySceneImage(sc, src);
+  });
+}
+function slApplyScene(targetScene, snap, sourceScene, sourceRoles) {
+  let applied = 0, skipped = 0, viaRole = 0;
+  const used = new Set();
+  Object.entries(snap).forEach(([key, value]) => {
+    const remapped = key.replace(new RegExp(`(^|-)${sourceScene}(-|$)`, 'g'), (_, pre, post) => `${pre}${targetScene}${post}`);
+    const el = document.getElementById(remapped);
+    if (el) {
+      el.value = value;
+      el.dispatchEvent(new Event('input',  { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      used.add(remapped);
+      applied++;
+    } else {
+      const role = sourceRoles && sourceRoles[key];
+      if (role) {
+        const targetId = slInputIdForRole(targetScene, role);
+        if (targetId && !used.has(targetId)) {
+          const tEl = document.getElementById(targetId);
+          if (tEl) {
+            tEl.value = value;
+            tEl.dispatchEvent(new Event('input',  { bubbles: true }));
+            tEl.dispatchEvent(new Event('change', { bubbles: true }));
+            used.add(targetId);
+            applied++; viaRole++;
+            return;
+          }
+        }
+      }
+      skipped++;
+    }
+  });
+  return { applied, skipped, viaRole };
+}
+// Shared copy / paste — handles empty-scene case (rebuilds DOM from
+// source's stageHTML/groupHTML before applying values).
+function slHandleCopy(sc) {
+  const snap = slCaptureScene(sc);
+  const roles = slCaptureRoles(sc);
+  const sceneImage = slCaptureSceneImage(sc);
+  const count = Object.keys(snap).length;
+  const sceneNum = sc.replace(/^s/, '');
+  const sourceStageEl = document.querySelector(`#stage .scene[data-scene="${sceneNum}"]`);
+  const sourceGroupEl = document.querySelector(`details.group[data-scene="${sceneNum}"]`);
+  const stageHTML = sourceStageEl ? sourceStageEl.outerHTML : '';
+  const groupHTML = sourceGroupEl ? sourceGroupEl.outerHTML : '';
+  if (!count && !sceneImage && !stageHTML) { toast(`No fields found for ${sc}`, 'error'); return; }
+  try {
+    localStorage.setItem(SCENE_CLIPBOARD, JSON.stringify({
+      project: SL_PROJECT_ID, sourceScene: sc,
+      timestamp: new Date().toISOString(),
+      snapshot: snap, roles, sceneImage,
+      cssVars: slCaptureCssVars(sc),
+      stageHTML, groupHTML,
+    }));
+    toast(`📋 Copied ${sc.toUpperCase()} (${count} fields + structure + image) — paste anywhere`);
+  } catch (e) { toast('Clipboard too large', 'error'); }
+}
+
+function slHandlePaste(sc) {
+  let data;
+  try { data = JSON.parse(localStorage.getItem(SCENE_CLIPBOARD) || 'null'); } catch(_) {}
+  if (!data) { toast('Scene clipboard is empty', 'error'); return; }
+
+  const targetNum = sc.replace(/^s/, '');
+  const targetStageEl = document.querySelector(`#stage .scene[data-scene="${targetNum}"]`);
+  const targetGroupEl = document.querySelector(`details.group[data-scene="${targetNum}"]`);
+  const isBlank = !!(targetStageEl && targetStageEl.dataset.empty === '1') ||
+                  !!(targetGroupEl && targetGroupEl.dataset.empty === '1');
+  let structureCloned = false;
+  if (isBlank && data.stageHTML) {
+    const sourceNum = data.sourceScene.replace(/^s/, '');
+    // Stage
+    const tmp = document.createElement('div');
+    tmp.innerHTML = data.stageHTML.trim();
+    const newStage = tmp.firstElementChild;
+    if (newStage && targetStageEl) {
+      delete newStage.dataset.empty;
+      newStage.classList.remove('active');
+      slRemapPrefixInTree(newStage, sourceNum, targetNum);
+      newStage.dataset.scene = String(targetNum);
+      targetStageEl.replaceWith(newStage);
+    }
+    if (data.groupHTML) {
+      const tmp2 = document.createElement('div');
+      tmp2.innerHTML = data.groupHTML.trim();
+      const newGroup = tmp2.firstElementChild;
+      if (newGroup && targetGroupEl) {
+        delete newGroup.dataset.empty;
+        slRemapPrefixInTree(newGroup, sourceNum, targetNum);
+        newGroup.dataset.scene = String(targetNum);
+        const sum = newGroup.querySelector('summary');
+        if (sum) sum.innerHTML = sum.innerHTML.replace(/Scene \d+/, `Scene ${targetNum}`);
+        targetGroupEl.replaceWith(newGroup);
+        newGroup.querySelectorAll('.copy-scene-btn').forEach(b => {
+          if (b.dataset.bound) return; b.dataset.bound = '1';
+          b.addEventListener('click', () => slHandleCopy(b.dataset.sceneId));
+        });
+        newGroup.querySelectorAll('.paste-scene-btn').forEach(b => {
+          if (b.dataset.bound) return; b.dataset.bound = '1';
+          b.addEventListener('click', () => slHandlePaste(b.dataset.sceneId));
+        });
+      }
+    }
+    if (!slTlState.template) slTlState.template = {};
+    slTlState.template[targetNum] = sourceNum;
+    slTlWrite(slTlState);
+    if (document.querySelector(`.tab.active[data-scene="${targetNum}"]`)) {
+      slShowScene(targetNum);
+    }
+    structureCloned = true;
+  }
+
+  const { applied, skipped, viaRole } = slApplyScene(sc, data.snapshot, data.sourceScene, data.roles || {});
+  const cssApplied = data.cssVars ? slApplyCssVars(sc, data.cssVars, data.sourceScene) : 0;
+  const imgApplied = data.sceneImage ? slApplySceneImage(sc, data.sceneImage) : false;
+  const crossProj = data.project !== SL_PROJECT_ID ? ` (from ${data.project})` : '';
+  if (applied === 0 && !imgApplied && !structureCloned) toast(`No matching fields${crossProj} — schemas differ`, 'error');
+  else {
+    markDirty();
+    const roleNote = viaRole ? `, ${viaRole} via role` : '';
+    const imgNote = imgApplied ? ' + image' : '';
+    const cssNote = cssApplied ? ` + ${cssApplied} css vars` : '';
+    const structNote = structureCloned ? ' (filled empty scene)' : '';
+    toast(`📥 Pasted ${data.sourceScene.toUpperCase()}→${sc.toUpperCase()}${crossProj}${structNote}: ${applied} applied${roleNote}${imgNote}${cssNote}, ${skipped} skipped`);
+  }
+}
+
+document.querySelectorAll('.copy-scene-btn').forEach(btn => {
+  if (btn.dataset.bound) return;
+  btn.dataset.bound = '1';
+  btn.addEventListener('click', () => slHandleCopy(btn.dataset.sceneId));
+});
+document.querySelectorAll('.paste-scene-btn').forEach(btn => {
+  if (btn.dataset.bound) return;
+  btn.dataset.bound = '1';
+  btn.addEventListener('click', () => slHandlePaste(btn.dataset.sceneId));
+});
+
+// ── Init ────────────────────────────────────────────────────
+// ── Timeline + scene ordering / hiding ─────────────────────────
+const SL_TL_KEY = `${SL_PROJECT_ID}-timeline`;
+const SL_ALL_SCENES = ['1','2','3','4'];
+const SL_DEFAULT_DUR = 5.0;
+function slTlDefault() {
+  return { order: SL_ALL_SCENES.slice(),
+    durations: Object.fromEntries(SL_ALL_SCENES.map(n => [n, SL_DEFAULT_DUR])),
+    visible:   Object.fromEntries(SL_ALL_SCENES.map(n => [n, true])) };
+}
+function slSortedSceneIds(ids) {
+  return Array.from(new Set((ids || []).map(n => String(n)).filter(Boolean)))
+    .sort((a, b) => {
+      const an = Number(a), bn = Number(b);
+      const aNum = Number.isFinite(an), bNum = Number.isFinite(bn);
+      if (aNum && bNum) return an - bn;
+      if (aNum) return -1;
+      if (bNum) return 1;
+      return a.localeCompare(b);
+    });
+}
+function slTlNormalize(value) {
+  const d = value && typeof value === 'object' ? value : slTlDefault();
+  let order = Array.isArray(d.order) ? d.order.map(n => String(n)).filter(Boolean) : SL_ALL_SCENES.slice();
+  order = slSortedSceneIds(order);
+  if (!order.length) order = ['1'];
+  const durations = {};
+  const visible = {};
+  order.forEach(n => {
+    durations[n] = Number(d.durations?.[n]) > 0 ? Number(d.durations[n]) : SL_DEFAULT_DUR;
+    visible[n] = typeof d.visible?.[n] === 'boolean' ? d.visible[n] : true;
+  });
+  return { ...d, order, durations, visible };
+}
+function slTlRead() {
+  try { const d = JSON.parse(localStorage.getItem(SL_TL_KEY) || 'null');
+    if (d && Array.isArray(d.order) && d.durations && d.visible) return slTlNormalize(d);
+  } catch(_) {}
+  return slTlDefault();
+}
+function slTlWrite(s) { try { localStorage.setItem(SL_TL_KEY, JSON.stringify(s)); } catch(_){} }
+let slTlState = slTlRead();
+slTlWrite(slTlState);
+window.__slTimelineReady = true;
+function slTlTotal() { return slTlState.order.reduce((sum, n) => sum + (slTlState.visible[n] ? (slTlState.durations[n] || 0) : 0), 0); }
+function slOverlaySceneIds() {
+  return slTlState.order.map(String);
+}
+
+function slApplyTimelineToDom() {
+  const allowed = new Set(slTlState.order.map(String));
+  document.querySelectorAll('#stage .scene[data-scene]').forEach(el => {
+    const scene = String(el.dataset.scene);
+    if (!allowed.has(scene) && !SL_ALL_SCENES.includes(scene)) {
+      el.remove();
+      return;
+    }
+    el.style.display = allowed.has(scene) ? '' : 'none';
+  });
+  document.querySelectorAll('.tab[data-scene]').forEach(tab => {
+    const scene = String(tab.dataset.scene || '');
+    if (scene === 'all') return;
+    if (!allowed.has(scene) && !SL_ALL_SCENES.includes(scene)) {
+      tab.remove();
+      return;
+    }
+    tab.style.display = allowed.has(scene) ? '' : 'none';
+  });
+  document.querySelectorAll('details.group[data-scene]').forEach(group => {
+    const scene = String(group.dataset.scene || '');
+    if (scene === 'all') return;
+    if (!allowed.has(scene) && !SL_ALL_SCENES.includes(scene)) {
+      group.remove();
+      return;
+    }
+  });
+}
+
+function slSyncActiveSceneIndicators(n, tabMode) {
+  document.querySelectorAll('.tab[data-scene]').forEach(t => {
+    const isAll = tabMode === 'all' && t.dataset.scene === 'all';
+    t.classList.toggle('active', isAll || (!tabMode && t.dataset.scene === String(n)));
+  });
+  document.querySelectorAll('.tl-scene').forEach(el => {
+    el.classList.toggle('active', el.dataset.scene === String(n));
+  });
+}
+
+function slShowScene(n, tabMode) {
+  // Mirrors the existing tab click handler: switch stage scene + sync filter.
+  slSyncActiveSceneIndicators(n, tabMode);
+  document.querySelectorAll('.scene').forEach(sc => sc.classList.remove('active'));
+  const el = stage.querySelector(`.scene[data-scene="${n}"]`);
+  if (el) {
+    el.style.display = '';
+    el.classList.add('active');
+  }
+  document.querySelectorAll('.group').forEach(g => {
+    const s = g.dataset.scene;
+    g.style.display = (s === 'all' || s === String(n)) ? '' : 'none';
+  });
+  slApplyTimelineToDom();
+  window.posterOverlayStudio?.refresh?.();
+  slQueueActiveCanvasFit();
+}
+
+function slBuildTimeline() {
+  const strip = $('timeline-strip'); strip.innerHTML = '';
+  const sortedOrder = slSortedSceneIds(slTlState.order);
+  if (sortedOrder.join('|') !== slTlState.order.map(String).join('|')) {
+    slTlState.order = sortedOrder;
+    slTlWrite(slTlState);
+  }
+  const currentActiveScene = document.querySelector('.scene.active')?.dataset.scene;
+  if (currentActiveScene && slTlState.order.includes(String(currentActiveScene)) && slTlState.visible[currentActiveScene] === false) {
+    slTlState.visible[currentActiveScene] = true;
+    slTlWrite(slTlState);
+  }
+  slTlState.order.forEach(n => {
+    const visible = slTlState.visible[n];
+    const dur = slTlState.durations[n] || SL_DEFAULT_DUR;
+    const block = document.createElement('div');
+    block.className = 'tl-scene' + (visible ? '' : ' hidden');
+    block.dataset.scene = n;
+    block.style.flex = visible ? `${dur} 1 0` : '0 0 40px';
+    block.draggable = true;
+    block.innerHTML = `<span class="tl-label">${n}</span><span class="tl-dur">${visible ? dur.toFixed(1)+'s' : 'hidden'}</span><div class="tl-controls"><button class="tl-ctrl tl-play" data-scene="${n}" title="Preview Scene ${n}">▶</button><button class="tl-ctrl tl-video" title="Render Scene ${n} as video">🎞</button><button class="tl-ctrl tl-image" title="Export Scene ${n} as PNG">🖼</button><button class="tl-ctrl tl-toggle" title="${visible?'Hide':'Show'}">${visible?'👁':'✕'}</button><button class="tl-ctrl tl-delete" title="Delete scene">🗑</button></div>`;
+    block.addEventListener('click', e => { if (e.target.closest('.tl-ctrl') || !visible) return; slShowScene(n); });
+    block.querySelector('.tl-play').addEventListener('click', e => {
+      e.stopPropagation();
+      if (!visible) {
+        toast(`Show Scene ${n} before previewing it`, 'error');
+        return;
+      }
+      if (playState.running && playState.mode === 'scene' && String(playState.sceneIds[0]) === String(n)) slStopPreview();
+      else slStartPreview('scene', n);
+    });
+    block.querySelector('.tl-video').addEventListener('click', e => {
+      e.stopPropagation();
+      if (!visible) {
+        toast(`Show Scene ${n} before rendering it`, 'error');
+        return;
+      }
+      slStartRender(n);
+    });
+    block.querySelector('.tl-image').addEventListener('click', e => {
+      e.stopPropagation();
+      slExportSceneImage(n).catch(error => {
+        console.error(error);
+        toast(`Image export failed: ${error.message}`, 'error');
+      });
+    });
+    block.querySelector('.tl-toggle').addEventListener('click', e => { e.stopPropagation(); slTlState.visible[n] = !slTlState.visible[n]; slTlWrite(slTlState); slBuildTimeline(); });
+    block.querySelector('.tl-delete').addEventListener('click', e => { e.stopPropagation(); slDeleteScene(n); });
+    block.addEventListener('dragstart', e => { e.dataTransfer.setData('text/plain', n); e.dataTransfer.effectAllowed = 'move'; });
+    block.addEventListener('dragover', e => { e.preventDefault(); block.classList.add('drag-over'); });
+    block.addEventListener('dragleave', () => block.classList.remove('drag-over'));
+    block.addEventListener('drop', e => {
+      e.preventDefault(); block.classList.remove('drag-over');
+      const from = e.dataTransfer.getData('text/plain'); if (from === n) return;
+      const order = slTlState.order.slice();
+      order.splice(order.indexOf(from), 1);
+      order.splice(order.indexOf(n), 0, from);
+      slTlState.order = order; slTlWrite(slTlState); slBuildTimeline();
+    });
+    const activeTab = document.querySelector('.tab.active[data-scene]');
+    if (activeTab && activeTab.dataset.scene === n) block.classList.add('active');
+    strip.appendChild(block);
+  });
+  $('tl-total').textContent = `Total: ${slTlTotal().toFixed(1)}s · ${slTlState.order.filter(n => slTlState.visible[n]).length}/${slTlState.order.length} scenes`;
+  recomputeTotalDuration();
+  const activeScene = document.querySelector('.scene.active')?.dataset.scene;
+  if (activeScene) slSyncActiveSceneIndicators(activeScene);
+  slDedupeSceneChrome();
+  slOrderSceneChrome();
+  window.posterOverlayStudio?.refresh?.();
+}
+
+// Hook scene tabs to the unified scene switcher.
+document.querySelectorAll('.tab[data-scene]').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const n = tab.dataset.scene;
+    if (!n) return;
+    if (n === 'all') slShowScene(slTlState.order[0] || '1', 'all');
+    else slShowScene(n);
+  });
+});
+
+$('tl-show-all').addEventListener('click', () => {
+  // Only unhide scenes still in tlState.order (don't resurrect deletes)
+  slTlState.order.forEach(n => slTlState.visible[n] = true);
+  slTlWrite(slTlState); slBuildTimeline();
+  toast('👁 All scenes shown');
+});
+
+function slTimelineScrollBy(direction) {
+  const strip = $('timeline-strip');
+  if (!strip) return;
+  const amount = Math.max(300, Math.floor(strip.clientWidth * 0.7));
+  strip.scrollBy({ left: direction * amount, behavior: 'smooth' });
+}
+
+$('tl-scroll-left')?.addEventListener('click', () => slTimelineScrollBy(-1));
+$('tl-scroll-right')?.addEventListener('click', () => slTimelineScrollBy(1));
+$('timeline-strip')?.addEventListener('wheel', event => {
+  if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+  event.preventDefault();
+  event.currentTarget.scrollLeft += event.deltaY;
+}, { passive: false });
+
+// ── Delete a scene permanently ────────────────────────────────
+function slDeleteScene(n) {
+  if (slTlState.order.length <= 1) {
+    toast('Cannot delete the last scene', 'error');
+    return;
+  }
+  const label = SL_ALL_SCENES.includes(String(n)) ? `built-in Scene ${n}` : `Scene ${n}`;
+  if (!confirm(`Delete ${label}? Removes it from this timeline. Save the preset to keep this scene layout after refresh.`)) return;
+
+  slRemoveSceneDom(n);
+  slWriteSceneImageOverride('s' + n, null);
+
+  slTlState.order = slTlState.order.filter(x => x !== String(n));
+  delete slTlState.visible[n];
+  delete slTlState.durations[n];
+  if (slTlState.template) delete slTlState.template[n];
+  slTlWrite(slTlState);
+
+  // If we deleted the active scene, switch to the first remaining
+  const activeTab = document.querySelector('.tab.active[data-scene]');
+  if (!activeTab && slTlState.order.length) slShowScene(slTlState.order[0]);
+
+  slBuildTimeline();
+  markDirty();
+  toast(`🗑 Deleted Scene ${n}`);
+}
+
+// ── Add new scene ──────────────────────────────────────────────
+function slAllocateNextSceneId() {
+  const used = new Set(slVisibleSceneIdsForTimeline());
+  let n = 1;
+  while (used.has(String(n))) n++;
+  return String(n);
+}
+
+function slVisibleSceneIdsForTimeline() {
+  const ids = new Set((slTlState.order || []).map(String).filter(Boolean));
+  document.querySelectorAll('#stage .scene[data-scene]').forEach(el => {
+    const scene = String(el.dataset.scene || '');
+    if (scene && el.classList.contains('active')) ids.add(scene);
+  });
+  return slSortedSceneIds([...ids]);
+}
+
+function slSceneIsActiveInDom(n) {
+  n = String(n);
+  return !!document.querySelector(`#stage .scene.active[data-scene="${n}"], .tab.active[data-scene="${n}"]`);
+}
+
+function slRemoveSceneDom(n) {
+  document.querySelectorAll(`#stage .scene[data-scene="${n}"]`).forEach(el => el.remove());
+  document.querySelectorAll(`details.group[data-scene="${n}"]`).forEach(g => g.remove());
+  document.querySelectorAll(`.tab[data-scene="${n}"]`).forEach(t => t.remove());
+}
+
+function slDedupeSceneChrome() {
+  ['#stage .scene[data-scene]', 'details.group[data-scene]', '.tab[data-scene]'].forEach(selector => {
+    const seen = new Map();
+    document.querySelectorAll(selector).forEach(el => {
+      const scene = el.dataset.scene;
+      if (!scene || scene === 'all') return;
+      if (!seen.has(scene)) {
+        seen.set(scene, el);
+        return;
+      }
+      const existing = seen.get(scene);
+      const preferCurrent = el.classList.contains('active') && !existing.classList.contains('active');
+      if (preferCurrent) {
+        existing.remove();
+        seen.set(scene, el);
+      } else {
+        el.remove();
+      }
+    });
+  });
+}
+
+function slOrderSceneChrome() {
+  const order = slTlState.order.map(String);
+  const tabs = document.querySelector('.tabs');
+  const allTab = tabs?.querySelector('.tab[data-scene="all"]');
+  if (tabs && allTab) tabs.appendChild(allTab);
+  order.forEach(n => {
+    const sceneEl = document.querySelector(`#stage .scene[data-scene="${n}"]`);
+    if (sceneEl) stage.appendChild(sceneEl);
+    const tabEl = tabs?.querySelector(`.tab[data-scene="${n}"]`);
+    if (tabs && tabEl) tabs.appendChild(tabEl);
+  });
+
+  const groupParent = document.querySelector('.panel-body') ||
+                      document.querySelector('details.group[data-scene]')?.parentElement;
+  if (groupParent) {
+    order.forEach(n => {
+      groupParent.querySelectorAll(`details.group[data-scene="${n}"]`).forEach(group => {
+        groupParent.appendChild(group);
+      });
+    });
+  }
+}
+
+function slCompactTimelineSceneIds() {
+  const nextOrder = slSortedSceneIds(slTlState.order);
+  const changed = nextOrder.join('|') !== slTlState.order.map(String).join('|');
+  if (!changed) return false;
+  slTlState = { ...slTlState, order: nextOrder };
+  slTlWrite(slTlState);
+  return true;
+}
+
+function slRemapPrefixInTree(root, fromN, toN) {
+  // SmartLab uses plain numeric scene ids (no "s" prefix) on .scene + tab + group.
+  // Slider/input ids use `s<N>-...` prefix.
+  const idRe = new RegExp(`(^|[^a-z0-9])s${fromN}(?=[-]|$)`, 'g');
+  const swap = (str) => str.replace(idRe, (_m, pre) => `${pre}s${toN}`);
+  root.querySelectorAll('[id]').forEach(el => { el.id = swap(el.id); });
+  if (root.id) root.id = swap(root.id);
+  if (root.dataset && root.dataset.scene === String(fromN)) root.dataset.scene = String(toN);
+  root.querySelectorAll('[data-scene]').forEach(el => {
+    if (el.dataset.scene === String(fromN)) el.dataset.scene = String(toN);
+  });
+  if (root.dataset && root.dataset.sceneId === `s${fromN}`) root.dataset.sceneId = `s${toN}`;
+  root.querySelectorAll('[data-scene-id]').forEach(el => {
+    if (el.dataset.sceneId === `s${fromN}`) el.dataset.sceneId = `s${toN}`;
+  });
+}
+function slAddNewScene() {
+  const toN = slAllocateNextSceneId();
+  slRemoveSceneDom(toN);
+
+  const newStage = document.createElement('div');
+  newStage.className = 'scene';
+  newStage.dataset.scene = toN;
+  newStage.dataset.empty = '1';
+  newStage.innerHTML = `
+    <div class="scene-bg" style="background:#ffffff;"></div>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#94a3b8;font-family:'Tajawal',sans-serif;text-align:center;padding:80px;background:#ffffff;">
+      <div style="font-size:96px;">🆕</div>
+      <div style="font-size:48px;color:#475569;font-weight:700;margin-top:20px;">Empty Scene ${toN}</div>
+      <div style="font-size:28px;color:#94a3b8;margin-top:12px;line-height:1.5;">Choose a background or paste/import overlay JSON.</div>
+    </div>`;
+  stage.appendChild(newStage);
+
+  const tabsContainer = document.querySelector('.tabs');
+  const newTab = document.createElement('button');
+  newTab.className = 'tab';
+  newTab.dataset.scene = toN;
+  newTab.textContent = `Scene ${toN}`;
+  newTab.addEventListener('click', () => slShowScene(toN));
+  tabsContainer.appendChild(newTab);
+
+  const baseOrder = slVisibleSceneIdsForTimeline().filter(n => n !== toN);
+  slTlState.order = slSortedSceneIds(baseOrder.concat(toN));
+  baseOrder.forEach(n => {
+    if (slSceneIsActiveInDom(n) || typeof slTlState.visible[n] !== 'boolean') slTlState.visible[n] = true;
+    if (!(Number(slTlState.durations?.[n]) > 0)) slTlState.durations[n] = SL_DEFAULT_DUR;
+  });
+  slTlState.visible[toN] = true;
+  slTlState.durations[toN] = SL_DEFAULT_DUR;
+  if (slTlState.template) delete slTlState.template[toN];
+  slTlWrite(slTlState);
+
+  slWriteSceneImageOverride('s' + toN, null);
+  const overlayInput = document.getElementById(`s${toN}-overlay-doc`);
+  if (overlayInput) overlayInput.value = '';
+  try {
+    const overlayKey = `${SL_PROJECT_ID}-poster-overlays-v1`;
+    const stored = JSON.parse(localStorage.getItem(overlayKey) || '{}') || {};
+    delete stored[toN];
+    if (Object.keys(stored).length) localStorage.setItem(overlayKey, JSON.stringify(stored));
+    else localStorage.removeItem(overlayKey);
+  } catch (_) {}
+  window.posterOverlayStudio?.clearSceneDocument?.(toN);
+  slBuildTimeline();
+  slDedupeSceneChrome();
+  slShowScene(toN);
+  window.posterOverlayStudio?.refresh?.();
+  markDirty();
+  toast(`＋ Empty Scene ${toN} added`);
+}
+$('tl-add-scene').addEventListener('click', slAddNewScene);
+
+// Re-spawn blank scenes after reload so user's empty Scene N survives refresh.
+function slRestoreEmptyScenes() {
+  const knownScenes = new Set(SL_ALL_SCENES);
+  slTlState.order.forEach(n => {
+    if (knownScenes.has(n)) return;
+    if (slTlState.template && slTlState.template[n]) return;
+    if (document.querySelector(`#stage .scene[data-scene="${n}"]`)) return;
+    const blank = document.createElement('div');
+    blank.className = 'scene';
+    blank.dataset.scene = n;
+    blank.dataset.empty = '1';
+    blank.innerHTML = `
+      <div class="scene-bg" style="background:#ffffff;"></div>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#94a3b8;font-family:'Tajawal',sans-serif;text-align:center;padding:80px;background:#ffffff;">
+        <div style="font-size:96px;">🆕</div>
+        <div style="font-size:48px;color:#475569;font-weight:700;margin-top:20px;">Empty Scene ${n}</div>
+        <div style="font-size:28px;color:#94a3b8;margin-top:12px;line-height:1.5;">Hit <b>📥 Paste</b> in the control panel to fill it.</div>
+      </div>`;
+    stage.appendChild(blank);
+
+    const tabsContainer = document.querySelector('.tabs');
+    const newTab = document.createElement('button');
+    newTab.className = 'tab';
+    newTab.dataset.scene = n;
+    newTab.textContent = `Scene ${n}`;
+    newTab.addEventListener('click', () => slShowScene(n));
+    tabsContainer.appendChild(newTab);
+  });
+}
+
+function slCollectPosterOverlayState() {
+  const fromApi = window.posterOverlayStudio?.__debugFallback
+    ? null
+    : window.posterOverlayStudio?.getRenderState?.();
+  if (fromApi && Object.keys(fromApi).length) return fromApi;
+  const out = {};
+  document.querySelectorAll('input[id^="s"][id$="-overlay-doc"]').forEach(input => {
+    const match = input.id.match(/^s(.+)-overlay-doc$/);
+    if (!match || !input.value) return;
+    try {
+      const doc = JSON.parse(input.value);
+      if (doc && Array.isArray(doc.elements)) out[match[1]] = doc;
+    } catch (_) {}
+  });
+  return out;
+}
+
+// ── Render button ──────────────────────────────────────────────
+function slSetRenderButtonsDisabled(disabled) {
+  $('tl-render-btn').disabled = disabled;
+  document.querySelectorAll('.tl-video').forEach(btn => { btn.disabled = disabled; });
+}
+
+async function slStartRender(sceneId = null) {
+  const overlay = $('render-overlay'), log = $('render-log'), bar = $('render-bar');
+  const video = $('render-video'), title = $('render-title'), sub = $('render-sub');
+  const hasServer = location.protocol === 'http:' || location.protocol === 'https:';
+  if (!hasServer) { toast('Open via http://localhost:<port>/ (npm run hub) to render', 'error'); return; }
+  const label = sceneId ? `Scene ${sceneId}` : 'all visible scenes';
+  overlay.classList.add('show');
+  video.style.display = 'none'; video.removeAttribute('src');
+  log.textContent = 'Initializing render…\n'; bar.style.width = '4%';
+  title.textContent = sceneId ? `🎬 Rendering Scene ${sceneId}…` : '🎬 Rendering all scenes…';
+  sub.textContent = `${SL_PROJECT_ID} — preparing ${label}`;
+  slSetRenderButtonsDisabled(true);
+  try {
+    await slCommitStudioState();
+    const r = await fetch('/api/render', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: SL_PROJECT_ID,
+        tlState: slTlState,
+        overlayState: slCollectPosterOverlayState(),
+        sceneId,
+      }),
+    });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || 'render kick-off failed');
+    const outputPath = data.outputPath || (sceneId ? `out/${SL_PROJECT_ID}-scene-${sceneId}.mp4` : `out/${SL_PROJECT_ID}-v1.mp4`);
+    sub.textContent = `${label} · log: ${data.logPath}`;
+    log.textContent = `Render started (pid ${data.pid})\n`;
+    let ticks = 0, done = false;
+    const poll = setInterval(async () => {
+      ticks++;
+      try {
+        const lr = await fetch(`/api/log?file=${encodeURIComponent(data.logPath)}`);
+        const txt = await lr.text();
+        log.textContent = txt.slice(-4000); log.scrollTop = log.scrollHeight;
+        const m = [...txt.matchAll(/Rendered\s+(\d+)\s*\/\s*(\d+)/g)].pop();
+        if (m) { const pct = Math.min(99, (parseInt(m[1],10) / parseInt(m[2],10)) * 100); bar.style.width = pct.toFixed(1) + '%'; }
+        else { const creep = Math.min(90, 10 + ticks * 1.5); if (parseFloat(bar.style.width) < creep) bar.style.width = creep + '%'; }
+        if (/(^|\n)(Error|TimeoutError|TypeError|ReferenceError):/i.test(txt) && !done) {
+          done = true; clearInterval(poll);
+          title.textContent = '✗ Render failed';
+          bar.style.width = '100%';
+          slSetRenderButtonsDisabled(false);
+          return;
+        }
+        if (/Encoded\s+(\d+)\s*\/\s*\1|encoded\s+all\s+frames|wrote\s+\S+\.mp4|^[+○]\s+out\/.*\.mp4|Done in/im.test(txt) && !done) {
+          done = true; clearInterval(poll); bar.style.width = '100%';
+          title.textContent = '✓ Render complete';
+          sub.textContent = outputPath;
+          video.src = `${outputPath}?ts=${Date.now()}`; video.style.display = 'block';
+          slSetRenderButtonsDisabled(false);
+        }
+      } catch (e) { log.textContent += '\n[poll error] ' + e.message; }
+      if (ticks > 300) { clearInterval(poll); slSetRenderButtonsDisabled(false); }
+    }, 2000);
+  } catch (err) {
+    console.error('Render failed', err);
+    log.textContent += '\n✗ ' + err.message;
+    title.textContent = '✗ Render failed';
+    slSetRenderButtonsDisabled(false);
+  }
+}
+$('tl-render-btn').addEventListener('click', () => slStartRender());
+$('render-close').addEventListener('click', () => $('render-overlay').classList.remove('show'));
+
+slRestoreEmptyScenes();
+try {
+  window.posterOverlayStudio = window.initPosterOverlayStudio({
+    projectId: SL_PROJECT_ID,
+    canvas: { width: 1080, height: 1350 },
+    aspectRatio: '4:5',
+    blankBackground: 'public/generated/blank-white.svg',
+    filterPrefix: '',
+    sceneIdsHook: 'slOverlaySceneIds',
+    applySceneImageHook: 'slApplySceneImage',
+    canvasHook: 'slApplyOverlayCanvas',
+    disableServerAutosave: true,
+    dirtyHook: 'markDirty',
+    toastHook: 'toast',
+  });
+} catch (error) {
+  console.error('Poster overlay studio failed to initialize', error);
+  window.posterOverlayStudio = {
+    __debugFallback: true,
+    refresh() {},
+    clearSceneDocument() { return false; },
+    getRenderState() { return {}; },
+  };
+}
+loadCanonical();
+refreshPresetList();
+slLoadAudio();
+slRestoreSceneImageOverrides();
+if (slCompactTimelineSceneIds()) saveCanonical();
+slApplyTimelineToDom();
+slBuildTimeline();
+if (!slTlState.order.includes(document.querySelector('.scene.active')?.dataset.scene || '')) {
+  slShowScene(slTlState.order[0] || '1');
+}
+initDone = true;
+slLoadStudioStateFromServer().then(() => {
+  markClean();
+});
+
+function slForceActiveCanvasSize() {
+  const active = document.querySelector('.scene.active[data-scene]');
+  if (!active || !stage) return;
+  const sceneId = active.dataset.scene;
+  const doc = window.posterOverlayStudio?.getRenderState?.()?.[sceneId];
+  const img = active.querySelector('.scene-bg img');
+  const docHasRealCanvas = doc?.canvas?.width && doc?.canvas?.height && Array.isArray(doc.elements) && doc.elements.length > 0;
+  const width = docHasRealCanvas ? Number(doc.canvas.width) : Number(img?.naturalWidth || doc?.canvas?.width || SL_DEFAULT_CANVAS.width);
+  const height = docHasRealCanvas ? Number(doc.canvas.height) : Number(img?.naturalHeight || doc?.canvas?.height || SL_DEFAULT_CANVAS.height);
+  if (!Number.isFinite(width) || !Number.isFinite(height) || width <= 0 || height <= 0) return;
+  slCanvasSize = { width, height };
+  stage.style.width = width + 'px';
+  stage.style.height = height + 'px';
+  fitStage();
+}
+setInterval(slForceActiveCanvasSize, 400);
+document.addEventListener('click', event => {
+  if (event.target?.closest?.('.tab[data-scene], .tl-scene')) {
+    setTimeout(slForceActiveCanvasSize, 50);
+    setTimeout(slForceActiveCanvasSize, 300);
+  }
+});
+
+// Fit the stage after layout settles (the panel claims its width first,
+// which determines how much room the stage-frame gets).
+requestAnimationFrame(() => { slForceActiveCanvasSize(); requestAnimationFrame(slForceActiveCanvasSize); });
+</script>
+</body>
+</html>

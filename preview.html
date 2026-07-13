@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<title>RightCare Reel — Static Preview (Scene 1 + 2 end state)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  background: #0a0e1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+/* Tools panel */
+.tools {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(20px);
+  border-radius: 14px;
+  padding: 14px 16px;
+  color: #cdd6e3;
+  font-size: 13px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 280px;
+}
+.tools h3 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.tools label { display: flex; align-items: center; gap: 8px; font-size: 12px; cursor: pointer; }
+.tools input[type=range] { flex: 1; }
+.tools .val { font-family: monospace; font-size: 11px; color: #9aa6b8; min-width: 38px; text-align: right; }
+.tools .hint { font-size: 11px; color: #8b95a8; line-height: 1.4; margin-top: 4px; }
+
+/* ── The video canvas — 9:16 aspect, scales to viewport ───────────── */
+.stage {
+  width: min(420px, calc(90vh * 9 / 16));
+  aspect-ratio: 9 / 16;
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  background: #1F5FB5;
+}
+
+/* ── Scene root (mimics .rc-video) ────────────────────────────────── */
+.rc-video {
+  position: absolute;
+  inset: 0;
+  direction: rtl;
+  font-family: "Tajawal", "Cairo", "Arial", sans-serif;
+  background: #1F5FB5;
+  color: white;
+  overflow: hidden;
+}
+
+/* ── Family photo ─────────────────────────────────────────────────── */
+.rc-photo-bg { position: absolute; inset: 0; overflow: hidden; }
+.rc-photo-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.08);
+}
+
+/* ── The blue "stencil" overlay (the magic) ───────────────────────── */
+.rc-photo-tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse var(--win-w, 62%) var(--win-h, 72%) at 50% var(--win-y, 55%),
+      rgba(31, 95, 181, 0.00) 0%,
+      rgba(31, 95, 181, 0.00) calc(var(--soft, 38) * 1%),
+      rgba(31, 95, 181, calc(var(--edge, 55) / 100)) 75%,
+      rgba(31, 95, 181, calc(var(--corner, 88) / 100)) 100%
+    ),
+    linear-gradient(180deg,
+      rgba(31, 95, 181, calc(var(--top, 97) / 100))  0%,
+      rgba(31, 95, 181, 0.90)                         10%,
+      rgba(31, 95, 181, 0.40)                         20%,
+      rgba(31, 95, 181, 0.00)                         35%,
+      rgba(31, 95, 181, 0.00)                         72%,
+      rgba(31, 95, 181, 0.55)                         88%,
+      rgba(31, 95, 181, calc(var(--bottom, 90) / 100)) 100%);
+}
+
+/* ── Persistent header ────────────────────────────────────────────── */
+.rc-header-left {
+  position: absolute;
+  top: calc(80 / 1920 * 100%);
+  left: calc(70 / 1080 * 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  z-index: 20;
+}
+.rc-logo-ar {
+  font-family: "Tajawal", sans-serif;
+  font-size: calc(22 / 1080 * 100cqi);
+  font-weight: 800;
+  color: #B4E1F2;
+  letter-spacing: 6px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+.rc-logo-en {
+  font-family: "Helvetica Neue", "Arial Black", sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: calc(52 / 1080 * 100cqi);
+  line-height: 0.9;
+  letter-spacing: -1px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #B4E1F2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 14px rgba(31, 95, 181, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.rc-logo-en span:nth-child(2) {
+  margin-top: -8px;
+  letter-spacing: 2px;
+}
+
+.rc-header-right {
+  position: absolute;
+  top: calc(80 / 1920 * 100%);
+  right: calc(70 / 1080 * 100%);
+  z-index: 20;
+}
+.rc-cert-pill {
+  height: calc(76 / 1920 * 100cqi * 16/9);
+  padding: 0 calc(32 / 1080 * 100cqi);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #B71F3C;
+  font-family: "Helvetica Neue", "Arial Black", sans-serif;
+  font-size: calc(36 / 1080 * 100cqi);
+  font-weight: 900;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.32);
+}
+
+/* ── Soft glowing circle behind headline ──────────────────────────── */
+.rc-circle {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  width: calc(1320 / 1080 * 100%);
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    rgba(200, 235, 248, 0.70) 0%,
+    rgba(180, 225, 242, 0.40) 28%,
+    rgba(180, 225, 242, 0.18) 50%,
+    rgba(180, 225, 242, 0.06) 70%,
+    transparent 82%
+  );
+  pointer-events: none;
+  filter: blur(2px);
+  z-index: 2;
+}
+
+/* ── Headline ─────────────────────────────────────────────────────── */
+.rc-headline {
+  position: absolute;
+  top: 38%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: calc(130 / 1080 * 100cqi);
+  line-height: 1.1;
+  font-weight: 900;
+  color: #FFFFFF;
+  text-shadow: 0 10px 50px rgba(0, 0, 0, 0.55), 0 0 30px rgba(0, 0, 0, 0.35);
+  letter-spacing: -1px;
+  padding: 0 calc(60 / 1080 * 100cqi);
+  z-index: 5;
+}
+
+/* ── Cyan subtitle pill ───────────────────────────────────────────── */
+.rc-pill-wrap {
+  position: absolute;
+  top: 52%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 5;
+}
+.rc-pill {
+  background: linear-gradient(180deg, #6DD8F0 0%, #46B7DA 100%);
+  border-radius: 999px;
+  padding: calc(30 / 1080 * 100cqi) calc(80 / 1080 * 100cqi);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.34);
+  display: inline-flex;
+}
+.rc-pill-text {
+  font-family: "Tajawal", sans-serif;
+  font-size: calc(62 / 1080 * 100cqi);
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+}
+
+.stage { container-type: inline-size; }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="rc-video">
+    <!-- Family photo backdrop -->
+    <div class="rc-photo-bg">
+      <img src="public/generated/rightcare/family.jpg" alt="" />
+    </div>
+
+    <!-- The blue stencil overlay (the magic layer) -->
+    <div class="rc-photo-tint"></div>
+
+    <!-- Soft glow behind headline -->
+    <div class="rc-circle"></div>
+
+    <!-- Arabic headline -->
+    <div class="rc-headline">دعم الأسرة ..</div>
+
+    <!-- Cyan subtitle pill -->
+    <div class="rc-pill-wrap">
+      <div class="rc-pill">
+        <span class="rc-pill-text">جزء أساسي من رحلة التعافي</span>
+      </div>
+    </div>
+
+    <!-- Header overlay (corner logos) -->
+    <div class="rc-header-left">
+      <div class="rc-logo-ar">رايت كير</div>
+      <div class="rc-logo-en">
+        <span>RIGHT</span>
+        <span>CARE</span>
+      </div>
+    </div>
+    <div class="rc-header-right">
+      <div class="rc-cert-pill">CBAHI</div>
+    </div>
+  </div>
+</div>
+
+<!-- Live tweak panel — drag sliders, the scene updates in real time -->
+<div class="tools">
+  <h3>🎛️ Blue stencil knobs</h3>
+
+  <label>Window width
+    <input type="range" min="40" max="90" value="62" id="winW">
+    <span class="val" id="winWv">62%</span>
+  </label>
+
+  <label>Window height
+    <input type="range" min="50" max="95" value="72" id="winH">
+    <span class="val" id="winHv">72%</span>
+  </label>
+
+  <label>Window Y position
+    <input type="range" min="40" max="70" value="55" id="winY">
+    <span class="val" id="winYv">55%</span>
+  </label>
+
+  <label>Softness (% no-blue)
+    <input type="range" min="20" max="60" value="38" id="soft">
+    <span class="val" id="softv">38%</span>
+  </label>
+
+  <label>Edge blue
+    <input type="range" min="30" max="90" value="55" id="edge">
+    <span class="val" id="edgev">0.55</span>
+  </label>
+
+  <label>Corner blue
+    <input type="range" min="60" max="100" value="88" id="corner">
+    <span class="val" id="cornerv">0.88</span>
+  </label>
+
+  <label>Top band
+    <input type="range" min="70" max="100" value="97" id="top">
+    <span class="val" id="topv">0.97</span>
+  </label>
+
+  <label>Bottom band
+    <input type="range" min="60" max="100" value="90" id="bottom">
+    <span class="val" id="bottomv">0.90</span>
+  </label>
+
+  <div class="hint">
+    Live-tweak the blue stencil — the family photo updates as you drag.
+    When you find values you like, tell me and I'll bake them into the
+    Remotion CSS.
+  </div>
+</div>
+
+<script>
+// Hook up the sliders to CSS custom properties
+const tint = document.querySelector('.rc-photo-tint');
+const sliders = ['winW','winH','winY','soft','edge','corner','top','bottom'];
+const varMap = {
+  winW: '--win-w',
+  winH: '--win-h',
+  winY: '--win-y',
+  soft: '--soft',
+  edge: '--edge',
+  corner: '--corner',
+  top:   '--top',
+  bottom:'--bottom',
+};
+const fmtMap = {
+  winW: v => v + '%',
+  winH: v => v + '%',
+  winY: v => v + '%',
+  soft: v => v + '%',
+  edge: v => (v/100).toFixed(2),
+  corner: v => (v/100).toFixed(2),
+  top: v => (v/100).toFixed(2),
+  bottom: v => (v/100).toFixed(2),
+};
+
+sliders.forEach(id => {
+  const slider = document.getElementById(id);
+  const label  = document.getElementById(id + 'v');
+  slider.addEventListener('input', () => {
+    const v = slider.value;
+    const cssVal = (id === 'winW' || id === 'winH' || id === 'winY' || id === 'soft')
+      ? v + '%'
+      : v;
+    if (id === 'winW' || id === 'winH' || id === 'winY') {
+      tint.style.setProperty(varMap[id], v + '%');
+    } else {
+      tint.style.setProperty(varMap[id], v);
+    }
+    label.textContent = fmtMap[id](v);
+  });
+});
+</script>
+
+</body>
+</html>
