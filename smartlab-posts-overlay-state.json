@@ -4591,8 +4591,8 @@
         "type": "shape",
         "shape": "rect",
         "frame": {
-          "x": 776,
-          "y": 744,
+          "x": 804,
+          "y": 668,
           "width": 250,
           "height": 54
         },
@@ -4611,8 +4611,8 @@
         "type": "text",
         "text": "ملاحظة الاستجابة وتوثيقها",
         "frame": {
-          "x": 794,
-          "y": 759,
+          "x": 811,
+          "y": 683,
           "width": 214,
           "height": 24
         },
@@ -4636,8 +4636,8 @@
         "type": "shape",
         "shape": "line",
         "frame": {
-          "x": 696,
-          "y": 770,
+          "x": 730,
+          "y": 695,
           "width": 80,
           "height": 3
         },
@@ -4655,8 +4655,8 @@
         "type": "shape",
         "shape": "circle",
         "frame": {
-          "x": 686,
-          "y": 763,
+          "x": 715,
+          "y": 690,
           "width": 16,
           "height": 16
         },
