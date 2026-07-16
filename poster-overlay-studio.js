@@ -11,43 +11,55 @@
     const style = document.createElement('style');
     style.id = 'poster-overlay-studio-styles';
     style.textContent = `
-      .poster-overlay-group .group-content { display:flex; flex-direction:column; gap:10px; }
-      .poster-overlay-stack { display:flex; flex-direction:column; gap:8px; }
-      .poster-overlay-inline { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+      .poster-overlay-group .group-content { display:flex; flex-direction:column; gap:12px; }
+      .poster-overlay-stack { display:flex; flex-direction:column; gap:6px; min-width:0; }
+      .poster-overlay-stack > label { color:#aeb9cb; font-size:10px; font-weight:700; line-height:1.3; }
+      .poster-overlay-inline { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:9px; }
       .poster-overlay-group textarea,
       .poster-overlay-group input,
       .poster-overlay-group select {
         width:100%;
-        border-radius:10px;
-        border:1px solid rgba(255,255,255,.12);
-        background:rgba(15,23,42,.62);
+        min-height:36px;
+        border-radius:7px;
+        border:1px solid rgba(148,163,184,.18);
+        background:#0c111d;
         color:#e8eef9;
         padding:8px 10px;
         font:inherit;
         box-sizing:border-box;
+        outline:none;
+      }
+      .poster-overlay-group textarea:focus,
+      .poster-overlay-group input:focus,
+      .poster-overlay-group select:focus {
+        border-color:rgba(96,165,250,.72);
+        box-shadow:0 0 0 3px rgba(59,130,246,.13);
       }
       .poster-overlay-group input.numeric-invalid {
         border-color:rgba(248,113,113,.72);
         box-shadow:0 0 0 1px rgba(248,113,113,.22);
       }
-      .poster-overlay-group textarea { min-height:260px; resize:vertical; font-family:'SF Mono', ui-monospace, monospace; font-size:11px; line-height:1.45; direction:ltr; text-align:left; }
-      .poster-overlay-group textarea.poster-overlay-textarea { min-height:118px; font-family:inherit; font-size:12px; line-height:1.55; direction:auto; text-align:start; }
-      .poster-overlay-actions { display:flex; gap:8px; flex-wrap:wrap; }
+      .poster-overlay-group textarea { min-height:290px; resize:vertical; font-family:'SF Mono', ui-monospace, monospace; font-size:11px; line-height:1.55; direction:ltr; text-align:left; }
+      .poster-overlay-group textarea.poster-overlay-textarea { min-height:132px; font-family:inherit; font-size:12px; line-height:1.55; direction:auto; text-align:start; }
+      .poster-overlay-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
       .poster-overlay-btn {
-        border-radius:10px;
-        border:1px solid rgba(255,255,255,.14);
-        background:linear-gradient(135deg, rgba(59,130,246,.26), rgba(37,99,235,.16));
+        min-height:36px;
+        border-radius:7px;
+        border:1px solid rgba(96,165,250,.32);
+        background:#1d3d70;
         color:#fff;
         padding:8px 12px;
         cursor:pointer;
         font-weight:700;
       }
-      .poster-overlay-btn.secondary { background:rgba(255,255,255,.06); }
+      .poster-overlay-btn:hover { background:#24508f; }
+      .poster-overlay-btn.secondary { background:#1b2231; border-color:rgba(148,163,184,.18); }
+      .poster-overlay-btn.secondary:hover { background:#252e41; }
       .poster-overlay-bg-drop {
         border:1px dashed rgba(147,197,253,.42);
         background:rgba(59,130,246,.08);
-        border-radius:10px;
-        padding:10px 12px;
+        border-radius:8px;
+        padding:12px;
         color:#b8c7dd;
         font-size:11px;
         line-height:1.45;
@@ -65,21 +77,21 @@
       .poster-overlay-status { font-size:11px; white-space:pre-wrap; line-height:1.45; }
       .poster-overlay-status.error { color:#fca5a5; }
       .poster-overlay-status.ok { color:#86efac; }
-      .poster-overlay-editor { display:flex; flex-direction:column; gap:10px; }
+      .poster-overlay-editor { display:flex; flex-direction:column; gap:9px; }
       .poster-overlay-card {
-        border:1px solid rgba(255,255,255,.1);
-        background:rgba(255,255,255,.04);
-        border-radius:12px;
-        padding:10px;
+        border:1px solid rgba(148,163,184,.13);
+        background:#101725;
+        border-radius:8px;
+        padding:12px;
         display:flex;
         flex-direction:column;
-        gap:8px;
+        gap:10px;
       }
       .poster-overlay-card.selected {
-        border-color:rgba(147,197,253,.68);
-        box-shadow:0 0 0 1px rgba(147,197,253,.18), 0 10px 24px rgba(15,23,42,.22);
+        border-color:rgba(96,165,250,.72);
+        box-shadow:inset 3px 0 0 #3b82f6, 0 8px 20px rgba(0,0,0,.18);
       }
-      .poster-overlay-card h4 { margin:0; font-size:12px; display:flex; justify-content:space-between; gap:8px; }
+      .poster-overlay-card h4 { margin:0; padding-bottom:8px; border-bottom:1px solid rgba(148,163,184,.1); font-size:12px; display:flex; justify-content:space-between; gap:8px; }
       .poster-overlay-card small { color:#8ea0bc; }
       .poster-overlay-host {
         position:absolute;
