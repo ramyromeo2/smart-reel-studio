@@ -1867,7 +1867,14 @@
       if (!tab) return;
       const sceneId = tab.dataset.scene;
       if (!sceneId || sceneId === 'all') return;
+      if (selectedScene === String(sceneId)) return;
       setTimeout(function () { loadScene(sceneId); }, 0);
+    });
+
+    document.addEventListener('sl:scenechange', function (event) {
+      const sceneId = String(event.detail && event.detail.sceneId || '');
+      if (!sceneId || sceneId === 'all') return;
+      loadScene(sceneId);
     });
 
     syncSceneSelect();
