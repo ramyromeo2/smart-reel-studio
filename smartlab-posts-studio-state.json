@@ -1,9 +1,9 @@
 {
   "canonical": {
-    "smartlab-posts-overlay-scene": "26",
-    "smartlab-posts-overlay-bg": "public/generated/smartlab-posts/image-scene-26-1783606562565.png",
+    "smartlab-posts-overlay-scene": "27",
+    "smartlab-posts-overlay-bg": "public/generated/smartlab-posts/image-scene-27-1784131611636.png",
     "smartlab-posts-overlay-bg-file": "",
-    "smartlab-posts-overlay-json": "{\n  \"id\": \"smartlab-hba1c-centered-immersive-009\",\n  \"type\": \"posterOverlay\",\n  \"brand\": \"smartlab-posts\",\n  \"version\": \"1.2\",\n  \"canvas\": {\n    \"width\": 1080,\n    \"height\": 1350\n  },\n  \"background\": {\n    \"type\": \"image\",\n    \"fit\": \"cover\"\n  },\n  \"backgroundImage\": \"public/generated/smartlab-posts/image-scene-26-1783606562565.png\",\n  \"aspectRatio\": \"4:5\",\n  \"backgroundAnimation\": {\n    \"preset\": \"none\"\n  },\n  \"brandStyle\": {\n    \"primaryColor\": \"#1A9DD7\",\n    \"fontFamily\": \"Tajawal\",\n    \"fontWeight\": 500,\n    \"direction\": \"rtl\"\n  },\n  \"elements\": [\n    {\n      \"id\": \"topRightTagBg\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 853,\n        \"y\": 13,\n        \"width\": 220,\n        \"height\": 46\n      },\n      \"style\": {\n        \"backgroundColor\": \"rgba(255,255,255,0.82)\",\n        \"borderRadius\": 23\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 0,\n        \"durationFrames\": 55\n      }\n    },\n    {\n      \"id\": \"topRightTag\",\n      \"type\": \"text\",\n      \"text\": \"فحص HbA1c\",\n      \"frame\": {\n        \"x\": 880,\n        \"y\": 24,\n        \"width\": 180,\n        \"height\": 24\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 23,\n        \"lineHeight\": 1.1,\n        \"color\": \"#1A9DD7\",\n        \"textAlign\": \"center\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 5,\n        \"durationFrames\": 50\n      }\n    },\n    {\n      \"id\": \"headline\",\n      \"type\": \"text\",\n      \"text\": \"السكر التراكمي\",\n      \"frame\": {\n        \"x\": 150,\n        \"y\": 178,\n        \"width\": 780,\n        \"height\": 92\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 78,\n        \"lineHeight\": 1.05,\n        \"color\": \"#1A9DD7\",\n        \"textAlign\": \"center\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeDown\",\n        \"startFrame\": 8,\n        \"durationFrames\": 60\n      }\n    },\n    {\n      \"id\": \"subheadline\",\n      \"type\": \"text\",\n      \"text\": \" التحكم بالسكر التراكمي يقلل من خطر المضاعفات ويحافظ على جودة الحياة\",\n      \"frame\": {\n        \"x\": 120,\n        \"y\": 282,\n        \"width\": 840,\n        \"height\": 46\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 26,\n        \"lineHeight\": 1.2,\n        \"color\": \"#202020\",\n        \"textAlign\": \"center\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeUp\",\n        \"startFrame\": 16,\n        \"durationFrames\": 55\n      }\n    },\n    {\n      \"id\": \"miniInsightBg\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 312,\n        \"y\": 352,\n        \"width\": 456,\n        \"height\": 54\n      },\n      \"style\": {\n        \"backgroundColor\": \"rgba(255,255,255,0.72)\",\n        \"borderRadius\": 27\n      },\n      \"animation\": {\n        \"preset\": \"fadeUp\",\n        \"startFrame\": 24,\n        \"durationFrames\": 52\n      }\n    },\n    {\n      \"id\": \"miniInsight\",\n      \"type\": \"text\",\n      \"text\": \"قياس واحد… رؤية أوضح\",\n      \"frame\": {\n        \"x\": 332,\n        \"y\": 367,\n        \"width\": 416,\n        \"height\": 24\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 23,\n        \"lineHeight\": 1.1,\n        \"color\": \"#1A9DD7\",\n        \"textAlign\": \"center\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 28,\n        \"durationFrames\": 50\n      }\n    },\n    {\n      \"id\": \"cellPointerBg\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 60,\n        \"y\": 650,\n        \"width\": 340,\n        \"height\": 54\n      },\n      \"style\": {\n        \"backgroundColor\": \"rgba(255,255,255,0.84)\",\n        \"borderRadius\": 27\n      },\n      \"animation\": {\n        \"preset\": \"fadeUp\",\n        \"startFrame\": 38,\n        \"durationFrames\": 55\n      }\n    },\n    {\n      \"id\": \"cellPointerText\",\n      \"type\": \"text\",\n      \"text\": \"متوسط السكر خلال ٣ شهور\",\n      \"frame\": {\n        \"x\": 76,\n        \"y\": 665,\n        \"width\": 328,\n        \"height\": 25\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 20,\n        \"lineHeight\": 1.1,\n        \"color\": \"#1A9DD7\",\n        \"textAlign\": \"center\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 42,\n        \"durationFrames\": 50\n      }\n    },\n    {\n      \"id\": \"cellPointerLine\",\n      \"type\": \"shape\",\n      \"shape\": \"line\",\n      \"frame\": {\n        \"x\": 400,\n        \"y\": 678,\n        \"width\": 102,\n        \"height\": 3\n      },\n      \"style\": {\n        \"backgroundColor\": \"#1A9DD7\"\n      },\n      \"animation\": {\n        \"preset\": \"wipeRight\",\n        \"startFrame\": 48,\n        \"durationFrames\": 48\n      }\n    },\n    {\n      \"id\": \"cellPointerDot\",\n      \"type\": \"shape\",\n      \"shape\": \"circle\",\n      \"frame\": {\n        \"x\": 495,\n        \"y\": 671,\n        \"width\": 16,\n        \"height\": 16\n      },\n      \"style\": {\n        \"backgroundColor\": \"#1A9DD7\"\n      },\n      \"animation\": {\n        \"preset\": \"popIn\",\n        \"startFrame\": 56,\n        \"durationFrames\": 40\n      }\n    },\n    {\n      \"id\": \"indicatorBg\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 70,\n        \"y\": 945,\n        \"width\": 360,\n        \"height\": 56\n      },\n      \"style\": {\n        \"backgroundColor\": \"rgba(255,255,255,0.86)\",\n        \"borderRadius\": 28\n      },\n      \"animation\": {\n        \"preset\": \"fadeUp\",\n        \"startFrame\": 66,\n        \"durationFrames\": 52\n      }\n    },\n    {\n      \"id\": \"indicatorText\",\n      \"type\": \"text\",\n      \"text\": \"يرتبط السكر بكريات الدم الحمراء\",\n      \"frame\": {\n        \"x\": 86,\n        \"y\": 961,\n        \"width\": 328,\n        \"height\": 25\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 20,\n        \"lineHeight\": 1.1,\n        \"color\": \"#1A9DD7\",\n        \"textAlign\": \"center\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 70,\n        \"durationFrames\": 48\n      }\n    },\n    {\n      \"id\": \"indicatorLine\",\n      \"type\": \"shape\",\n      \"shape\": \"line\",\n      \"frame\": {\n        \"x\": 430,\n        \"y\": 972,\n        \"width\": 77,\n        \"height\": 3\n      },\n      \"style\": {\n        \"backgroundColor\": \"#1A9DD7\"\n      },\n      \"animation\": {\n        \"preset\": \"wipeRight\",\n        \"startFrame\": 76,\n        \"durationFrames\": 45\n      }\n    },\n    {\n      \"id\": \"indicatorDot\",\n      \"type\": \"shape\",\n      \"shape\": \"circle\",\n      \"frame\": {\n        \"x\": 504,\n        \"y\": 966,\n        \"width\": 15,\n        \"height\": 15\n      },\n      \"style\": {\n        \"backgroundColor\": \"#1A9DD7\"\n      },\n      \"animation\": {\n        \"preset\": \"popIn\",\n        \"startFrame\": 82,\n        \"durationFrames\": 38\n      }\n    },\n    {\n      \"id\": \"lowerInfoBg\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 640,\n        \"y\": 990,\n        \"width\": 330,\n        \"height\": 56\n      },\n      \"style\": {\n        \"backgroundColor\": \"rgba(26,157,215,0.92)\",\n        \"borderRadius\": 28\n      },\n      \"animation\": {\n        \"preset\": \"popIn\",\n        \"startFrame\": 88,\n        \"durationFrames\": 50\n      }\n    },\n    {\n      \"id\": \"lowerInfoText\",\n      \"type\": \"text\",\n      \"text\": \"تكبير يوضح الارتباط\",\n      \"frame\": {\n        \"x\": 656,\n        \"y\": 1006,\n        \"width\": 298,\n        \"height\": 25\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 20,\n        \"lineHeight\": 1.1,\n        \"color\": \"#FFFFFF\",\n        \"textAlign\": \"center\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 94,\n        \"durationFrames\": 45\n      }\n    }\n  ]\n}",
+    "smartlab-posts-overlay-json": "{\n  \"id\": \"smartmed-medical-caregiver-clean-003\",\n  \"type\": \"posterOverlay\",\n  \"brand\": \"smartmed-posts\",\n  \"version\": \"1.0\",\n  \"canvas\": {\n    \"width\": 1080,\n    \"height\": 1350\n  },\n  \"background\": {\n    \"type\": \"image\",\n    \"fit\": \"cover\"\n  },\n  \"backgroundImage\": \"public/generated/smartlab-posts/image-scene-27-1784131611636.png\",\n  \"aspectRatio\": \"4:5\",\n  \"backgroundAnimation\": {\n    \"preset\": \"none\"\n  },\n  \"brandStyle\": {\n    \"primaryColor\": \"#0F48C6\",\n    \"fontFamily\": \"Tajawal\",\n    \"fontWeight\": 500,\n    \"direction\": \"rtl\"\n  },\n  \"elements\": [\n    {\n      \"id\": \"serviceTagBg\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 752,\n        \"y\": 60,\n        \"width\": 270,\n        \"height\": 48\n      },\n      \"style\": {\n        \"backgroundColor\": \"rgba(255,255,255,0.86)\",\n        \"borderRadius\": 24\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 0,\n        \"durationFrames\": 28\n      }\n    },\n    {\n      \"id\": \"serviceTag\",\n      \"type\": \"text\",\n      \"text\": \"خدمة مقدّم رعاية طبية\",\n      \"frame\": {\n        \"x\": 771,\n        \"y\": 72,\n        \"width\": 234,\n        \"height\": 26\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 22,\n        \"lineHeight\": 1.1,\n        \"color\": \"#0F48C6\",\n        \"textAlign\": \"center\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 12,\n        \"durationFrames\": 26\n      }\n    },\n    {\n      \"id\": \"headline\",\n      \"type\": \"text\",\n      \"text\": \"رعاية طبية\\nترافق كل خطوة\",\n      \"frame\": {\n        \"x\": 150,\n        \"y\": 142,\n        \"width\": 780,\n        \"height\": 148\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 70,\n        \"lineHeight\": 1.05,\n        \"color\": \"#0F48C6\",\n        \"textAlign\": \"center\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeDown\",\n        \"startFrame\": 20,\n        \"durationFrames\": 36\n      }\n    },\n    {\n      \"id\": \"subheading\",\n      \"type\": \"text\",\n      \"text\": \"دعم للحركة، ومراقبة للحالة، وتوثيق مستمر في المنزل\",\n      \"frame\": {\n        \"x\": 145,\n        \"y\": 308,\n        \"width\": 790,\n        \"height\": 44\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 29,\n        \"lineHeight\": 1.2,\n        \"color\": \"#222222\",\n        \"textAlign\": \"center\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeUp\",\n        \"startFrame\": 44,\n        \"durationFrames\": 34\n      }\n    },\n    {\n      \"id\": \"ctaBg\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 372,\n        \"y\": 959,\n        \"width\": 320,\n        \"height\": 60\n      },\n      \"style\": {\n        \"backgroundColor\": \"#0F48C6\",\n        \"borderRadius\": 30\n      },\n      \"animation\": {\n        \"preset\": \"popIn\",\n        \"startFrame\": 72,\n        \"durationFrames\": 28\n      }\n    },\n    {\n      \"id\": \"ctaText\",\n      \"type\": \"text\",\n      \"text\": \"اطلب الخدمة الآن\",\n      \"frame\": {\n        \"x\": 369,\n        \"y\": 972,\n        \"width\": 320,\n        \"height\": 28\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 29,\n        \"lineHeight\": 1.1,\n        \"color\": \"#FFFFFF\",\n        \"textAlign\": \"center\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 88,\n        \"durationFrames\": 24\n      }\n    },\n    {\n      \"id\": \"mobilityLabelBg\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 66,\n        \"y\": 720,\n        \"width\": 252,\n        \"height\": 54\n      },\n      \"style\": {\n        \"backgroundColor\": \"rgba(255,255,255,0.86)\",\n        \"borderRadius\": 27\n      },\n      \"animation\": {\n        \"preset\": \"fadeUp\",\n        \"startFrame\": 106,\n        \"durationFrames\": 32\n      }\n    },\n    {\n      \"id\": \"mobilityLabel\",\n      \"type\": \"text\",\n      \"text\": \"دعم الحركة وتقليل خطر السقوط\",\n      \"frame\": {\n        \"x\": 84,\n        \"y\": 735,\n        \"width\": 216,\n        \"height\": 24\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 21,\n        \"lineHeight\": 1.1,\n        \"color\": \"#0F48C6\",\n        \"textAlign\": \"center\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 122,\n        \"durationFrames\": 26\n      }\n    },\n    {\n      \"id\": \"mobilityPointerLine\",\n      \"type\": \"shape\",\n      \"shape\": \"line\",\n      \"frame\": {\n        \"x\": 318,\n        \"y\": 746,\n        \"width\": 122,\n        \"height\": 3\n      },\n      \"style\": {\n        \"backgroundColor\": \"#0F48C6\"\n      },\n      \"animation\": {\n        \"preset\": \"wipeRight\",\n        \"startFrame\": 138,\n        \"durationFrames\": 30\n      }\n    },\n    {\n      \"id\": \"mobilityPointerDot\",\n      \"type\": \"shape\",\n      \"shape\": \"circle\",\n      \"frame\": {\n        \"x\": 434,\n        \"y\": 739,\n        \"width\": 16,\n        \"height\": 16\n      },\n      \"style\": {\n        \"backgroundColor\": \"#0F48C6\"\n      },\n      \"animation\": {\n        \"preset\": \"popIn\",\n        \"startFrame\": 158,\n        \"durationFrames\": 22\n      }\n    },\n    {\n      \"id\": \"monitoringLabelBg\",\n      \"type\": \"shape\",\n      \"shape\": \"rect\",\n      \"frame\": {\n        \"x\": 776,\n        \"y\": 744,\n        \"width\": 250,\n        \"height\": 54\n      },\n      \"style\": {\n        \"backgroundColor\": \"rgba(255,255,255,0.86)\",\n        \"borderRadius\": 27\n      },\n      \"animation\": {\n        \"preset\": \"fadeDown\",\n        \"startFrame\": 120,\n        \"durationFrames\": 32\n      }\n    },\n    {\n      \"id\": \"monitoringLabel\",\n      \"type\": \"text\",\n      \"text\": \"ملاحظة الاستجابة وتوثيقها\",\n      \"frame\": {\n        \"x\": 794,\n        \"y\": 759,\n        \"width\": 214,\n        \"height\": 24\n      },\n      \"style\": {\n        \"fontFamily\": \"Tajawal\",\n        \"fontWeight\": 500,\n        \"fontSize\": 21,\n        \"lineHeight\": 1.1,\n        \"color\": \"#0F48C6\",\n        \"textAlign\": \"center\",\n        \"direction\": \"rtl\"\n      },\n      \"animation\": {\n        \"preset\": \"fadeIn\",\n        \"startFrame\": 136,\n        \"durationFrames\": 26\n      }\n    },\n    {\n      \"id\": \"monitoringPointerLine\",\n      \"type\": \"shape\",\n      \"shape\": \"line\",\n      \"frame\": {\n        \"x\": 696,\n        \"y\": 770,\n        \"width\": 80,\n        \"height\": 3\n      },\n      \"style\": {\n        \"backgroundColor\": \"#0F48C6\"\n      },\n      \"animation\": {\n        \"preset\": \"wipeRight\",\n        \"startFrame\": 152,\n        \"durationFrames\": 28\n      }\n    },\n    {\n      \"id\": \"monitoringPointerDot\",\n      \"type\": \"shape\",\n      \"shape\": \"circle\",\n      \"frame\": {\n        \"x\": 686,\n        \"y\": 763,\n        \"width\": 16,\n        \"height\": 16\n      },\n      \"style\": {\n        \"backgroundColor\": \"#0F48C6\"\n      },\n      \"animation\": {\n        \"preset\": \"popIn\",\n        \"startFrame\": 172,\n        \"durationFrames\": 22\n      }\n    }\n  ]\n}",
     "s1-overlay-doc": "{\"id\":\"smartmed-chest-pain-post-001\",\"type\":\"posterOverlay\",\"brand\":\"smartmed\",\"version\":\"1.0\",\"canvas\":{\"width\":1080,\"height\":1350},\"background\":{\"type\":\"image\",\"fit\":\"cover\"},\"brandStyle\":{\"primaryColor\":\"#0F48C6\",\"fontFamily\":\"Tajawal\",\"fontWeight\":400,\"direction\":\"rtl\"},\"elements\":[{\"id\":\"headline\",\"type\":\"text\",\"text\":\"ألم الصدر المفاجئ إشارة لا تُهمل\",\"frame\":{\"x\":283,\"y\":124,\"width\":780,\"height\":82},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":400,\"fontSize\":54,\"lineHeight\":1.12,\"color\":\"#0F48C6\",\"textAlign\":\"right\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeDown\",\"startFrame\":6,\"durationFrames\":18}},{\"id\":\"subheading\",\"type\":\"text\",\"text\":\"سمارت ميد معك للاهتمام بك في منزلك\",\"frame\":{\"x\":415,\"y\":188,\"width\":635,\"height\":71},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":400,\"fontSize\":32,\"lineHeight\":1.22,\"color\":\"#222222\",\"textAlign\":\"right\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":16,\"durationFrames\":18}}],\"backgroundImage\":\"public/generated/smartlab-posts/image-scene-1-1781083485254.png\",\"aspectRatio\":\"4:5\",\"backgroundAnimation\":{\"preset\":\"none\"}}",
     "s2-overlay-doc": "{\"id\":\"smartlab-study-focus-post-001\",\"brand\":\"smartlab\",\"aspectRatio\":\"4:5\",\"backgroundImage\":\"public/generated/smartlab-posts/image-scene-2-1781170890855.png\",\"canvas\":{\"width\":1080,\"height\":1350},\"brandStyle\":{\"primaryColor\":\"#2A9DD8\",\"fontFamily\":\"Tajawal\",\"fontWeight\":400,\"direction\":\"rtl\"},\"backgroundAnimation\":{\"preset\":\"none\"},\"elements\":[{\"id\":\"headline\",\"type\":\"text\",\"text\":\" تذاكر كثير… وتنسى بسرعة؟\",\"frame\":{\"x\":150,\"y\":165,\"width\":780,\"height\":90},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":400,\"fontSize\":68,\"lineHeight\":1.15,\"color\":\"#2A9DD8\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":10,\"durationFrames\":18}},{\"id\":\"subheading\",\"type\":\"text\",\"text\":\"ضعف التركيز والنسيان المتكرر قد يكون سبب يحتاج تحليل\",\"frame\":{\"x\":145,\"y\":275,\"width\":790,\"height\":110},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":400,\"fontSize\":36,\"lineHeight\":1.4,\"color\":\"#2F2F2F\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":20,\"durationFrames\":18}}],\"type\":\"posterOverlay\",\"version\":\"1.0\",\"background\":{\"type\":\"image\",\"fit\":\"cover\"}}",
     "s3-overlay-doc": "{\"id\":\"smartlab-pool-post-v2\",\"brand\":\"smartlab\",\"aspectRatio\":\"4:5\",\"backgroundImage\":\"public/generated/smartlab-posts/image-scene-3-1781168834934.png\",\"canvas\":{\"width\":1080,\"height\":1350},\"brandStyle\":{\"primaryColor\":\"#2A9DD8\",\"fontFamily\":\"Tajawal\",\"fontWeight\":400,\"direction\":\"rtl\"},\"backgroundAnimation\":{\"preset\":\"none\"},\"elements\":[{\"id\":\"headline\",\"type\":\"text\",\"text\":\"بعد المسبح…\",\"frame\":{\"x\":160,\"y\":167,\"width\":760,\"height\":85},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":400,\"fontSize\":60,\"lineHeight\":1.12,\"color\":\"#2A9DD8\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeDown\",\"startFrame\":6,\"durationFrames\":18}},{\"id\":\"subheading\",\"type\":\"text\",\"text\":\"هل تلاحظ تهيجاً في البشرة أو إرهاقاً غير معتاد؟ قد تكشف التحاليل ما وراء هذه الأعراض وتمنحك راحة البال.\",\"frame\":{\"x\":177,\"y\":265,\"width\":740,\"height\":82},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":400,\"fontSize\":27,\"lineHeight\":1.32,\"color\":\"#222222\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":16,\"durationFrames\":18}}],\"type\":\"posterOverlay\",\"version\":\"1.0\",\"background\":{\"type\":\"image\",\"fit\":\"cover\"}}",
@@ -30,6 +30,7 @@
     "s24-overlay-doc": "{\"id\":\"smartlab-thyroid-awareness-001\",\"type\":\"posterOverlay\",\"brand\":\"smartlab-posts\",\"version\":\"1.0\",\"canvas\":{\"width\":1080,\"height\":1350},\"background\":{\"type\":\"image\",\"fit\":\"cover\"},\"brandStyle\":{\"primaryColor\":\"#1A9DD7\",\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"direction\":\"rtl\"},\"elements\":[{\"id\":\"headline\",\"type\":\"text\",\"text\":\"الغدة الدرقية\",\"frame\":{\"x\":170,\"y\":176,\"width\":740,\"height\":78},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":66,\"lineHeight\":1.05,\"color\":\"#1A9DD7\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":0,\"durationFrames\":10}},{\"id\":\"subheadline\",\"type\":\"text\",\"text\":\"توازنها ينعكس على طاقتك وصحة جسمك\",\"frame\":{\"x\":160,\"y\":270,\"width\":760,\"height\":44},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":29,\"lineHeight\":1.2,\"color\":\"#202020\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"popIn\",\"startFrame\":0,\"durationFrames\":10}}],\"backgroundImage\":\"public/generated/smartlab-posts/image-scene-24-1783365204956.png\",\"aspectRatio\":\"4:5\",\"backgroundAnimation\":{\"preset\":\"none\"}}",
     "s25-overlay-doc": "{\"id\":\"smartmed-homecare-service-frame-01\",\"brand\":\"smartmed-posts\",\"aspectRatio\":\"4:5\",\"backgroundImage\":\"public/generated/smartlab-posts/image-scene-25-1783589636203.png\",\"canvas\":{\"width\":1080,\"height\":1350},\"brandStyle\":{\"primaryColor\":\"#0F48C6\",\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"direction\":\"rtl\"},\"backgroundAnimation\":{\"preset\":\"none\"},\"elements\":[{\"id\":\"tagBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":810,\"y\":56,\"width\":230,\"height\":44},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.86)\",\"borderRadius\":22},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":0,\"durationFrames\":12}},{\"id\":\"tag\",\"type\":\"text\",\"text\":\"رعاية منزلية\",\"frame\":{\"x\":830,\"y\":67,\"width\":190,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":21,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":4,\"durationFrames\":12}},{\"id\":\"accentLine\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":1060,\"y\":120,\"width\":8,\"height\":145},\"style\":{\"backgroundColor\":\"#0F48C6\",\"borderRadius\":4},\"animation\":{\"preset\":\"fadeDown\",\"startFrame\":8,\"durationFrames\":14}},{\"id\":\"headline\",\"type\":\"text\",\"text\":\"الرعاية الطبية\\nتصلك إلى منزلك\",\"frame\":{\"x\":495,\"y\":120,\"width\":540,\"height\":145},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":58,\"lineHeight\":1.08,\"color\":\"#0F48C6\",\"textAlign\":\"right\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeDown\",\"startFrame\":12,\"durationFrames\":18}},{\"id\":\"subheading\",\"type\":\"text\",\"text\":\"خدمات صحية موثوقة براحة وخصوصية\",\"frame\":{\"x\":520,\"y\":280,\"width\":500,\"height\":42},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":28,\"lineHeight\":1.2,\"color\":\"#202020\",\"textAlign\":\"right\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":22,\"durationFrames\":16}},{\"id\":\"chip1Bg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":652,\"y\":350,\"width\":122,\"height\":44},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.86)\",\"borderRadius\":22},\"animation\":{\"preset\":\"popIn\",\"startFrame\":30,\"durationFrames\":12}},{\"id\":\"chip1\",\"type\":\"text\",\"text\":\"تمريض\",\"frame\":{\"x\":652,\"y\":362,\"width\":122,\"height\":22},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":19,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":34,\"durationFrames\":10}},{\"id\":\"chip2Bg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":788,\"y\":350,\"width\":122,\"height\":44},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.86)\",\"borderRadius\":22},\"animation\":{\"preset\":\"popIn\",\"startFrame\":32,\"durationFrames\":12}},{\"id\":\"chip2\",\"type\":\"text\",\"text\":\"تحاليل\",\"frame\":{\"x\":788,\"y\":362,\"width\":122,\"height\":22},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":19,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":36,\"durationFrames\":10}},{\"id\":\"chip3Bg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":924,\"y\":350,\"width\":122,\"height\":44},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.86)\",\"borderRadius\":22},\"animation\":{\"preset\":\"popIn\",\"startFrame\":34,\"durationFrames\":12}},{\"id\":\"chip3\",\"type\":\"text\",\"text\":\"رعاية\",\"frame\":{\"x\":924,\"y\":362,\"width\":122,\"height\":22},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":19,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":38,\"durationFrames\":10}}],\"type\":\"posterOverlay\",\"version\":\"1.0\",\"background\":{\"type\":\"image\",\"fit\":\"cover\"}}",
     "s26-overlay-doc": "{\"id\":\"smartlab-hba1c-centered-immersive-009\",\"type\":\"posterOverlay\",\"brand\":\"smartlab-posts\",\"version\":\"1.2\",\"canvas\":{\"width\":1080,\"height\":1350},\"background\":{\"type\":\"image\",\"fit\":\"cover\"},\"backgroundImage\":\"public/generated/smartlab-posts/image-scene-26-1783606562565.png\",\"aspectRatio\":\"4:5\",\"backgroundAnimation\":{\"preset\":\"none\"},\"brandStyle\":{\"primaryColor\":\"#1A9DD7\",\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"direction\":\"rtl\"},\"elements\":[{\"id\":\"topRightTagBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":853,\"y\":13,\"width\":220,\"height\":46},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.82)\",\"borderRadius\":23},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":0,\"durationFrames\":55}},{\"id\":\"topRightTag\",\"type\":\"text\",\"text\":\"فحص HbA1c\",\"frame\":{\"x\":880,\"y\":24,\"width\":180,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":23,\"lineHeight\":1.1,\"color\":\"#1A9DD7\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":5,\"durationFrames\":50}},{\"id\":\"headline\",\"type\":\"text\",\"text\":\"السكر التراكمي\",\"frame\":{\"x\":150,\"y\":178,\"width\":780,\"height\":92},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":78,\"lineHeight\":1.05,\"color\":\"#1A9DD7\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeDown\",\"startFrame\":8,\"durationFrames\":60}},{\"id\":\"subheadline\",\"type\":\"text\",\"text\":\" التحكم بالسكر التراكمي يقلل من خطر المضاعفات ويحافظ على جودة الحياة\",\"frame\":{\"x\":120,\"y\":282,\"width\":840,\"height\":46},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":26,\"lineHeight\":1.2,\"color\":\"#202020\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":16,\"durationFrames\":55}},{\"id\":\"miniInsightBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":312,\"y\":352,\"width\":456,\"height\":54},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.72)\",\"borderRadius\":27},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":24,\"durationFrames\":52}},{\"id\":\"miniInsight\",\"type\":\"text\",\"text\":\"قياس واحد… رؤية أوضح\",\"frame\":{\"x\":332,\"y\":367,\"width\":416,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":23,\"lineHeight\":1.1,\"color\":\"#1A9DD7\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":28,\"durationFrames\":50}},{\"id\":\"cellPointerBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":60,\"y\":650,\"width\":340,\"height\":54},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.84)\",\"borderRadius\":27},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":38,\"durationFrames\":55}},{\"id\":\"cellPointerText\",\"type\":\"text\",\"text\":\"متوسط السكر خلال ٣ شهور\",\"frame\":{\"x\":76,\"y\":665,\"width\":328,\"height\":25},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":20,\"lineHeight\":1.1,\"color\":\"#1A9DD7\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":42,\"durationFrames\":50}},{\"id\":\"cellPointerLine\",\"type\":\"shape\",\"shape\":\"line\",\"frame\":{\"x\":400,\"y\":678,\"width\":102,\"height\":3},\"style\":{\"backgroundColor\":\"#1A9DD7\"},\"animation\":{\"preset\":\"wipeRight\",\"startFrame\":48,\"durationFrames\":48}},{\"id\":\"cellPointerDot\",\"type\":\"shape\",\"shape\":\"circle\",\"frame\":{\"x\":495,\"y\":671,\"width\":16,\"height\":16},\"style\":{\"backgroundColor\":\"#1A9DD7\"},\"animation\":{\"preset\":\"popIn\",\"startFrame\":56,\"durationFrames\":40}},{\"id\":\"indicatorBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":70,\"y\":945,\"width\":360,\"height\":56},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.86)\",\"borderRadius\":28},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":66,\"durationFrames\":52}},{\"id\":\"indicatorText\",\"type\":\"text\",\"text\":\"يرتبط السكر بكريات الدم الحمراء\",\"frame\":{\"x\":86,\"y\":961,\"width\":328,\"height\":25},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":20,\"lineHeight\":1.1,\"color\":\"#1A9DD7\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":70,\"durationFrames\":48}},{\"id\":\"indicatorLine\",\"type\":\"shape\",\"shape\":\"line\",\"frame\":{\"x\":430,\"y\":972,\"width\":77,\"height\":3},\"style\":{\"backgroundColor\":\"#1A9DD7\"},\"animation\":{\"preset\":\"wipeRight\",\"startFrame\":76,\"durationFrames\":45}},{\"id\":\"indicatorDot\",\"type\":\"shape\",\"shape\":\"circle\",\"frame\":{\"x\":504,\"y\":966,\"width\":15,\"height\":15},\"style\":{\"backgroundColor\":\"#1A9DD7\"},\"animation\":{\"preset\":\"popIn\",\"startFrame\":82,\"durationFrames\":38}},{\"id\":\"lowerInfoBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":640,\"y\":990,\"width\":330,\"height\":56},\"style\":{\"backgroundColor\":\"rgba(26,157,215,0.92)\",\"borderRadius\":28},\"animation\":{\"preset\":\"popIn\",\"startFrame\":88,\"durationFrames\":50}},{\"id\":\"lowerInfoText\",\"type\":\"text\",\"text\":\"تكبير يوضح الارتباط\",\"frame\":{\"x\":656,\"y\":1006,\"width\":298,\"height\":25},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":20,\"lineHeight\":1.1,\"color\":\"#FFFFFF\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":94,\"durationFrames\":45}}]}",
+    "s27-overlay-doc": "{\"id\":\"smartmed-medical-caregiver-clean-003\",\"type\":\"posterOverlay\",\"brand\":\"smartmed-posts\",\"version\":\"1.0\",\"canvas\":{\"width\":1080,\"height\":1350},\"background\":{\"type\":\"image\",\"fit\":\"cover\"},\"backgroundImage\":\"public/generated/smartlab-posts/image-scene-27-1784131611636.png\",\"aspectRatio\":\"4:5\",\"backgroundAnimation\":{\"preset\":\"none\"},\"brandStyle\":{\"primaryColor\":\"#0F48C6\",\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"direction\":\"rtl\"},\"elements\":[{\"id\":\"serviceTagBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":752,\"y\":60,\"width\":270,\"height\":48},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.86)\",\"borderRadius\":24},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":0,\"durationFrames\":28}},{\"id\":\"serviceTag\",\"type\":\"text\",\"text\":\"خدمة مقدّم رعاية طبية\",\"frame\":{\"x\":771,\"y\":72,\"width\":234,\"height\":26},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":22,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":12,\"durationFrames\":26}},{\"id\":\"headline\",\"type\":\"text\",\"text\":\"رعاية طبية\\nترافق كل خطوة\",\"frame\":{\"x\":150,\"y\":142,\"width\":780,\"height\":148},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":70,\"lineHeight\":1.05,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeDown\",\"startFrame\":20,\"durationFrames\":36}},{\"id\":\"subheading\",\"type\":\"text\",\"text\":\"دعم للحركة، ومراقبة للحالة، وتوثيق مستمر في المنزل\",\"frame\":{\"x\":145,\"y\":308,\"width\":790,\"height\":44},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":29,\"lineHeight\":1.2,\"color\":\"#222222\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":44,\"durationFrames\":34}},{\"id\":\"ctaBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":372,\"y\":959,\"width\":320,\"height\":60},\"style\":{\"backgroundColor\":\"#0F48C6\",\"borderRadius\":30},\"animation\":{\"preset\":\"popIn\",\"startFrame\":72,\"durationFrames\":28}},{\"id\":\"ctaText\",\"type\":\"text\",\"text\":\"اطلب الخدمة الآن\",\"frame\":{\"x\":369,\"y\":972,\"width\":320,\"height\":28},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":29,\"lineHeight\":1.1,\"color\":\"#FFFFFF\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":88,\"durationFrames\":24}},{\"id\":\"mobilityLabelBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":66,\"y\":720,\"width\":252,\"height\":54},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.86)\",\"borderRadius\":27},\"animation\":{\"preset\":\"fadeUp\",\"startFrame\":106,\"durationFrames\":32}},{\"id\":\"mobilityLabel\",\"type\":\"text\",\"text\":\"دعم الحركة وتقليل خطر السقوط\",\"frame\":{\"x\":84,\"y\":735,\"width\":216,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":21,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":122,\"durationFrames\":26}},{\"id\":\"mobilityPointerLine\",\"type\":\"shape\",\"shape\":\"line\",\"frame\":{\"x\":318,\"y\":746,\"width\":122,\"height\":3},\"style\":{\"backgroundColor\":\"#0F48C6\"},\"animation\":{\"preset\":\"wipeRight\",\"startFrame\":138,\"durationFrames\":30}},{\"id\":\"mobilityPointerDot\",\"type\":\"shape\",\"shape\":\"circle\",\"frame\":{\"x\":434,\"y\":739,\"width\":16,\"height\":16},\"style\":{\"backgroundColor\":\"#0F48C6\"},\"animation\":{\"preset\":\"popIn\",\"startFrame\":158,\"durationFrames\":22}},{\"id\":\"monitoringLabelBg\",\"type\":\"shape\",\"shape\":\"rect\",\"frame\":{\"x\":776,\"y\":744,\"width\":250,\"height\":54},\"style\":{\"backgroundColor\":\"rgba(255,255,255,0.86)\",\"borderRadius\":27},\"animation\":{\"preset\":\"fadeDown\",\"startFrame\":120,\"durationFrames\":32}},{\"id\":\"monitoringLabel\",\"type\":\"text\",\"text\":\"ملاحظة الاستجابة وتوثيقها\",\"frame\":{\"x\":794,\"y\":759,\"width\":214,\"height\":24},\"style\":{\"fontFamily\":\"Tajawal\",\"fontWeight\":500,\"fontSize\":21,\"lineHeight\":1.1,\"color\":\"#0F48C6\",\"textAlign\":\"center\",\"direction\":\"rtl\"},\"animation\":{\"preset\":\"fadeIn\",\"startFrame\":136,\"durationFrames\":26}},{\"id\":\"monitoringPointerLine\",\"type\":\"shape\",\"shape\":\"line\",\"frame\":{\"x\":696,\"y\":770,\"width\":80,\"height\":3},\"style\":{\"backgroundColor\":\"#0F48C6\"},\"animation\":{\"preset\":\"wipeRight\",\"startFrame\":152,\"durationFrames\":28}},{\"id\":\"monitoringPointerDot\",\"type\":\"shape\",\"shape\":\"circle\",\"frame\":{\"x\":686,\"y\":763,\"width\":16,\"height\":16},\"style\":{\"backgroundColor\":\"#0F48C6\"},\"animation\":{\"preset\":\"popIn\",\"startFrame\":172,\"durationFrames\":22}}]}",
     "bg-color": "#ffffff",
     "primary-color": "#071b3a",
     "accent-color": "#1a9dd8",
@@ -157,7 +158,8 @@
         "23",
         "24",
         "25",
-        "26"
+        "26",
+        "27"
       ],
       "durations": {
         "1": 5,
@@ -185,7 +187,8 @@
         "23": 5,
         "24": 5,
         "25": 5,
-        "26": 5
+        "26": 5,
+        "27": 5
       },
       "visible": {
         "1": true,
@@ -213,7 +216,8 @@
         "23": true,
         "24": true,
         "25": true,
-        "26": true
+        "26": true,
+        "27": true
       },
       "template": {}
     }
@@ -467,7 +471,8 @@
       "23",
       "24",
       "25",
-      "26"
+      "26",
+      "27"
     ],
     "durations": {
       "1": 5,
@@ -495,7 +500,8 @@
       "23": 5,
       "24": 5,
       "25": 5,
-      "26": 5
+      "26": 5,
+      "27": 5
     },
     "visible": {
       "1": true,
@@ -523,7 +529,8 @@
       "23": true,
       "24": true,
       "25": true,
-      "26": true
+      "26": true,
+      "27": true
     },
     "template": {}
   },
@@ -552,7 +559,8 @@
     "s23": "public/generated/smartlab-posts/image-scene-23-1783335017940.png",
     "s24": "public/generated/smartlab-posts/image-scene-24-1783365204956.png",
     "s25": "public/generated/smartlab-posts/image-scene-25-1783589636203.png",
-    "s26": "public/generated/smartlab-posts/image-scene-26-1783606562565.png"
+    "s26": "public/generated/smartlab-posts/image-scene-26-1783606562565.png",
+    "s27": "public/generated/smartlab-posts/image-scene-27-1784131611636.png"
   },
   "overlayState": {
     "1": {
@@ -4893,7 +4901,340 @@
           }
         }
       ]
+    },
+    "27": {
+      "id": "smartmed-medical-caregiver-clean-003",
+      "type": "posterOverlay",
+      "brand": "smartmed-posts",
+      "version": "1.0",
+      "canvas": {
+        "width": 1080,
+        "height": 1350
+      },
+      "background": {
+        "type": "image",
+        "fit": "cover"
+      },
+      "backgroundImage": "public/generated/smartlab-posts/image-scene-27-1784131611636.png",
+      "aspectRatio": "4:5",
+      "backgroundAnimation": {
+        "preset": "none"
+      },
+      "brandStyle": {
+        "primaryColor": "#0F48C6",
+        "fontFamily": "Tajawal",
+        "fontWeight": 500,
+        "direction": "rtl"
+      },
+      "elements": [
+        {
+          "id": "serviceTagBg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 752,
+            "y": 60,
+            "width": 270,
+            "height": 48
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.86)",
+            "borderRadius": 24
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 0,
+            "durationFrames": 28
+          }
+        },
+        {
+          "id": "serviceTag",
+          "type": "text",
+          "text": "خدمة مقدّم رعاية طبية",
+          "frame": {
+            "x": 771,
+            "y": 72,
+            "width": 234,
+            "height": 26
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 22,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 12,
+            "durationFrames": 26
+          }
+        },
+        {
+          "id": "headline",
+          "type": "text",
+          "text": "رعاية طبية\nترافق كل خطوة",
+          "frame": {
+            "x": 150,
+            "y": 142,
+            "width": 780,
+            "height": 148
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 70,
+            "lineHeight": 1.05,
+            "color": "#0F48C6",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeDown",
+            "startFrame": 20,
+            "durationFrames": 36
+          }
+        },
+        {
+          "id": "subheading",
+          "type": "text",
+          "text": "دعم للحركة، ومراقبة للحالة، وتوثيق مستمر في المنزل",
+          "frame": {
+            "x": 145,
+            "y": 308,
+            "width": 790,
+            "height": 44
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 29,
+            "lineHeight": 1.2,
+            "color": "#222222",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeUp",
+            "startFrame": 44,
+            "durationFrames": 34
+          }
+        },
+        {
+          "id": "ctaBg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 372,
+            "y": 959,
+            "width": 320,
+            "height": 60
+          },
+          "style": {
+            "backgroundColor": "#0F48C6",
+            "borderRadius": 30
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 72,
+            "durationFrames": 28
+          }
+        },
+        {
+          "id": "ctaText",
+          "type": "text",
+          "text": "اطلب الخدمة الآن",
+          "frame": {
+            "x": 369,
+            "y": 972,
+            "width": 320,
+            "height": 28
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 29,
+            "lineHeight": 1.1,
+            "color": "#FFFFFF",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 88,
+            "durationFrames": 24
+          }
+        },
+        {
+          "id": "mobilityLabelBg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 66,
+            "y": 720,
+            "width": 252,
+            "height": 54
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.86)",
+            "borderRadius": 27
+          },
+          "animation": {
+            "preset": "fadeUp",
+            "startFrame": 106,
+            "durationFrames": 32
+          }
+        },
+        {
+          "id": "mobilityLabel",
+          "type": "text",
+          "text": "دعم الحركة وتقليل خطر السقوط",
+          "frame": {
+            "x": 84,
+            "y": 735,
+            "width": 216,
+            "height": 24
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 21,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 122,
+            "durationFrames": 26
+          }
+        },
+        {
+          "id": "mobilityPointerLine",
+          "type": "shape",
+          "shape": "line",
+          "frame": {
+            "x": 318,
+            "y": 746,
+            "width": 122,
+            "height": 3
+          },
+          "style": {
+            "backgroundColor": "#0F48C6"
+          },
+          "animation": {
+            "preset": "wipeRight",
+            "startFrame": 138,
+            "durationFrames": 30
+          }
+        },
+        {
+          "id": "mobilityPointerDot",
+          "type": "shape",
+          "shape": "circle",
+          "frame": {
+            "x": 434,
+            "y": 739,
+            "width": 16,
+            "height": 16
+          },
+          "style": {
+            "backgroundColor": "#0F48C6"
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 158,
+            "durationFrames": 22
+          }
+        },
+        {
+          "id": "monitoringLabelBg",
+          "type": "shape",
+          "shape": "rect",
+          "frame": {
+            "x": 776,
+            "y": 744,
+            "width": 250,
+            "height": 54
+          },
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.86)",
+            "borderRadius": 27
+          },
+          "animation": {
+            "preset": "fadeDown",
+            "startFrame": 120,
+            "durationFrames": 32
+          }
+        },
+        {
+          "id": "monitoringLabel",
+          "type": "text",
+          "text": "ملاحظة الاستجابة وتوثيقها",
+          "frame": {
+            "x": 794,
+            "y": 759,
+            "width": 214,
+            "height": 24
+          },
+          "style": {
+            "fontFamily": "Tajawal",
+            "fontWeight": 500,
+            "fontSize": 21,
+            "lineHeight": 1.1,
+            "color": "#0F48C6",
+            "textAlign": "center",
+            "direction": "rtl"
+          },
+          "animation": {
+            "preset": "fadeIn",
+            "startFrame": 136,
+            "durationFrames": 26
+          }
+        },
+        {
+          "id": "monitoringPointerLine",
+          "type": "shape",
+          "shape": "line",
+          "frame": {
+            "x": 696,
+            "y": 770,
+            "width": 80,
+            "height": 3
+          },
+          "style": {
+            "backgroundColor": "#0F48C6"
+          },
+          "animation": {
+            "preset": "wipeRight",
+            "startFrame": 152,
+            "durationFrames": 28
+          }
+        },
+        {
+          "id": "monitoringPointerDot",
+          "type": "shape",
+          "shape": "circle",
+          "frame": {
+            "x": 686,
+            "y": 763,
+            "width": 16,
+            "height": 16
+          },
+          "style": {
+            "backgroundColor": "#0F48C6"
+          },
+          "animation": {
+            "preset": "popIn",
+            "startFrame": 172,
+            "durationFrames": 22
+          }
+        }
+      ]
     }
   },
-  "savedAt": "2026-07-11T14:50:16.394Z"
+  "savedAt": "2026-07-15T16:16:12.547Z"
 }

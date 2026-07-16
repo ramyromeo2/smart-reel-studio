@@ -4337,5 +4337,338 @@
         }
       }
     ]
+  },
+  "27": {
+    "id": "smartmed-medical-caregiver-clean-003",
+    "type": "posterOverlay",
+    "brand": "smartmed-posts",
+    "version": "1.0",
+    "canvas": {
+      "width": 1080,
+      "height": 1350
+    },
+    "background": {
+      "type": "image",
+      "fit": "cover"
+    },
+    "backgroundImage": "public/generated/smartlab-posts/image-scene-27-1784131611636.png",
+    "aspectRatio": "4:5",
+    "backgroundAnimation": {
+      "preset": "none"
+    },
+    "brandStyle": {
+      "primaryColor": "#0F48C6",
+      "fontFamily": "Tajawal",
+      "fontWeight": 500,
+      "direction": "rtl"
+    },
+    "elements": [
+      {
+        "id": "serviceTagBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 752,
+          "y": 60,
+          "width": 270,
+          "height": 48
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.86)",
+          "borderRadius": 24
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 0,
+          "durationFrames": 28
+        }
+      },
+      {
+        "id": "serviceTag",
+        "type": "text",
+        "text": "خدمة مقدّم رعاية طبية",
+        "frame": {
+          "x": 771,
+          "y": 72,
+          "width": 234,
+          "height": 26
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 22,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 12,
+          "durationFrames": 26
+        }
+      },
+      {
+        "id": "headline",
+        "type": "text",
+        "text": "رعاية طبية\nترافق كل خطوة",
+        "frame": {
+          "x": 150,
+          "y": 142,
+          "width": 780,
+          "height": 148
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 70,
+          "lineHeight": 1.05,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 20,
+          "durationFrames": 36
+        }
+      },
+      {
+        "id": "subheading",
+        "type": "text",
+        "text": "دعم للحركة، ومراقبة للحالة، وتوثيق مستمر في المنزل",
+        "frame": {
+          "x": 145,
+          "y": 308,
+          "width": 790,
+          "height": 44
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 29,
+          "lineHeight": 1.2,
+          "color": "#222222",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 44,
+          "durationFrames": 34
+        }
+      },
+      {
+        "id": "ctaBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 372,
+          "y": 959,
+          "width": 320,
+          "height": 60
+        },
+        "style": {
+          "backgroundColor": "#0F48C6",
+          "borderRadius": 30
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 72,
+          "durationFrames": 28
+        }
+      },
+      {
+        "id": "ctaText",
+        "type": "text",
+        "text": "اطلب الخدمة الآن",
+        "frame": {
+          "x": 369,
+          "y": 972,
+          "width": 320,
+          "height": 28
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 29,
+          "lineHeight": 1.1,
+          "color": "#FFFFFF",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 88,
+          "durationFrames": 24
+        }
+      },
+      {
+        "id": "mobilityLabelBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 66,
+          "y": 720,
+          "width": 252,
+          "height": 54
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.86)",
+          "borderRadius": 27
+        },
+        "animation": {
+          "preset": "fadeUp",
+          "startFrame": 106,
+          "durationFrames": 32
+        }
+      },
+      {
+        "id": "mobilityLabel",
+        "type": "text",
+        "text": "دعم الحركة وتقليل خطر السقوط",
+        "frame": {
+          "x": 84,
+          "y": 735,
+          "width": 216,
+          "height": 24
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 21,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 122,
+          "durationFrames": 26
+        }
+      },
+      {
+        "id": "mobilityPointerLine",
+        "type": "shape",
+        "shape": "line",
+        "frame": {
+          "x": 318,
+          "y": 746,
+          "width": 122,
+          "height": 3
+        },
+        "style": {
+          "backgroundColor": "#0F48C6"
+        },
+        "animation": {
+          "preset": "wipeRight",
+          "startFrame": 138,
+          "durationFrames": 30
+        }
+      },
+      {
+        "id": "mobilityPointerDot",
+        "type": "shape",
+        "shape": "circle",
+        "frame": {
+          "x": 434,
+          "y": 739,
+          "width": 16,
+          "height": 16
+        },
+        "style": {
+          "backgroundColor": "#0F48C6"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 158,
+          "durationFrames": 22
+        }
+      },
+      {
+        "id": "monitoringLabelBg",
+        "type": "shape",
+        "shape": "rect",
+        "frame": {
+          "x": 776,
+          "y": 744,
+          "width": 250,
+          "height": 54
+        },
+        "style": {
+          "backgroundColor": "rgba(255,255,255,0.86)",
+          "borderRadius": 27
+        },
+        "animation": {
+          "preset": "fadeDown",
+          "startFrame": 120,
+          "durationFrames": 32
+        }
+      },
+      {
+        "id": "monitoringLabel",
+        "type": "text",
+        "text": "ملاحظة الاستجابة وتوثيقها",
+        "frame": {
+          "x": 794,
+          "y": 759,
+          "width": 214,
+          "height": 24
+        },
+        "style": {
+          "fontFamily": "Tajawal",
+          "fontWeight": 500,
+          "fontSize": 21,
+          "lineHeight": 1.1,
+          "color": "#0F48C6",
+          "textAlign": "center",
+          "direction": "rtl"
+        },
+        "animation": {
+          "preset": "fadeIn",
+          "startFrame": 136,
+          "durationFrames": 26
+        }
+      },
+      {
+        "id": "monitoringPointerLine",
+        "type": "shape",
+        "shape": "line",
+        "frame": {
+          "x": 696,
+          "y": 770,
+          "width": 80,
+          "height": 3
+        },
+        "style": {
+          "backgroundColor": "#0F48C6"
+        },
+        "animation": {
+          "preset": "wipeRight",
+          "startFrame": 152,
+          "durationFrames": 28
+        }
+      },
+      {
+        "id": "monitoringPointerDot",
+        "type": "shape",
+        "shape": "circle",
+        "frame": {
+          "x": 686,
+          "y": 763,
+          "width": 16,
+          "height": 16
+        },
+        "style": {
+          "backgroundColor": "#0F48C6"
+        },
+        "animation": {
+          "preset": "popIn",
+          "startFrame": 172,
+          "durationFrames": 22
+        }
+      }
+    ]
   }
 }

@@ -94,6 +94,8 @@ npm install
 npm run hub
 ```
 
+On macOS, you can also double-click `start-studio.command` in Finder.
+
 The default hub runs at:
 
 ```text
