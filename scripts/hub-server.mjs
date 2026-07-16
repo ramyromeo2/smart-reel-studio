@@ -1099,6 +1099,17 @@ PORTS.slice(1).forEach(extraPort => {
   });
 });
 
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.log(`\n  Reel Studio is already running at http://localhost:${PORT}/`);
+    console.log(`  Open http://localhost:${PORT}/smartlab-posts-preview.html`);
+    process.exit(0);
+  }
+
+  console.error(`\n  Hub server failed: ${err.message}`);
+  process.exit(1);
+});
+
 server.listen(PORT, () => {
   console.log(`\n  🎬  Reel Studio hub`);
   console.log(`  ────────────────────`);
