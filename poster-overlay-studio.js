@@ -950,9 +950,10 @@
     function pasteImageElement(sceneId) {
       if (!navigator.clipboard || !navigator.clipboard.read) {
         setStatus('Clipboard image paste is not available in this browser. Use Upload image instead.', 'error');
-        return;
+        return Promise.resolve(0);
       }
-      navigator.clipboard.read()
+      setStatus(`Reading clipboard image for Scene ${sceneId}...`, 'ok');
+      return navigator.clipboard.read()
         .then(function (items) {
           const filePromises = [];
           items.forEach(function (item) {
@@ -968,12 +969,14 @@
         .then(function (files) {
           if (!files.length) {
             setStatus('Clipboard does not contain an image.', 'error');
-            return;
+            return 0;
           }
           files.forEach(function (file) { addImageFile(sceneId, file); });
+          return files.length;
         })
         .catch(function () {
-          setStatus('Could not read an image from the clipboard. Use Upload image instead.', 'error');
+          setStatus('Press Cmd+V or Ctrl+V to paste the image, or use Upload image.', 'error');
+          return 0;
         });
     }
 
@@ -2058,6 +2061,15 @@
       },
       applyBrandKit: applyBrandKit,
       getBrandKit: readBrandKit,
+      addOverlayFiles: function (sceneId, files) {
+        const target = String(sceneId || selectedScene || activeSceneFromTabs() || sceneIds()[0] || '');
+        const images = Array.from(files || []).filter(function (file) {
+          return String(file && file.type || '').startsWith('image/');
+        });
+        if (!target || !images.length) return false;
+        images.forEach(function (file) { addImageFile(target, file); });
+        return true;
+      },
       uploadOverlayImage: function (sceneId) {
         const target = String(sceneId || selectedScene || activeSceneFromTabs() || sceneIds()[0] || '');
         if (!target) return false;
@@ -2067,8 +2079,7 @@
       pasteOverlayImage: function (sceneId) {
         const target = String(sceneId || selectedScene || activeSceneFromTabs() || sceneIds()[0] || '');
         if (!target) return false;
-        pasteImageElement(target);
-        return true;
+        return pasteImageElement(target);
       },
       refresh: function () {
         syncSceneSelect();
