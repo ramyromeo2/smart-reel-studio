@@ -2058,6 +2058,18 @@
       },
       applyBrandKit: applyBrandKit,
       getBrandKit: readBrandKit,
+      uploadOverlayImage: function (sceneId) {
+        const target = String(sceneId || selectedScene || activeSceneFromTabs() || sceneIds()[0] || '');
+        if (!target) return false;
+        chooseImageFiles(target);
+        return true;
+      },
+      pasteOverlayImage: function (sceneId) {
+        const target = String(sceneId || selectedScene || activeSceneFromTabs() || sceneIds()[0] || '');
+        if (!target) return false;
+        pasteImageElement(target);
+        return true;
+      },
       refresh: function () {
         syncSceneSelect();
         renderAllScenes();
